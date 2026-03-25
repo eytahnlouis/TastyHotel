@@ -64,11 +64,6 @@ public class Chambre {
         this.numChambre = numChambre;
     }
 
-    // Modifie le numéro de l'étage
-    public void setNumEtage(int numEtage) {
-        this.numEtage = numEtage;
-    }
-
     // Modifie le prix de la chambre
     public void setPrixChambre(float prixChambre) {
         this.prixChambre = prixChambre;

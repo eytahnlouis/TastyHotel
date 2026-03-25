@@ -14,7 +14,6 @@ public class Client {
     // L'historique de passages est initialisé vide
     public Client(String nomClient, String prenomClient) {
         numClient++;
-        this.numClient = numClient;
         this.comptePassage = new Reservation[0];
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
@@ -26,10 +25,10 @@ public class Client {
     }
 
     // Ajoute une nouvelle réservation vide à l'historique du client
-    public void incrementComptePassage(Client c) {
-        Reservation[] newComptePassage = new Reservation[comptePassage.length + 1];
+    public void incrementComptePassage(Client c, Sejour s) {
+        Sejour[] newComptePassage = new Reservation[comptePassage.length + 1];
         System.arraycopy(comptePassage, 0, newComptePassage, 0, comptePassage.length);
-        newComptePassage[comptePassage.length] = new Reservation();
+        newComptePassage[comptePassage.length] = s;
         comptePassage = newComptePassage;
     }
 
@@ -43,16 +42,16 @@ public class Client {
     private String prenomClient;
 
     // Historique des réservations du client
-    private Reservation[] comptePassage;
+    private Sejour[] comptePassage;
 
     // Retourne le numéro du client
     public int getNumClient() {
-        return this.numClient;
+        return numClient;
     }
 
     // Affiche les informations complètes du client dans la console
     public void infosClient() {
-        System.out.println("Numéro de client : " + this.numClient);
+        System.out.println("Numéro de client : " + numClient);
         System.out.println("Nom : " + this.nomClient);
         System.out.println("Prénom : " + this.prenomClient);
         System.out.println("Nombre de passages : " + getNbPassage());

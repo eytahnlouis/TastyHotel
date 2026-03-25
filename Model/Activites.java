@@ -6,19 +6,21 @@ import java.util.*;
  * Classe représentant une activité proposée par l'hôtel.
  * Une activité a un nom, un prix et une disponibilité.
  */
-public class Activités {
+public class Activites {
 
     // Constructeur : initialise une activité avec son nom et son prix
-    public Activités(String nomActivites, float prixActivites) {
+    public Activites(String nomActivites, float prixActivites) {
+        numActivites++;
         this.nomActivites = nomActivites;
         this.prixActivites = prixActivites;
+        this.disponibilite = true;
     }
 
     // Identifiant unique de l'activité
-    private int numActivites;
+    private static int numActivites = 0;
 
     // Nom de l'activité
-    public String nomActivites;
+    protected String nomActivites;
 
     // Prix de l'activité
     private float prixActivites;
@@ -27,13 +29,8 @@ public class Activités {
     private boolean disponibilite;
 
     // Retourne le numéro de l'activité
-    public int getNumActivites() {
-        return this.numActivites;
-    }
-
-    // Modifie le numéro de l'activité
-    public void setNumActivites(int numActivites) {
-        this.numActivites = numActivites;
+    public static int getNumActivites() {
+        return numActivites;
     }
 
     // Retourne le nom de l'activité

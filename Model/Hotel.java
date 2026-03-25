@@ -23,13 +23,13 @@ public class Hotel {
     }
 
     // Identifiant unique de l'hôtel (auto-incrémenté)
-    private int numHotel;
+    private static int numHotel;
 
     // Nom de l'hôtel
-    public String nomHotel;
+    public static String nomHotel;
 
     // Adresse de l'hôtel
-    public String adresse;
+    public static String adresse;
 
     // Liste des chambres de l'hôtel
     private Chambre[] lChambres;
