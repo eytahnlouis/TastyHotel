@@ -14,6 +14,7 @@ public class Activites {
         this.nomActivite = nomActivite;
         this.prixActivite = prixActivite;
         this.hotel = hotel;
+        ajouterAHotel();
     }
 
     // Identifiant unique de l'activité kvk
@@ -22,7 +23,7 @@ public class Activites {
     /**
      *
      */
-    public static String nomActivite;
+    public String nomActivite;
 
     /**
      *
@@ -39,6 +40,9 @@ public class Activites {
         return numActivite;
     }
 
+    public void ajouterAHotel() {
+        hotel.listeActivites.add(this);
+    }
     // Retourne le nom de l'activité
     public String getNomActivite() {
         return this.nomActivite;
@@ -56,16 +60,17 @@ public class Activites {
 
     // Modifie le prix de l'activité
     public void setPrixActivite(float prixActivite) {
-        this.prixActivites = prixActivites;
+        this.prixActivite = prixActivite;
     }
 
     // Retourne true si l'activité est disponible
-    public boolean isDisponibilite() {
-        return this.disponibilite;
+    public boolean isDisponible() {
+        // Implémentation de la logique de disponibilité (ex : vérifier les réservations)
+        return true; // Placeholder : à remplacer par la logique réelle
     }
 
-    // Bascule la disponibilité de l'activité (disponible <-> indisponible)
-    public void setDisponibilite() {
-        this.disponibilite = !disponibilite;
+    public void afficherInfos() {
+        System.out.println("Nom de l'activité : " + nomActivite);
+        System.out.println("Prix de l'activité : " + prixActivite);
     }
 }

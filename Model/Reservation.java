@@ -12,11 +12,11 @@ public class Reservation {
     // Constructeur : crée une réservation pour un client avec une chambre et des dates
     public Reservation(Client client, Date debutR, Date finR, Chambre chambre) {
         numReservation++;
-        this.numReservation = numReservation;
         this.dateDebut = debutR;
         this.dateFin = finR;
         this.client = client;
         this.chambre = chambre;
+        ajouterAHotel();
     }
 
     // Identifiant unique de la réservation (auto-incrémenté)
@@ -25,7 +25,7 @@ public class Reservation {
     /**
      *
      */
-    public static Date dateDebut;
+    public Date dateDebut;
 
     /**
      *
@@ -47,6 +47,10 @@ public class Reservation {
      */
     public Sejour sejour;
 
+    public void ajouterAHotel() {
+        client.listReservation.add(this);
+        chambre.ajoutRes(this);
+    }
     // Retourne le numéro de la réservation
     public static int getNumReservation() {
         return numReservation;
@@ -54,7 +58,7 @@ public class Reservation {
 
     // Retourne le nombre de jours de la réservation
     public int getNbJours() {
-        return dateFin - dateDebut;
+        return (int) ((dateFin.getTime() - dateDebut.getTime()) / (1000 * 60 * 60 * 24));
     }
 
     // Retourne le client associé à une réservation donnée
@@ -67,5 +71,12 @@ public class Reservation {
     // (prix de la chambre * nombre de jours)
     public float getPrixTotalTheorique() {
         return chambre.getPrixChambre() * getNbJours();
+    }
+
+    public void infosChambre() {
+        System.out.println("Numéro de chambre : " + chambre.getNumChambre());
+        System.out.println("Type de chambre : " + chambre.getTypeChambre());
+        System.out.println("Prix de la chambre : " + chambre.getPrixChambre());
+        System.out.println("Nombre de jours : " + getNbJours());
     }
 }

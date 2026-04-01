@@ -18,8 +18,7 @@ public class Hotel {
         this.listChambre = new Vector<Chambre>();       // liste vide de chambres
         this.listeClient = new Vector<Client>();         // liste vide de clients
         this.listeProduits = new Vector<Produits>();      // liste vide de produits
-        this.numHotel = numHotel;
-    }
+   }
 
     // Identifiant unique de l'hôtel (auto-incrémenté)
     private static int numHotel;
@@ -57,22 +56,10 @@ public class Hotel {
     }
 
     // Retourne la liste complète des chambres
-    public Chambre[] getLChambres() {
-        return lChambres;
+    public Vector <Chambre> getLChambres() {
+        return listChambre;
     }
 
-    // Retourne uniquement les chambres disponibles
-    public Chambre[] getlChambresDispo() {
-        Chambre[] chambresDispo = new Chambre[lChambres.length];
-        int index = 0;
-        for (Chambre chambre : lChambres) {
-            if (chambre.isDisponibilite()) {
-                chambresDispo[index] = chambre;
-                index++;
-            }
-        }
-        return chambresDispo;
-    }
 
     public Vector<Produits> getListeProduits() {
 
@@ -87,6 +74,17 @@ public class Hotel {
     public Vector<Chambre> getListChambre() {
 
         return null;
+    }
+
+    public void afficherHotel(){
+        System.out.println("------------------------------------");
+        System.out.println("numHotel : " + numHotel + "");
+        System.out.println("Nom de l'hotel : " + nomHotel);
+        System.out.println("Adresse de l'hotel : " + adresse);
+        System.out.println("Liste des produits : " + listeProduits.size());
+        System.out.println("Liste des activités : " + listeActivites.size());
+        System.out.println("Liste des chambres : " + listChambre.size());
+        System.out.println("------------------------------------");
     }
 }
 

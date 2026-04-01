@@ -56,10 +56,15 @@ public class Client {
         this.prenomClient = prenomClient;
         this.hotel = hotel;
         this.listReservation = new Vector<Reservation>();
+        ajouterAHotel();
     }
 
     public void addReservation(Reservation reservation) {
         listReservation.add(reservation);
+    }
+
+    public void ajouterAHotel() {
+        hotel.listeClient.add(this);
     }
 
     // Retourne le numéro du client

@@ -1,5 +1,4 @@
 
-
 import java.io.*;
 import java.util.*;
 
@@ -13,7 +12,7 @@ public class Sejour {
     // Constructeur par défaut
 
     // Numéro de réservation associé au séjour
-    private static int numReservation;
+    private int numReservation;
 
     /**
      *
@@ -25,15 +24,19 @@ public class Sejour {
      */
     public Vector<Activites> listActivites;
 
+    public Vector<Produits> lProduits;
+
     /**
      *
      */
     public Reservation reservation;
 
     public Sejour(Reservation r, Date dateFinReel) {
+        this.numReservation = Reservation.getNumReservation();
         this.reservation = r;
-        this.dateFinReel = reservation.getDateFin();
-        this.listActivites = new Vector<>(listActivites);
+        this.dateFinReel = reservation.dateFin;
+        this.listActivites = new Vector<Activites>();
+        this.lProduits = new Vector<Produits>();
     }
 
     public void addActivite(Activites a) {
@@ -44,36 +47,37 @@ public class Sejour {
         return listActivites.toArray(new Activites[0]);
     }
 
-    // Ajoute une activité à la liste des activités du séjour
-    // Crée un nouveau tableau d'une case supplémentaire et y insère l'activité
-    public Activites[] addActivite(Activites a) {
-        Activites[] newActivites = new Activites[listActivites.size() + 1];
-        listActivites.toArray(newActivites);
-        newActivites[listActivites.size()] = a;
-        listActivites = new Vector<>(Arrays.asList(newActivites));
-        return newActivites;
-    }
+
 
     // Retourne la liste des produits consommés durant le séjour
     public Produits[] getlProduits() {
-        return lProduits;
+        return lProduits.toArray(new Produits[0]);
     }
 
     // Ajoute un produit à la liste des produits consommés durant le séjour
     public void addProduits(Produits p) {
-        Produits[] newProduits = new Produits[lProduits.length + 1];
-        System.arraycopy(lProduits, 0, newProduits, 0, lProduits.length);
-        newProduits[lProduits.length] = p;
-        lProduits = newProduits;
+        lProduits.add(p);
+    
     }
 
     // Calcule et retourne le prix total réel du séjour
-    // (prix de la chambre * nombre de jours réels) + total des produits consommés
-    public float getPrixTotalReel(Produits[] p) {
-        return Reservation.chambre.getPrixChambre() * chambre.getNbJours() + Produits.getPrixProduit(p);
+    // (prix de la chambre * nombre de jours réels) + total des produits consommés + activites faites
+    //placeholder vraie fonction à recalculer
+    public float getPrixTotalReel() {
+        //return reservation.chambre.getPrixChambre() * reservation.getNbJours() + p.getPrixProduit(); ;
+        return 0;
     }
 
     public Vector<Activites> getListActivites() {
         return new Vector<>(listActivites);
+    }
+
+    public void infosSejour() {
+        reservation.infosChambre();
+        System.out.println("Date de fin réelle : " + dateFinReel);
+        System.out.println("Activités : ");
+        for (Activites a : listActivites) {
+            System.out.println("- " + a.getNomActivite());
+        }
     }
 }

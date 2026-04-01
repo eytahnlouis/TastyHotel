@@ -30,18 +30,30 @@ public class Produits {
     public Vector<Hotel> listHotel;
 
     // Constructeur : initialise un produit avec son numéro, son nom et son prix
-    public Produits(int numProduit, String nomProduit, float prixProduit, int quantite) {
+    public Produits(int numProduit, String nomProduit, float prixProduit, int quantite, Hotel hotel) {
         this.numProduit = numProduit;
         this.nomProduit = nomProduit;
         this.prixProduit = prixProduit;
         this.quantite = quantite;
         this.listHotel = new Vector<Hotel>();
+        this.listHotel.add(hotel);
+        ajouterAHotel();
     }
     public void addHotelToProduit(Hotel h)
     {
         listHotel.add(h);
+        ajouterAHotel();
+    }
+
+    public void ajouterAHotel()
+    {
+        for (Hotel h : listHotel)
+        {
+            h.listeProduits.add(this);
+        }
     }
     // Retourne le numéro du produit
+
     public int getNumProduit() {
         return this.numProduit;
     }
@@ -63,5 +75,12 @@ public class Produits {
             total += produit.getPrixProduit();
         }
         return total;
+    }
+
+    public void infosProduits() {
+        System.out.println("Numéro du produit : " + numProduit);
+        System.out.println("Nom du produit : " + nomProduit);
+        System.out.println("Prix du produit : " + prixProduit);
+        System.out.println("Quantité : " + quantite);
     }
 }

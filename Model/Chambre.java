@@ -9,12 +9,12 @@ import java.util.*;
  */
 public class Chambre {
     // Type de la chambre (ex : simple, double, suite...)
-    private static int numChambre;
+    private int numChambre;
 
     /**
      *
      */
-    private static String typeChambre;
+    private String typeChambre;
 
     /**
      *
@@ -36,12 +36,13 @@ public class Chambre {
     // Constructeur : initialise une chambre avec ses caractéristiques
     // La disponibilité est définie à true par défaut (chambre libre)
     public Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel) {
-        numChambre++;
+        this.listReservation = new Vector<Reservation>();
         this.typeChambre = typeChambre;
         this.numChambre = numChambre;
         this.numEtage = numEtage;
         this.prixChambre = prixChambre;
         this.hotel = hotel;
+        ajouterAHotel();
     }
 
    public void ajoutRes(Reservation r)
@@ -49,7 +50,9 @@ public class Chambre {
        listReservation.add(r);
    }
 
-
+   public void ajouterAHotel() {
+    hotel.listChambre.add(this);
+   }
 
 
 
@@ -109,6 +112,10 @@ public class Chambre {
     // Modifie le prix de la chambre
     public void setPrixChambre(float prixChambre) {
         this.prixChambre = prixChambre;
+    }
+
+    public void afficherChambre() {
+        System.out.println(numChambre);
     }
 
 }
