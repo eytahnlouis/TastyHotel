@@ -18,11 +18,25 @@ public class Produits {
     // Identifiant unique du produit
     private int numProduit;
 
-    // Nom du produit
+    /**
+     *
+     */
     public String nomProduit;
 
-    // Prix unitaire du produit
-    private float prixProduit;
+    /**
+     *
+     */
+    public float prixProduit;
+
+    /**
+     *
+     */
+    public float quantite;
+
+    /**
+     *
+     */
+    public Vector<Hotel> listHotel;
 
     // Retourne le numéro du produit
     public int getNumProduit() {

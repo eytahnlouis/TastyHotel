@@ -35,14 +35,30 @@ public class Client {
     // Numéro unique du client (statique : partagé entre toutes les instances)
     private static int numClient;
 
-    // Nom de famille du client
-    private String nomClient;
+    /**
+     *
+     */
+    protected String nomClient;
 
-    // Prénom du client
-    private String prenomClient;
+    /**
+     *
+     */
+    protected String prenomClient;
 
-    // Historique des réservations du client
-    private Sejour[] comptePassage;
+    /**
+     *
+     */
+    public int comptePassage;
+
+    /**
+     *
+     */
+    public Hotel hotel;
+
+    /**
+     *
+     */
+    public Vector<Reservation> listClient;
 
     // Retourne le numéro du client
     public int getNumClient() {
@@ -59,6 +75,10 @@ public class Client {
 
     // Retourne le nombre de passages (réservations) du client
     public int getNbPassage() {
-        return comptePassage.length;
+        return listClient.size();
+    }
+
+    public Vector<Reservation> getListClient() {
+        return new Vector<>(listClient);
     }
 }

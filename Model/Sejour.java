@@ -8,23 +8,29 @@ import java.util.*;
  * Un séjour étend une réservation et inclut la date de fin réelle,
  * ainsi que les produits consommés et les activités pratiquées.
  */
-public class Sejour extends Reservation {
+public class Sejour {
 
     // Constructeur par défaut
     public Sejour() {
     }
 
     // Numéro de réservation associé au séjour
-    private int numReservation;
+    private static int numReservation;
 
-    // Date de fin réelle du séjour (peut différer de la date prévue)
+    /**
+     *
+     */
     public date dateFinReel;
 
-    // Liste des produits consommés durant le séjour
-    public Produits[] lProduits;
+    /**
+     *
+     */
+    public Vector<Activites> listActivites;
 
-    // Liste des activités pratiquées durant le séjour
-    public Activites[] lActivites;
+    /**
+     *
+     */
+    public Reservation reservation;
 
     // Retourne la liste des activités d'un séjour donné
     public Activites[] getActivites(Sejour s) {
@@ -58,5 +64,9 @@ public class Sejour extends Reservation {
     // (prix de la chambre * nombre de jours réels) + total des produits consommés
     public float getPrixTotalReel(Produits[] p) {
         return Reservation.chambre.getPrixChambre() * chambre.getNbJours() + Produits.getPrixProduit(p);
+    }
+
+    public Vector<Activites> getListActivites() {
+        return new Vector<>(listActivites);
     }
 }

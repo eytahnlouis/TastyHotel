@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Classe représentant un hôtel.
  * Un hôtel possède un nom, une adresse, et gère des chambres,
- * des clients, des réservations, des produits et des activités.
+ * des clients, des produits et des activités.
  */
 public class Hotel {
 
@@ -14,11 +14,10 @@ public class Hotel {
         numHotel++;
         this.nomHotel = nomHotel;
         this.adresse = adresse;
-        this.lActivites = new Activites[0];   // liste vide d'activités
-        this.lChambres = new Chambre[0];       // liste vide de chambres
-        this.lClients = new Client[0];         // liste vide de clients
-        this.lReservations = new Reservation[0]; // liste vide de réservations
-        this.lProduits = new Produits[0];      // liste vide de produits
+        this.listeActivites = new Activites[0];   // liste vide d'activités
+        this.listChambre = new Chambre[0];       // liste vide de chambres
+        this.listeClient = new Client[0];         // liste vide de clients
+        this.listeProduits = new Produits[0];      // liste vide de produits
         this.numHotel = numHotel;
     }
 
@@ -26,25 +25,21 @@ public class Hotel {
     private static int numHotel;
 
     // Nom de l'hôtel
-    public static String nomHotel;
+    public String nomHotel;
 
     // Adresse de l'hôtel
-    public static String adresse;
+    public String adresse;
 
     // Liste des chambres de l'hôtel
-    private Chambre[] lChambres;
+    public Vector<Produits> listeProduits;
 
-    // Liste des clients enregistrés
-    private Client[] lClients;
+    public Vector<Activites> listeActivites;
 
-    // Liste des réservations effectuées
-    private Reservation[] lReservations;
 
-    // Liste des produits proposés par l'hôtel
-    private Produits[] lProduits;
+    public Vector<Client> listeClient;
 
-    // Liste des activités proposées par l'hôtel
-    private Activites[] lActivites;
+
+    public Vector<Chambre> listChambre;
 
     // Retourne le numéro de l'hôtel
     public int getNumHotel() {
@@ -77,6 +72,21 @@ public class Hotel {
             }
         }
         return chambresDispo;
+    }
+
+    public Vector<Produits> getListeProduits() {
+
+        return null;
+    }
+
+    public Vector<Activites> getListeActivites() {
+
+        return null;
+    }
+
+    public Vector<Chambre> getListChambre() {
+
+        return null;
     }
 }
 

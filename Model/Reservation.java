@@ -10,7 +10,7 @@ import java.util.*;
 public class Reservation {
 
     // Constructeur : crée une réservation pour un client avec une chambre et des dates
-    public Reservation(Client client, date debutR, date finR, Chambre chambre) {
+    public Reservation(Client client, Date debutR, Date finR, Chambre chambre) {
         numReservation++;
         this.numReservation = numReservation;
         this.dateDebut = debutR;
@@ -20,23 +20,36 @@ public class Reservation {
     }
 
     // Identifiant unique de la réservation (auto-incrémenté)
-    private int numReservation;
+    private static int numReservation;
 
-    // Date de début du séjour
-    private date dateDebut;
+    /**
+     *
+     */
+    public static Date dateDebut;
 
-    // Date de fin du séjour
-    protected date dateFin;
+    /**
+     *
+     */
+    public Date dateFin;
 
-    // Client associé à la réservation
+    /**
+     *
+     */
     public Client client;
 
-    // Chambre réservée (à redéfinir : peut-on changer de chambre ? protected ?)
-    private Chambre chambre;
+    /**
+     *
+     */
+    public Chambre chambre;
+
+    /**
+     *
+     */
+    public Sejour sejour;
 
     // Retourne le numéro de la réservation
-    public int getNumReservation() {
-        return this.numReservation;
+    public static int getNumReservation() {
+        return numReservation;
     }
 
     // Retourne le nombre de jours de la réservation
