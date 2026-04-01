@@ -9,14 +9,16 @@ import java.util.*;
  */
 public class Client {
 
-    // Constructeur : crée un client avec son nom et prénom
+    // Constructeur : crée un client avec son nom, prénom et hôtel
     // Le numéro de client est auto-incrémenté
     // L'historique de passages est initialisé vide
-    public Client(String nomClient, String prenomClient) {
+    public Client(String nomClient, String prenomClient, Hotel hotel) {
         numClient++;
-        this.comptePassage = new Reservation[0];
+        this.comptePassage = 0;
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
+        this.hotel = hotel;
+        this.listReservation = new Vector<Reservation>();
     }
 
     // Retourne le client passé en paramètre (méthode utilitaire)
@@ -25,12 +27,7 @@ public class Client {
     }
 
     // Ajoute une nouvelle réservation vide à l'historique du client
-    public void incrementComptePassage(Client c, Sejour s) {
-        Sejour[] newComptePassage = new Reservation[comptePassage.length + 1];
-        System.arraycopy(comptePassage, 0, newComptePassage, 0, comptePassage.length);
-        newComptePassage[comptePassage.length] = s;
-        comptePassage = newComptePassage;
-    }
+
 
     // Numéro unique du client (statique : partagé entre toutes les instances)
     private static int numClient;
@@ -58,7 +55,7 @@ public class Client {
     /**
      *
      */
-    public Vector<Reservation> listClient;
+    public Vector<Reservation> listReservation;
 
     // Retourne le numéro du client
     public int getNumClient() {
@@ -75,10 +72,10 @@ public class Client {
 
     // Retourne le nombre de passages (réservations) du client
     public int getNbPassage() {
-        return listClient.size();
+        return listReservation.size();
     }
 
-    public Vector<Reservation> getListClient() {
-        return new Vector<>(listClient);
+    public Vector<Reservation> getListReservation() {
+        return new Vector<>(listReservation);
     }
 }

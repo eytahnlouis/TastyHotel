@@ -9,18 +9,17 @@ import java.util.*;
 public class Produits {
 
     // Constructeur : initialise un produit avec son numéro, son nom et son prix
-    public Produits(int numProduit, String nomProduit, float prixProduit) {
+    public Produits(int numProduit, String nomProduit, float prixProduit, int quantite) {
         this.numProduit = numProduit;
         this.nomProduit = nomProduit;
         this.prixProduit = prixProduit;
+        this.quantite = quantite;
+        this.listHotel = new Vector<Hotel>();
     }
 
     // Identifiant unique du produit
     private int numProduit;
 
-    /**
-     *
-     */
     public String nomProduit;
 
     /**

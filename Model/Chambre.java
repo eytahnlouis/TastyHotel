@@ -11,12 +11,13 @@ public class Chambre {
 
     // Constructeur : initialise une chambre avec ses caractéristiques
     // La disponibilité est définie à true par défaut (chambre libre)
-    public Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel) {
+    public Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel, Vector<Reservation> listChambre) {
         this.typeChambre = typeChambre;
         this.numChambre = numChambre;
         this.numEtage = numEtage;
         this.prixChambre = prixChambre;
         this.hotel = hotel;
+        this.listChambre = listChambre;
     }
 
     // Type de la chambre (ex : simple, double, suite...)

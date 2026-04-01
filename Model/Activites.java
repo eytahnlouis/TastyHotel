@@ -9,10 +9,11 @@ import java.util.*;
 public class Activites {
 
     // Constructeur : initialise une activité avec son nom et son prix
-    public Activites(String nomActivite, float prixActivite) {
+    public Activites(String nomActivite, float prixActivite, Hotel hotel) {
         numActivite++;
         this.nomActivite = nomActivite;
         this.prixActivite = prixActivite;
+        this.hotel = hotel;
     }
 
     // Identifiant unique de l'activité

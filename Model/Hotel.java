@@ -9,15 +9,15 @@ import java.util.*;
  */
 public class Hotel {
 
-    // Constructeur : initialise un hôtel avec son nom et son adresse
+    // Constructeur : initialise un hôtel avec son nom, adresse et liste de produits
     public Hotel(String nomHotel, String adresse) {
         numHotel++;
         this.nomHotel = nomHotel;
         this.adresse = adresse;
-        this.listeActivites = new Activites[0];   // liste vide d'activités
-        this.listChambre = new Chambre[0];       // liste vide de chambres
-        this.listeClient = new Client[0];         // liste vide de clients
-        this.listeProduits = new Produits[0];      // liste vide de produits
+        this.listeActivites = new Vector<Activites>();   // liste vide d'activités
+        this.listChambre = new Vector<Chambre>();       // liste vide de chambres
+        this.listeClient = new Vector<Client>();         // liste vide de clients
+        this.listeProduits = new Vector<Produits>();      // liste vide de produits
         this.numHotel = numHotel;
     }
 

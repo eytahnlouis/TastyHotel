@@ -11,7 +11,10 @@ import java.util.*;
 public class Sejour {
 
     // Constructeur par défaut
-    public Sejour() {
+    public Sejour(Reservation r, Date dateFinReel, Vector<Activites> listActivites) {
+        this.reservation = r;
+        this.dateFinReel = reservation.getDateFin();
+        this.listActivites = new Vector<>(listActivites);
     }
 
     // Numéro de réservation associé au séjour
@@ -20,7 +23,7 @@ public class Sejour {
     /**
      *
      */
-    public date dateFinReel;
+    public Date dateFinReel;
 
     /**
      *
@@ -33,8 +36,8 @@ public class Sejour {
     public Reservation reservation;
 
     // Retourne la liste des activités d'un séjour donné
-    public Activites[] getActivites(Sejour s) {
-        return s.lActivites;
+    public Activites[] getActivites() {
+        return listActivites.toArray(new Activites[0]);
     }
 
     // Ajoute une activité à la liste des activités du séjour
