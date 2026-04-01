@@ -16,7 +16,7 @@ public class Activites {
         this.hotel = hotel;
     }
 
-    // Identifiant unique de l'activité
+    // Identifiant unique de l'activité kvk
     private static int numActivite = 0;
 
     /**
