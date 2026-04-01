@@ -8,14 +8,6 @@ import java.util.*;
  */
 public class Produits {
 
-    // Constructeur : initialise un produit avec son numéro, son nom et son prix
-    public Produits(int numProduit, String nomProduit, float prixProduit, int quantite) {
-        this.numProduit = numProduit;
-        this.nomProduit = nomProduit;
-        this.prixProduit = prixProduit;
-        this.quantite = quantite;
-        this.listHotel = new Vector<Hotel>();
-    }
 
     // Identifiant unique du produit
     private int numProduit;
@@ -37,6 +29,18 @@ public class Produits {
      */
     public Vector<Hotel> listHotel;
 
+    // Constructeur : initialise un produit avec son numéro, son nom et son prix
+    public Produits(int numProduit, String nomProduit, float prixProduit, int quantite) {
+        this.numProduit = numProduit;
+        this.nomProduit = nomProduit;
+        this.prixProduit = prixProduit;
+        this.quantite = quantite;
+        this.listHotel = new Vector<Hotel>();
+    }
+    public void addHotelToProduit(Hotel h)
+    {
+        listHotel.add(h);
+    }
     // Retourne le numéro du produit
     public int getNumProduit() {
         return this.numProduit;

@@ -8,18 +8,6 @@ import java.util.*;
  * son prix par nuit et sa disponibilité.
  */
 public class Chambre {
-
-    // Constructeur : initialise une chambre avec ses caractéristiques
-    // La disponibilité est définie à true par défaut (chambre libre)
-    public Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel, Vector<Reservation> listChambre) {
-        this.typeChambre = typeChambre;
-        this.numChambre = numChambre;
-        this.numEtage = numEtage;
-        this.prixChambre = prixChambre;
-        this.hotel = hotel;
-        this.listChambre = listChambre;
-    }
-
     // Type de la chambre (ex : simple, double, suite...)
     private static int numChambre;
 
@@ -31,7 +19,7 @@ public class Chambre {
     /**
      *
      */
-    public int numEtage;
+    private int numEtage;
 
     /**
      *
@@ -41,10 +29,27 @@ public class Chambre {
     /**
      *
      */
-    public Vector<Reservation> listChambre;
+    public Vector<Reservation> listReservation;
 
 
     public Hotel hotel;
+    // Constructeur : initialise une chambre avec ses caractéristiques
+    // La disponibilité est définie à true par défaut (chambre libre)
+    public Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel) {
+        this.typeChambre = typeChambre;
+        this.numChambre = numChambre;
+        this.numEtage = numEtage;
+        this.prixChambre = prixChambre;
+        this.hotel = hotel;
+    }
+
+   public void ajoutRes(Reservation r)
+   {listReservation.add(r);
+   }
+
+
+
+
 
     // Retourne le type de la chambre
     public String getTypeChambre() {
@@ -59,6 +64,29 @@ public class Chambre {
     // Retourne le numéro de l'étage
     public int getNumEtage() {
         return this.numEtage;
+    }
+
+    public Vector<Reservation> getListReservation() {
+        return this.listReservation;
+    }
+
+    public Vector<Reservation> getListChambreByEtage(int numEtage) {
+        Vector<Reservation> listChambreEtage = new Vector<Reservation>();
+        for (Reservation reservation : listReservation) {
+            if (reservation.chambre.numEtage == numEtage) {
+                listChambreEtage.add(reservation);
+            }
+        }
+        return listChambreEtage;
+    }
+    public Vector<Reservation> getListChambreByType(String typeChambre) {
+        Vector<Reservation> listChambreType = new Vector<Reservation>();
+        for (Reservation reservation : listReservation) {
+            if (reservation.chambre.typeChambre.equals(typeChambre)) {
+                listChambreType.add(reservation);
+            }
+        }
+        return listChambreType;
     }
 
     // Retourne le prix de la chambre par nuit
@@ -81,13 +109,4 @@ public class Chambre {
         this.prixChambre = prixChambre;
     }
 
-    // Retourne true si la chambre est disponible
-    public boolean isDisponibilite() {
-        return disponibilite;
-    }
-
-    // Bascule la disponibilité de la chambre (libre <-> occupée)
-    public void setDisponibilite() {
-        this.disponibilite = !disponibilite;
-    }
 }

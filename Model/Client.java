@@ -12,14 +12,6 @@ public class Client {
     // Constructeur : crée un client avec son nom, prénom et hôtel
     // Le numéro de client est auto-incrémenté
     // L'historique de passages est initialisé vide
-    public Client(String nomClient, String prenomClient, Hotel hotel) {
-        numClient++;
-        this.comptePassage = 0;
-        this.nomClient = nomClient;
-        this.prenomClient = prenomClient;
-        this.hotel = hotel;
-        this.listReservation = new Vector<Reservation>();
-    }
 
     // Retourne le client passé en paramètre (méthode utilitaire)
     public Client getClient(Client c) {
@@ -56,6 +48,19 @@ public class Client {
      *
      */
     public Vector<Reservation> listReservation;
+
+    public Client(String nomClient, String prenomClient, Hotel hotel) {
+        numClient++;
+        this.comptePassage = 0;
+        this.nomClient = nomClient;
+        this.prenomClient = prenomClient;
+        this.hotel = hotel;
+        this.listReservation = new Vector<Reservation>();
+    }
+
+    public void addReservation(Reservation reservation) {
+        listReservation.add(reservation);
+    }
 
     // Retourne le numéro du client
     public int getNumClient() {

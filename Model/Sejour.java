@@ -11,11 +11,6 @@ import java.util.*;
 public class Sejour {
 
     // Constructeur par défaut
-    public Sejour(Reservation r, Date dateFinReel, Vector<Activites> listActivites) {
-        this.reservation = r;
-        this.dateFinReel = reservation.getDateFin();
-        this.listActivites = new Vector<>(listActivites);
-    }
 
     // Numéro de réservation associé au séjour
     private static int numReservation;
@@ -35,6 +30,15 @@ public class Sejour {
      */
     public Reservation reservation;
 
+    public Sejour(Reservation r, Date dateFinReel) {
+        this.reservation = r;
+        this.dateFinReel = reservation.getDateFin();
+        this.listActivites = new Vector<>(listActivites);
+    }
+
+    public void addActivite(Activites a) {
+        listActivites.add(a);
+    }
     // Retourne la liste des activités d'un séjour donné
     public Activites[] getActivites() {
         return listActivites.toArray(new Activites[0]);
@@ -43,11 +47,11 @@ public class Sejour {
     // Ajoute une activité à la liste des activités du séjour
     // Crée un nouveau tableau d'une case supplémentaire et y insère l'activité
     public Activites[] addActivite(Activites a) {
-        Activites[] newActivites = new Activites[lActivites.length + 1];
-        System.arraycopy(lActivites, 0, newActivites, 0, lActivites.length);
-        newActivites[lActivites.length] = a;
-        lActivites = newActivites;
-        return lActivites;
+        Activites[] newActivites = new Activites[listActivites.size() + 1];
+        listActivites.toArray(newActivites);
+        newActivites[listActivites.size()] = a;
+        listActivites = new Vector<>(Arrays.asList(newActivites));
+        return newActivites;
     }
 
     // Retourne la liste des produits consommés durant le séjour
