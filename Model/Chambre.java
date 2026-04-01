@@ -44,7 +44,8 @@ public class Chambre {
     }
 
    public void ajoutRes(Reservation r)
-   {listReservation.add(r);
+   {
+       listReservation.add(r);
    }
 
 
