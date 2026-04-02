@@ -11,9 +11,6 @@ public class Sejour {
 
     // Constructeur par défaut
 
-    // Numéro de réservation associé au séjour
-    private int numReservation;
-
     /**
      *
      */
@@ -32,7 +29,8 @@ public class Sejour {
     public Reservation reservation;
 
     public Sejour(Reservation r, Date dateFinReel) {
-        this.numReservation = Reservation.getNumReservation();
+        // Numéro de réservation associé au séjour
+        int numReservation = Reservation.getNumReservation();
         this.reservation = r;
         this.dateFinReel = reservation.dateFin;
         this.listActivites = new Vector<Activites>();

@@ -115,7 +115,10 @@ public class Chambre {
     }
 
     public void afficherChambre() {
-        System.out.println(numChambre);
+        System.out.println("Numéro de chambre : " + numChambre);
+        System.out.println("Type de chambre : " + typeChambre);
+        System.out.println("Numéro d'étage : " + numEtage);
+        System.out.println("Prix de la chambre par nuit : " + prixChambre);
     }
 
 }
