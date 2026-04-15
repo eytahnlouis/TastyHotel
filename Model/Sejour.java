@@ -35,6 +35,7 @@ public class Sejour {
         this.dateFinReel = reservation.dateFin;
         this.listActivites = new Vector<Activites>();
         this.lProduits = new Vector<Produits>();
+        r.sejour=this ;
     }
 
     public void addActivite(Activites a) {
@@ -61,7 +62,7 @@ public class Sejour {
         return (int) ((dateFinReel.getTime() - reservation.dateDebut.getTime()) / (1000 * 60 * 60 * 24));
     }
 
-    // Retourne la liste des produits consommés durant le séjour
+     /*Retourne la liste des produits consommés durant le séjour */
     private Produits[] getlProduits() {
         return lProduits.toArray(new Produits[0]);
     }
@@ -70,7 +71,6 @@ public class Sejour {
     // Ajoute un produit à la liste des produits consommés durant le séjour
     public void addProduits(Produits p) {
         lProduits.add(p);
-
     }
     public float getPrixTotalProduit() {
         float total = 0;
@@ -102,4 +102,6 @@ public class Sejour {
         }
         System.out.println("Prix total réel : " + getPrixTotalReel());
     }
+
+
 }

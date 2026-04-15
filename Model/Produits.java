@@ -49,7 +49,9 @@ public class Produits {
     {
         for (Hotel h : listHotel)
         {
-            h.listeProduits.add(this);
+            if (!h.listeProduits.contains(this)) {
+                h.listeProduits.add(this);
+            }
         }
     }
     // Retourne le numéro du produit
@@ -75,6 +77,11 @@ public class Produits {
             total += produit.getPrixProduit();
         }
         return total;
+    }
+
+    public void addProduitToSejour(Sejour s)
+    {
+        s.addProduits(this);
     }
 
     public void infosProduits() {

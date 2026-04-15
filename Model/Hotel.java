@@ -1,5 +1,4 @@
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -54,7 +53,9 @@ public class Hotel {
     public String getAdresse() {
         return adresse;
     }
-
+    public void ajoutChambre(Chambre chambre) {
+        listChambre.add(chambre);
+    }
     // Retourne la liste complète des chambres
     public Vector <Chambre> getLChambres() {
         return listChambre;
@@ -62,23 +63,20 @@ public class Hotel {
 
 
     public Vector<Produits> getListeProduits() {
-
-        return null;
+        return listeProduits;
     }
 
     public Vector<Activites> getListeActivites() {
-
-        return null;
+        return listeActivites;
     }
 
     public Vector<Chambre> getListChambre() {
-
-        return null;
+        return listChambre;
     }
 
     public void afficherHotel(){
         System.out.println("------------------------------------");
-        System.out.println("numHotel : " + numHotel + "");
+        System.out.println("numHotel : " + numHotel);
         System.out.println("Nom de l'hotel : " + nomHotel);
         System.out.println("Adresse de l'hotel : " + adresse);
         System.out.println("Liste des produits : " + listeProduits.size());
@@ -86,5 +84,7 @@ public class Hotel {
         System.out.println("Liste des chambres : " + listChambre.size());
         System.out.println("------------------------------------");
     }
+
+
 }
 

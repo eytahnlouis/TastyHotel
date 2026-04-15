@@ -15,6 +15,12 @@ public class Main {
         Client cl1 = new Client("Mohamed", "Omar", h1);
         Reservation r1 = new Reservation(cl1, new Date(2026, APRIL, 15), new Date(2026, APRIL, 18), c1);
         Sejour s1 = new Sejour(r1, new Date(2026, APRIL, 18));
+        s1.addActivite(a1);
+        s1.addProduits(p1);
+
+
+
+
         c1.afficherChambre();
         System.out.println("------------") ;
         h1.afficherHotel();
