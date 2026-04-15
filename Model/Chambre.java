@@ -1,5 +1,4 @@
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -42,7 +41,7 @@ public class Chambre {
         this.numEtage = numEtage;
         this.prixChambre = prixChambre;
         this.hotel = hotel;
-        ajouterAHotel();
+        hotel.ajoutChambre(this);
     }
 
    public void ajoutRes(Reservation r)
