@@ -22,9 +22,7 @@ public class Reservation {
     // Identifiant unique de la réservation (auto-incrémenté)
     private static int numReservation;
 
-    /**
-     *
-     */
+
     public Date dateDebut;
 
     /**
@@ -61,14 +59,9 @@ public class Reservation {
         return (int) ((dateFin.getTime() - dateDebut.getTime()) / (1000 * 60 * 60 * 24));
     }
 
-    // Retourne le client associé à une réservation donnée
-    // Note : à vérifier, méthode redondante avec l'attribut public
-    public Client getClientRes(Reservation r) {
-        return r.client;
-    }
 
-    // Calcule et retourne le prix total théorique de la réservation
-    // (prix de la chambre * nombre de jours)
+    /** Calcule et retourne le prix total théorique de la réservation
+    (prix de la chambre * nombre de jours) **/
     public float getPrixTotalTheorique() {
         return chambre.getPrixChambre() * getNbJours();
     }
@@ -78,5 +71,7 @@ public class Reservation {
         System.out.println("Type de chambre : " + chambre.getTypeChambre());
         System.out.println("Prix de la chambre : " + chambre.getPrixChambre());
         System.out.println("Nombre de jours : " + getNbJours());
+        System.out.println("Prix total théorique : " + getPrixTotalTheorique());
+        client.infosClient();
     }
 }
