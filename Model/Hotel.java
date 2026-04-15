@@ -133,6 +133,25 @@ public class Hotel {
         return activitesByNom;
     }
 
+    public Vector<Produits> getProduitsByNom(String nomProduit) {
+        Vector<Produits> produitsByNom = new Vector<>();
+        for (Produits produit : listeProduits) {
+            if (produit.getNomProduit().equals(nomProduit)) {
+                produitsByNom.add(produit);
+            }
+        }
+        return produitsByNom;
+    }
+    public Vector <Produits> getProduitsByPrice(float prix) {
+        Vector<Produits> produitsByPrice = new Vector<>();
+        for (Produits produit : listeProduits) {
+            if (produit.getPrixProduit() <= prix) {
+                produitsByPrice.add(produit);
+            }
+        }
+        return produitsByPrice;
+    }
+
     public void afficherHotel(){
         System.out.println("------------------------------------");
         System.out.println("numHotel : " + numHotel);

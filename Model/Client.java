@@ -85,7 +85,18 @@ public class Client {
         return listReservation.size();
     }
 
+    public boolean isFaithful() {
+        return listReservation.size() >= 10;
+    }
     public Vector<Reservation> getListReservation() {
         return new Vector<>(listReservation);
+    }
+
+    public float getTotalSpent() {
+        float total = 0;
+        for (Reservation reservation : listReservation) {
+            total += reservation.getTotalPrice();
+        }
+        return total;
     }
 }
