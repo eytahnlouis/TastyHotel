@@ -14,7 +14,7 @@ public class Main {
         Produits p1 = new Produits(1, "Petit-déjeuner", (float) 9.99, 1, h1);
         Client cl1 = new Client("Mohamed", "Omar", h1);
         Reservation r1 = new Reservation(cl1, new Date(2026, APRIL, 15), new Date(2026, APRIL, 18), c1);
-        Sejour s1 = new Sejour(r1, new Date(2026, APRIL, 18));
+        Sejour s1 = new Sejour(r1);
         s1.addActivite(a1);
         s1.addProduits(p1);
 
