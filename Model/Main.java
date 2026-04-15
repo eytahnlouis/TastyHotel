@@ -3,32 +3,35 @@ import java.util.*;
 import static java.util.Calendar.*;
 
 public class Main {
-    String nomHotel= "Tasty Hotel 4*";
-    String adresse= "12 rue de la paix";
-    Hotel h = new Hotel(nomHotel, adresse);
-    String typeC = "Crousty";
-    int numChambre = 1;
-    int numEtage = 1;
-    float prixChambre = (float)44.99;
-    Calendar cal = getInstance();
-    Date dFin = new Date(cal.getTimeInMillis() + 3 * 24 * 60 * 60 * 1000); // date de fin dans 3 jours
-    Chambre c = new Chambre(typeC, numChambre, numEtage, prixChambre, h);
-    Activites a = new Activites("Visite de la ville", (float) 19.99, h);
-    Produits p = new Produits(1, "Petit-déjeuner", (float) 9.99, 1, h);
-    Client cl = new Client("Mohamed", "Omar", h);
-    Reservation r = new Reservation(cl, new Date(), dFin, c);
-    Sejour s = new Sejour(r, dFin);
+
 
     public static void main(String[] args) {
-        Main main = new Main();
-        main.c.ajouterAHotel();
-        main.c.afficherChambre();
-        main.h.afficherHotel();
-        main.a.afficherInfos();
-        main.cl.infosClient();
-        main.r.infosChambre();
-        main.s.infosSejour();
-        main.p.infosProduits();
+
+
+        Hotel h1 = new Hotel("Tasty Hotel 4*", "12 rue de la paix");
+        Chambre c1 = new Chambre("Crousty", 1, 1, (float) 44.99, h1);
+        Activites a1 = new Activites("Visite de la ville", (float) 19.99, h1);
+        Produits p1 = new Produits(1, "Petit-déjeuner", (float) 9.99, 1, h1);
+        Client cl1 = new Client("Mohamed", "Omar", h1);
+        Reservation r1 = new Reservation(cl1, new Date(2026, APRIL, 15), new Date(2026, APRIL, 18), c1);
+        Sejour s1 = new Sejour(r1, new Date(2026, APRIL, 18));
+        c1.afficherChambre();
+        System.out.println("------------") ;
+        h1.afficherHotel();
+        System.out.println("------------") ;
+        a1.afficherInfos();
+        System.out.println("------------") ;
+        cl1.infosClient();
+        System.out.println("------------") ;
+
+        r1.infosChambre();
+        System.out.println("------------") ;
+
+        s1.infosSejour();
+        System.out.println("------------") ;
+
+        p1.infosProduits();
+        System.out.println("------------") ;
 
     }
 }
