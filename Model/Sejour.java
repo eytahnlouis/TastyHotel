@@ -41,7 +41,7 @@ public class Sejour {
         this.dateFinReel = dateFinReel;
         this.listActivites = new Vector<Activites>();
         this.lProduits = new Vector<Produits>();
-        r.sejour=this ;
+        r.sejour=this;
     }
 
     public void addActivite(Activites a) {
