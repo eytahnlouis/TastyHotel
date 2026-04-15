@@ -17,23 +17,16 @@ public class Activites {
         ajouterAHotel();
     }
 
-    // Identifiant unique de l'activité kvk
+    // Identifiant unique de l'activité
     private static int numActivite = 0;
 
-    /**
-     *
-     */
-    public String nomActivite;
+    private String nomActivite;
 
-    /**
-     *
-     */
+
     private float prixActivite;
 
-    /**
-     *
-     */
-    public Hotel hotel;
+
+    private final Hotel hotel;
 
     // Retourne le numéro de l'activité
     public static int getNumActivite() {
@@ -61,12 +54,6 @@ public class Activites {
     // Modifie le prix de l'activité
     public void setPrixActivite(float prixActivite) {
         this.prixActivite = prixActivite;
-    }
-
-    // Retourne true si l'activité est disponible
-    public boolean isDisponible() {
-        // Implémentation de la logique de disponibilité (ex : vérifier les réservations)
-        return true; // Placeholder : à remplacer par la logique réelle
     }
 
     public void afficherInfos() {

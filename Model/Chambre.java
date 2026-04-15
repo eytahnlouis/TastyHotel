@@ -48,13 +48,6 @@ public class Chambre {
    {
        listReservation.add(r);
    }
-
-   public void ajouterAHotel() {
-    hotel.listChambre.add(this);
-   }
-
-
-
     // Retourne le type de la chambre
     public String getTypeChambre() {
         return this.typeChambre;
@@ -91,6 +84,14 @@ public class Chambre {
             }
         }
         return listChambreType;
+    }
+    public Chambre getChambreByNum(int numChambre) {
+        for (Reservation reservation : listReservation) {
+            if (reservation.chambre.numChambre == numChambre) {
+                return reservation.chambre;
+            }
+        }
+        return null; // Retourne null si aucune chambre avec ce numéro n'est trouvée
     }
 
     // Retourne le prix de la chambre par nuit

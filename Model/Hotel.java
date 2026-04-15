@@ -111,6 +111,25 @@ public class Hotel {
         return true;
     }
 
+    public Vector<Activites> getListActivitesByPrice(float prix) {
+        Vector<Activites> activitesByPrice = new Vector<>();
+        for (Activites activite : listeActivites) {
+            if (activite.getPrixActivite() <= prix) {
+                activitesByPrice.add(activite);
+            }
+        }
+        return activitesByPrice;
+    }
+    public Vector<Activites> getListActivitesByNom(String nomActivite) {
+        Vector<Activites> activitesByNom = new Vector<>();
+        for (Activites activite : listeActivites) {
+            if (activite.getNomActivite().equals(nomActivite)) {
+                activitesByNom.add(activite);
+            }
+        }
+        return activitesByNom;
+    }
+
     public void afficherHotel(){
         System.out.println("------------------------------------");
         System.out.println("numHotel : " + numHotel);
