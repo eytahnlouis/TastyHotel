@@ -45,6 +45,9 @@ public class Hotel {
     }
 
     public void ajoutChambre(Chambre chambre) {
+        if (listChambre.contains(chambre)) {
+            return;
+        }
         listChambre.add(chambre);
     }
     // Retourne la liste complète des chambres

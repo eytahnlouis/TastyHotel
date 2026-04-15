@@ -10,24 +10,17 @@ public class Produits {
 
 
     // Identifiant unique du produit
-    private int numProduit;
+    private final int numProduit;
 
     public String nomProduit;
 
-    /**
-     *
-     */
+
     public float prixProduit;
 
-    /**
-     *
-     */
-    public float quantite;
 
-    /**
-     *
-     */
-    public Vector<Hotel> listHotel;
+    private int quantite;
+
+    private Vector<Hotel> listHotel;
 
     // Constructeur : initialise un produit avec son numéro, son nom et son prix
     public Produits(int numProduit, String nomProduit, float prixProduit, int quantite, Hotel hotel) {
@@ -71,7 +64,7 @@ public class Produits {
     }
 
     // Calcule et retourne le prix total d'un tableau de produits
-    public float getPrixProduit(Produits[] p) {
+    public float getPrixProduit(Vector<Produits> p) {
         float total = 0;
         for (Produits produit : p) {
             total += produit.getPrixProduit();
@@ -82,6 +75,21 @@ public class Produits {
     public void addProduitToSejour(Sejour s)
     {
         s.addProduits(this);
+    }
+
+    public boolean isAvailableInHotel(Hotel h) {
+        return listHotel.contains(h);
+    }
+
+    public void addQuantite(int q)
+    {
+        if(q<0)
+            throw new IllegalArgumentException("Quantité ne peut pas être négative");
+        this.quantite+=q;
+    }
+
+    public boolean isAvailable() {
+        return quantite > 0;
     }
 
     public void infosProduits() {
