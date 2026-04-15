@@ -1,5 +1,4 @@
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -28,11 +27,18 @@ public class Sejour {
      */
     public Reservation reservation;
 
-    public Sejour(Reservation r, Date dateFinReel) {
+    public Sejour(Reservation r) {
         // Numéro de réservation associé au séjour
         int numReservation = Reservation.getNumReservation();
         this.reservation = r;
         this.dateFinReel = reservation.dateFin;
+        this.listActivites = new Vector<Activites>();
+        this.lProduits = new Vector<Produits>();
+        r.sejour=this ;
+    }
+    public Sejour(Reservation r, Date dateFinReel) {
+        this(r);
+        this.dateFinReel = dateFinReel;
         this.listActivites = new Vector<Activites>();
         this.lProduits = new Vector<Produits>();
         r.sejour=this ;
