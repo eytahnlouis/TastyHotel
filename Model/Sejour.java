@@ -41,41 +41,65 @@ public class Sejour {
         listActivites.add(a);
     }
     // Retourne la liste des activités d'un séjour donné
-    public Activites[] getActivites() {
+    private Activites[] getActivites() {
         return listActivites.toArray(new Activites[0]);
     }
 
+    public float getPrixTotalActivite() {
+        float total = 0;
+        for (Activites a : listActivites) {
+            total += a.getPrixActivite();
+        }
+        return total;
+    }
 
+    public void setDateFinReel(Date dateFinReel) {
+        this.dateFinReel = dateFinReel;
+    }
+
+    public  int getNbJours() {
+        return (int) ((dateFinReel.getTime() - reservation.dateDebut.getTime()) / (1000 * 60 * 60 * 24));
+    }
 
     // Retourne la liste des produits consommés durant le séjour
-    public Produits[] getlProduits() {
+    private Produits[] getlProduits() {
         return lProduits.toArray(new Produits[0]);
     }
+
 
     // Ajoute un produit à la liste des produits consommés durant le séjour
     public void addProduits(Produits p) {
         lProduits.add(p);
-    
+
+    }
+    public float getPrixTotalProduit() {
+        float total = 0;
+        for (Produits p : lProduits) {
+            total += p.getPrixProduit();
+        }
+        return total;
     }
 
     // Calcule et retourne le prix total réel du séjour
     // (prix de la chambre * nombre de jours réels) + total des produits consommés + activites faites
     //placeholder vraie fonction à recalculer
     public float getPrixTotalReel() {
-        //return reservation.chambre.getPrixChambre() * reservation.getNbJours() + p.getPrixProduit(); ;
-        return 0;
+        return reservation.chambre.getPrixChambre() * getNbJours() + getPrixTotalProduit() + getPrixTotalActivite();
     }
 
-    public Vector<Activites> getListActivites() {
-        return new Vector<>(listActivites);
-    }
 
     public void infosSejour() {
         reservation.infosChambre();
         System.out.println("Date de fin réelle : " + dateFinReel);
+        System.out.println("Nombre de jours : " + getNbJours());
         System.out.println("Activités : ");
         for (Activites a : listActivites) {
             System.out.println("- " + a.getNomActivite());
         }
+        System.out.println("Produits : ");
+        for (Produits p : lProduits) {
+            System.out.println("- " + p.getNomProduit() + " : " + p.getPrixProduit());
+        }
+        System.out.println("Prix total réel : " + getPrixTotalReel());
     }
 }
