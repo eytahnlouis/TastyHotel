@@ -44,15 +44,6 @@ public class Hotel {
         return numHotel;
     }
 
-    // Retourne le nom de l'hôtel
-    public String getNomHotel() {
-        return nomHotel;
-    }
-
-    // Retourne l'adresse de l'hôtel
-    public String getAdresse() {
-        return adresse;
-    }
     public void ajoutChambre(Chambre chambre) {
         listChambre.add(chambre);
     }
@@ -72,6 +63,52 @@ public class Hotel {
 
     public Vector<Chambre> getListChambre() {
         return listChambre;
+    }
+
+
+    public Vector<Chambre> getChambresDisponibles(Date debutDemande, Date finDemande) {
+        Vector<Chambre> chambresDisponibles = new Vector<>();
+
+        for (Chambre chambre : listChambre) {
+            boolean disponible = true;
+
+            for (Reservation res : chambre.getListReservation()) {
+                boolean chevauchement = debutDemande.before(res.dateFin)
+                        && finDemande.after(res.dateDebut);
+                if (chevauchement) {
+                    disponible = false;
+                    break;
+                }
+            }
+
+            if (disponible) {
+                chambresDisponibles.add(chambre);
+            }
+        }
+
+        return chambresDisponibles;
+    }
+    public boolean supprimerReservation(Reservation reservation) {
+        Date aj = new Date();
+        if (reservation.sejour != null
+                && aj.after(reservation.dateDebut)
+                && aj.before(reservation.sejour.dateFinReel)) {
+            System.out.println("Impossible : le client est actuellement en séjour.");
+            return false;
+        }
+        // Retirer côté client
+        reservation.client.listReservation.remove(reservation);
+
+        // Retirer côté chambre
+        reservation.chambre.listReservation.remove(reservation);
+
+        // Dissocier le séjour s'il existe
+        if (reservation.sejour != null) {
+            reservation.sejour.reservation = null;
+            reservation.sejour = null;
+        }
+
+        return true;
     }
 
     public void afficherHotel(){
