@@ -68,6 +68,19 @@ public class Hotel {
         return listChambre;
     }
 
+    public boolean isRoomAvailable(Date debutDemande, Date finDemande, Chambre chambre) {
+         boolean disponible = true;
+            for (Reservation res : chambre.getListReservation()) {
+                boolean chevauchement = debutDemande.before(res.dateFin)
+                        && finDemande.after(res.dateDebut);
+                if (chevauchement) {
+                    disponible = false;
+                    break;
+                }
+            }
+        return disponible;
+    }
+
 
     public Vector<Chambre> getChambresDisponibles(Date debutDemande, Date finDemande) {
         Vector<Chambre> chambresDisponibles = new Vector<>();
@@ -91,6 +104,7 @@ public class Hotel {
 
         return chambresDisponibles;
     }
+
     public boolean supprimerReservation(Reservation reservation) {
         Date aj = new Date();
         if (reservation.sejour != null
@@ -151,6 +165,7 @@ public class Hotel {
         }
         return produitsByPrice;
     }
+
 
     public void afficherHotel(){
         System.out.println("------------------------------------");

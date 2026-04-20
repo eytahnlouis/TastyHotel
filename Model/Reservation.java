@@ -10,13 +10,20 @@ import java.util.*;
 public class Reservation {
 
     // Constructeur : crée une réservation pour un client avec une chambre et des dates
-    public Reservation(Client client, Date debutR, Date finR, Chambre chambre) {
+    public Reservation(Client client, Date debutR, Date finR, Chambre chambre) throws IllegalArgumentException {
         numReservation++;
         this.dateDebut = debutR;
         this.dateFin = finR;
         this.client = client;
         this.chambre = chambre;
-        ajouterAHotel();
+        if (chambre.hotel.isRoomAvailable(debutR, finR, chambre)) {
+            chambre.ajoutRes(this);
+            ajouterAHotel();
+        } else {
+            System.out.println("La chambre n'est pas disponible pour les dates sélectionnées.");
+            throw new IllegalArgumentException("Chambre non disponible");
+        }
+
     }
 
     // Identifiant unique de la réservation (auto-incrémenté)
@@ -25,24 +32,12 @@ public class Reservation {
 
     public Date dateDebut;
 
-    /**
-     *
-     */
     public Date dateFin;
 
-    /**
-     *
-     */
     public Client client;
 
-    /**
-     *
-     */
     public Chambre chambre;
 
-    /**
-     *
-     */
     public Sejour sejour;
 
     public void ajouterAHotel() {
