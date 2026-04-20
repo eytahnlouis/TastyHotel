@@ -17,7 +17,7 @@ public class Client {
 
 
     // Numéro unique du client (statique : partagé entre toutes les instances)
-    private int numClient;
+    private static int numClient;
 
     protected String nomClient;
 

@@ -105,6 +105,16 @@ public class Hotel {
         return chambresDisponibles;
     }
 
+    public Vector<Chambre> ChambreANettoyer(Date debutDemande) {
+        Vector<Chambre> chambresNettoyees = new Vector<>();
+        for (Chambre chambre : listChambre) {
+            if (chambre.getListReservation().isEmpty()) {
+                chambresNettoyees.add(chambre);
+            }
+        }
+        return chambresNettoyees;
+    }
+
     public boolean supprimerReservation(Reservation reservation) {
         Date aj = new Date();
         if (reservation.sejour != null
