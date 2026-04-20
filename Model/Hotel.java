@@ -15,7 +15,7 @@ public class Hotel {
         this.adresse = adresse;
         this.listeActivites = new Vector<Activites>();   // liste vide d'activités
         this.listChambre = new Vector<Chambre>();       // liste vide de chambres
-        this.listeClient = new Vector<Client>();         // liste vide de clients
+        this.listeClient = new Vector<>();         // liste vide de clients
         this.listeProduits = new Vector<Produits>();      // liste vide de produits
    }
 

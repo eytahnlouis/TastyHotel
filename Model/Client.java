@@ -1,5 +1,4 @@
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -13,40 +12,21 @@ public class Client {
     // Le numéro de client est auto-incrémenté
     // L'historique de passages est initialisé vide
 
-    // Retourne le client passé en paramètre (méthode utilitaire)
-    public Client getClient(Client c) {
-        return c;
-    }
 
     // Ajoute une nouvelle réservation vide à l'historique du client
 
 
     // Numéro unique du client (statique : partagé entre toutes les instances)
-    private static int numClient;
+    private int numClient;
 
-    /**
-     *
-     */
     protected String nomClient;
 
-    /**
-     *
-     */
     protected String prenomClient;
 
-    /**
-     *
-     */
     public int comptePassage;
 
-    /**
-     *
-     */
-    public Hotel hotel;
+    private Hotel hotel;
 
-    /**
-     *
-     */
     public Vector<Reservation> listReservation;
 
     public Client(String nomClient, String prenomClient, Hotel hotel) {
@@ -71,19 +51,7 @@ public class Client {
     public int getNumClient() {
         return numClient;
     }
-
-    // Affiche les informations complètes du client dans la console
-    public void infosClient() {
-        System.out.println("Numéro de client : " + numClient);
-        System.out.println("Nom : " + this.nomClient);
-        System.out.println("Prénom : " + this.prenomClient);
-        System.out.println("Nombre de passages : " + getNbPassage());
-    }
-
     // Retourne le nombre de passages (réservations) du client
-    public int getNbPassage() {
-        return listReservation.size();
-    }
 
     public boolean isFaithful() {
         return listReservation.size() >= 10;
@@ -95,8 +63,18 @@ public class Client {
     public float getTotalSpent() {
         float total = 0;
         for (Reservation reservation : listReservation) {
-            total += reservation.getTotalPrice();
+            total += reservation.getPrixTotalTheorique();
         }
         return total;
     }
+    // Affiche les informations complètes du client dans la console
+    public void infosClient() {
+        System.out.println("Numéro de client : " + numClient);
+        System.out.println("Nom : " + this.nomClient);
+        System.out.println("Prénom : " + this.prenomClient);
+        System.out.println("Nombre de passages : " + listReservation.size());
+    }
 }
+
+
+

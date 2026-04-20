@@ -63,8 +63,13 @@ public class Reservation {
     /** Calcule et retourne le prix total théorique de la réservation
     (prix de la chambre * nombre de jours) **/
     public float getPrixTotalTheorique() {
+        if (client.isFaithful()) {
+            return chambre.getPrixChambre() * getNbJours() * 0.9f; // 10% de réduction pour les clients fidèles
+        }
         return chambre.getPrixChambre() * getNbJours();
     }
+
+
 
     public void infosChambre() {
         System.out.println("Numéro de chambre : " + chambre.getNumChambre());
