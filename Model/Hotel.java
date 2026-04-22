@@ -192,6 +192,19 @@ public class Hotel {
         return clients;
     }
 
+    public Chambre mostBookedRoom() {
+        Chambre chambre = null;
+        int maxReservations = 0;
+        for (Chambre c : listChambre) {
+            int reservations = c.getListReservation().size();
+            if (reservations > maxReservations) {
+                maxReservations = reservations;
+                chambre = c;
+            }
+        }
+        return chambre;
+    }
+
 
     public void afficherHotel(){
         System.out.println("------------------------------------");
