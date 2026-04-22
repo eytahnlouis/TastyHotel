@@ -14,17 +14,17 @@ public class Chambre {
 
     private String typeChambre;
 
-    private int numEtage;
+    private final int numEtage;
 
-    public float prixChambre;
+    private float prixChambre;
 
-    private Vector<Reservation> listReservation;
+    private final Vector<Reservation> listReservation;
 
 
-    public Hotel hotel;
+    private Hotel hotel;
     // Constructeur : initialise une chambre avec ses caractéristiques
     public Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel) {
-        this.listReservation = new Vector<Reservation>();
+        this.listReservation = new Vector<>();
         this.typeChambre = typeChambre;
         this.numChambre = numChambre;
         this.numEtage = numEtage;
@@ -54,14 +54,20 @@ public class Chambre {
 
     public Sejour getLastSejour() {
         Sejour lastSejour = null;
-        Date d;
+
         for (Reservation res : listReservation) {
-            if (res.sejour != null) {
-                lastSejour = res.sejour;
+            Sejour current = res.sejour;
+            if (current == null || current.dateFinReel == null) {
+                continue;
             }
-            d= lastSejour.dateFinReel.after(res.sejour.dateFinReel) ? lastSejour.dateFinReel : res.sejour.dateFinReel;
-            lastSejour = res.sejour.dateFinReel.equals(d) ? res.sejour : lastSejour;
+
+            if (lastSejour == null
+                    || lastSejour.dateFinReel == null
+                    || current.dateFinReel.after(lastSejour.dateFinReel)) {
+                lastSejour = current;
+            }
         }
+
         return lastSejour;
     }
 
@@ -103,4 +109,11 @@ public class Chambre {
         System.out.println("Prix de la chambre par nuit : " + prixChambre);
     }
 
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
 }
