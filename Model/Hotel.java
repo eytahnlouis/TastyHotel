@@ -129,9 +129,7 @@ public class Hotel {
     public Vector<Chambre> ChambreANettoyer() {
         Vector<Chambre> chambresNettoyees = new Vector<>();
         for (Chambre chambre : listChambre) {
-            if (chambre.isLastDay() && !chambre.getListReservation().isEmpty()) {
-                chambresNettoyees.add(chambre);
-            }
+            if (chambre.isLastDay()) chambresNettoyees.add(chambre);
         }
         return chambresNettoyees;
     }

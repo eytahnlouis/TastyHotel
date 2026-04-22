@@ -16,7 +16,7 @@ public class Reservation {
         this.dateFin = finR;
         this.client = client;
         this.chambre = chambre;
-        if (chambre.hotel.isRoomAvailable(debutR, finR, chambre)) {
+        if (chambre.getHotel().isRoomAvailable(debutR, finR, chambre)) {
             ajouterAHotel();
         } else {
             //System.out.println("La chambre n'est pas disponible pour les dates sélectionnées.");
