@@ -98,6 +98,7 @@ public class Chambre {
 
     public boolean isLastDay() {
         Sejour res = getLastSejour();
+        if (res == null) return false;
         Date today = new Date();
         return res.dateFinReel.equals(today);
     }
