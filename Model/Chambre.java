@@ -1,6 +1,8 @@
 
 import java.util.*;
 
+//import static sun.swing.MenuItemLayoutHelper.max;
+
 /**
  * Classe représentant une chambre d'hôtel.
  * Une chambre est définie par son type, son numéro, son étage,
@@ -50,6 +52,20 @@ public class Chambre {
         return this.numEtage;
     }
 
+    public Sejour getLastSejour() {
+        Sejour lastSejour = null;
+        Date d;
+        for (Reservation res : listReservation) {
+            if (res.sejour != null) {
+                lastSejour = res.sejour;
+            }
+            d= lastSejour.dateFinReel.after(res.sejour.dateFinReel) ? lastSejour.dateFinReel : res.sejour.dateFinReel;
+            lastSejour = res.sejour.dateFinReel.equals(d) ? res.sejour : lastSejour;
+        }
+        return lastSejour;
+    }
+
+
     public Vector<Reservation> getListReservation() {
         return this.listReservation;
     }
@@ -75,9 +91,9 @@ public class Chambre {
     }
 
     public boolean isLastDay() {
-        Reservation res = listReservation.getLast();
+        Sejour res = getLastSejour();
         Date today = new Date();
-        return res.dateFin.equals(today);
+        return res.dateFinReel.equals(today);
     }
 
     public void afficherChambre() {

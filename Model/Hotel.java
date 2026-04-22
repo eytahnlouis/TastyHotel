@@ -15,10 +15,10 @@ public class Hotel {
         numHotel++;
         this.nomHotel = nomHotel;
         this.adresse = adresse;
-        this.listeActivites = new Vector<Activites>();   // liste vide d'activités
-        this.listChambre = new Vector<Chambre>();       // liste vide de chambres
+        this.listeActivites = new Vector<>();   // liste vide d'activités
+        this.listChambre = new Vector<>();       // liste vide de chambres
         this.listeClient = new Vector<>();         // liste vide de clients
-        this.listeProduits = new Vector<Produits>();      // liste vide de produits
+        this.listeProduits = new Vector<>();      // liste vide de produits
    }
 
     // Identifiant unique de l'hôtel (auto-incrémenté)
