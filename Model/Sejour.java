@@ -10,7 +10,6 @@ public class Sejour {
 
     public Date dateFinReel;
 
-
     public Vector<Activites> listActivites;
 
     public Vector<Produits> lProduits;

@@ -51,7 +51,6 @@ public class Client {
     public int getNumClient() {
         return numClient;
     }
-    // Retourne le nombre de passages (réservations) du client
 
     public boolean isFaithful() {
         return listReservation.size() >= 10;

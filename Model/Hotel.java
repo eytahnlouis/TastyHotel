@@ -1,6 +1,8 @@
 
 import java.util.*;
 
+import static java.util.Arrays.*;
+
 /**
  * Classe représentant un hôtel.
  * Un hôtel possède un nom, une adresse, et gère des chambres,
@@ -174,6 +176,20 @@ public class Hotel {
             }
         }
         return produitsByPrice;
+    }
+
+    //Statistiques
+    public Client[] biggestSpender() {
+        Client[] clients = new Client[listeClient.size()];
+        int i = 0;
+        for (Client client : listeClient) {
+            if (client.getTotalSpent() > 0) {
+                clients[i] = client;
+                i++;
+            }
+            sort(clients, Comparator.comparing(Client::getTotalSpent).reversed());
+        }
+        return clients;
     }
 
 
