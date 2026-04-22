@@ -19,7 +19,7 @@ public class Reservation {
         if (chambre.hotel.isRoomAvailable(debutR, finR, chambre)) {
             ajouterAHotel();
         } else {
-            System.out.println("La chambre n'est pas disponible pour les dates sélectionnées.");
+            //System.out.println("La chambre n'est pas disponible pour les dates sélectionnées.");
             throw new IllegalArgumentException("Chambre non disponible");
         }
 

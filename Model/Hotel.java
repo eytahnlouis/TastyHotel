@@ -57,6 +57,25 @@ public class Hotel {
         return listChambre;
     }
 
+    public Vector<Chambre> getChambreByType(String tChambre) {
+        Vector<Chambre> res = new Vector<>();
+        for (Chambre chambre : listChambre) {
+            if (chambre.getTypeChambre().equals(tChambre)) {
+                res.add(chambre);
+            }
+        }
+        return res;
+    }
+    public Vector<Chambre> getChambreByEtage(int numEtage) {
+        Vector<Chambre> res = new Vector<>();
+        for (Chambre chambre : listChambre) {
+            if (chambre.getNumEtage() == numEtage) {
+                res.add(chambre);
+            }
+        }
+        return res;
+    }
+
 
     public Vector<Produits> getListeProduits() {
         return listeProduits;
@@ -107,10 +126,10 @@ public class Hotel {
         return chambresDisponibles;
     }
 
-    public Vector<Chambre> ChambreANettoyer(Date debutDemande) {
+    public Vector<Chambre> ChambreANettoyer() {
         Vector<Chambre> chambresNettoyees = new Vector<>();
         for (Chambre chambre : listChambre) {
-            if (chambre.getListReservation().isEmpty()) {
+            if (chambre.isLastDay() && !chambre.getListReservation().isEmpty()) {
                 chambresNettoyees.add(chambre);
             }
         }
@@ -122,14 +141,14 @@ public class Hotel {
         if (reservation.sejour != null
                 && aj.after(reservation.dateDebut)
                 && aj.before(reservation.sejour.dateFinReel)) {
-            System.out.println("Impossible : le client est actuellement en séjour.");
+            //System.out.println("Impossible : le client est actuellement en séjour.");
             return false;
         }
         // Retirer côté client
         reservation.client.listReservation.remove(reservation);
 
         // Retirer côté chambre
-        reservation.chambre.listReservation.remove(reservation);
+        reservation.chambre.getListReservation().remove(reservation);
 
         // Dissocier le séjour s'il existe
         if (reservation.sejour != null) {

@@ -16,7 +16,7 @@ public class Chambre {
 
     public float prixChambre;
 
-    public Vector<Reservation> listReservation;
+    private Vector<Reservation> listReservation;
 
 
     public Hotel hotel;
@@ -54,33 +54,6 @@ public class Chambre {
         return this.listReservation;
     }
 
-    public Vector<Reservation> getListChambreByEtage(int numEtage) {
-        Vector<Reservation> listChambreEtage = new Vector<Reservation>();
-        for (Reservation reservation : listReservation) {
-            if (reservation.chambre.numEtage == numEtage) {
-                listChambreEtage.add(reservation);
-            }
-        }
-        return listChambreEtage;
-    }
-    public Vector<Reservation> getListChambreByType(String typeChambre) {
-        Vector<Reservation> listChambreType = new Vector<Reservation>();
-        for (Reservation reservation : listReservation) {
-            if (reservation.chambre.typeChambre.equals(typeChambre)) {
-                listChambreType.add(reservation);
-            }
-        }
-        return listChambreType;
-    }
-    public Chambre getChambreByNum(int numChambre) {
-        for (Reservation reservation : listReservation) {
-            if (reservation.chambre.numChambre == numChambre) {
-                return reservation.chambre;
-            }
-        }
-        return null; // Retourne null si aucune chambre avec ce numéro n'est trouvée
-    }
-
     // Retourne le prix de la chambre par nuit
     public float getPrixChambre() {
         return this.prixChambre;
@@ -99,6 +72,12 @@ public class Chambre {
     // Modifie le prix de la chambre
     public void setPrixChambre(float prixChambre) {
         this.prixChambre = prixChambre;
+    }
+
+    public boolean isLastDay() {
+        Reservation res = listReservation.getLast();
+        Date today = new Date();
+        return res.dateFin.equals(today);
     }
 
     public void afficherChambre() {
