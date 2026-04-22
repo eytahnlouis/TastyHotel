@@ -25,7 +25,7 @@ public class Client {
 
     public int comptePassage;
 
-    private Hotel hotel;
+    private final Hotel hotel;
 
     public Vector<Reservation> listReservation;
 

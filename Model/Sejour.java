@@ -8,28 +8,18 @@ import java.util.*;
  */
 public class Sejour {
 
-    // Constructeur par défaut
-
-    /**
-     *
-     */
     public Date dateFinReel;
 
-    /**
-     *
-     */
+
     public Vector<Activites> listActivites;
 
     public Vector<Produits> lProduits;
 
-    /**
-     *
-     */
     public Reservation reservation;
 
     public Sejour(Reservation r) {
         // Numéro de réservation associé au séjour
-        int numReservation = Reservation.getNumReservation();
+        //int numReservation = Reservation.getNumReservation();
         this.reservation = r;
         this.dateFinReel = reservation.dateFin;
         this.listActivites = new Vector<Activites>();
