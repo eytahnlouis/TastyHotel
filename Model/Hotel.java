@@ -202,7 +202,7 @@ public class Hotel {
         for (Client client : listeClient) {
             if (client.getTotalSpent() > 0) {
                 clients[i] = client;
-                i++;
+                i++; //augmente
             }
             sort(clients, Comparator.comparing(Client::getTotalSpent).reversed());
         }
