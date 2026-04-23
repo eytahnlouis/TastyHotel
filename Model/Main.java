@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.*;
 
 import static java.util.Calendar.*;
@@ -13,7 +14,7 @@ public class Main {
         Activites a1 = new Activites("Visite de la ville", (float) 19.99, h1);
         Produits p1 = new Produits(1, "Petit-déjeuner", (float) 9.99, 1, h1);
         Client cl1 = new Client("Mohamed", "Omar", h1);
-        Reservation r1 = new Reservation(cl1, new Date(2026, APRIL, 15), new Date(2026, APRIL, 18), c1);
+        Reservation r1 = new Reservation(cl1, LocalDate.of(2026, APRIL, 15), LocalDate.of(2026, APRIL, 18), c1);
         Sejour s1 = new Sejour(r1);
         s1.addActivite(a1);
         s1.addProduits(p1);

@@ -1,5 +1,7 @@
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
@@ -10,7 +12,7 @@ import java.util.*;
 public class Reservation {
 
     // Constructeur : crée une réservation pour un client avec une chambre et des dates
-    public Reservation(Client client, Date debutR, Date finR, Chambre chambre) throws IllegalArgumentException {
+    public Reservation(Client client, LocalDate debutR, LocalDate finR, Chambre chambre) throws IllegalArgumentException {
         numReservation++;
         this.dateDebut = debutR;
         this.dateFin = finR;
@@ -29,13 +31,13 @@ public class Reservation {
     private static int numReservation;
 
 
-    public Date dateDebut;
+    protected LocalDate dateDebut;
 
-    public Date dateFin;
+    protected LocalDate dateFin;
 
-    public Client client;
+    protected Client client;
 
-    public Chambre chambre;
+    protected Chambre chambre;
 
     public Sejour sejour;
 
@@ -50,7 +52,7 @@ public class Reservation {
 
     // Retourne le nombre de jours de la réservation
     public int getNbJours() {
-        return (int) ((dateFin.getTime() - dateDebut.getTime()) / (1000 * 60 * 60 * 24));
+        return (int) ChronoUnit.DAYS.between(dateDebut, dateFin);
     }
 
 

@@ -1,4 +1,6 @@
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
@@ -8,7 +10,7 @@ import java.util.*;
  */
 public class Sejour {
 
-    public Date dateFinReel;
+    public LocalDate dateFinReel;
 
     public Vector<Activites> listActivites;
 
@@ -25,7 +27,7 @@ public class Sejour {
         this.lProduits = new Vector<Produits>();
         r.sejour=this ;
     }
-    public Sejour(Reservation r, Date dateFinReel) {
+    public Sejour(Reservation r, LocalDate dateFinReel) {
         this(r);
         this.dateFinReel = dateFinReel;
         this.listActivites = new Vector<Activites>();
@@ -49,12 +51,12 @@ public class Sejour {
         return total;
     }
 
-    public void setDateFinReel(Date dateFinReel) {
+    public void setDateFinReel(LocalDate dateFinReel) {
         this.dateFinReel = dateFinReel;
     }
 
     public  int getNbJours() {
-        return (int) ((dateFinReel.getTime() - reservation.dateDebut.getTime()) / (1000 * 60 * 60 * 24));
+        return (int) (ChronoUnit.DAYS.between(reservation.dateDebut, dateFinReel));
     }
 
      /*Retourne la liste des produits consommés durant le séjour */

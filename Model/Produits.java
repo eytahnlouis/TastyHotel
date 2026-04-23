@@ -42,8 +42,8 @@ public class Produits {
     {
         for (Hotel h : listHotel)
         {
-            if (!h.listeProduits.contains(this)) {
-                h.listeProduits.add(this);
+            if (!h.getListeProduits().contains(this)) {
+                h.getListeProduits().add(this);
             }
         }
     }

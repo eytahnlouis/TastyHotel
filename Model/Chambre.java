@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.*;
 
 //import static sun.swing.MenuItemLayoutHelper.max;
@@ -61,9 +62,7 @@ public class Chambre {
                 continue;
             }
 
-            if (lastSejour == null
-                    || lastSejour.dateFinReel == null
-                    || current.dateFinReel.after(lastSejour.dateFinReel)) {
+            if (lastSejour == null || current.dateFinReel.isAfter(lastSejour.dateFinReel)) {
                 lastSejour = current;
             }
         }
@@ -99,8 +98,8 @@ public class Chambre {
     public boolean isLastDay() {
         Sejour res = getLastSejour();
         if (res == null) return false;
-        Date today = new Date();
-        return res.dateFinReel.equals(today);
+        LocalDate today = LocalDate.now();
+        return res.dateFinReel.isEqual(today);
     }
 
     public void afficherChambre() {

@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static java.util.Arrays.*;
@@ -25,21 +26,21 @@ public class Hotel {
     private static int numHotel;
 
     // Nom de l'hôtel
-    public String nomHotel;
+    private final String nomHotel;
 
     // Adresse de l'hôtel
-    public String adresse;
+    private final String adresse;
 
     // Liste des chambres de l'hôtel
-    public Vector<Produits> listeProduits;
+    private final Vector<Produits> listeProduits;
 
-    public Vector<Activites> listeActivites;
-
-
-    public Vector<Client> listeClient;
+    private final Vector<Activites> listeActivites;
 
 
-    public Vector<Chambre> listChambre;
+    private final Vector<Client> listeClient;
+
+
+    private final Vector<Chambre> listChambre;
 
     // Retourne le numéro de l'hôtel
     public int getNumHotel() {
@@ -89,11 +90,15 @@ public class Hotel {
         return listChambre;
     }
 
-    public boolean isRoomAvailable(Date debutDemande, Date finDemande, Chambre chambre) {
+    public Vector<Client> getListClient() {
+        return listeClient;
+    }
+
+    public boolean isRoomAvailable(LocalDate debutDemande, LocalDate finDemande, Chambre chambre) {
          boolean disponible = true;
             for (Reservation res : chambre.getListReservation()) {
-                boolean chevauchement = debutDemande.before(res.dateFin)
-                        && finDemande.after(res.dateDebut);
+                boolean chevauchement = debutDemande.isBefore(res.dateFin)
+                        && finDemande.isAfter(res.dateDebut);
                 if (chevauchement) {
                     disponible = false;
                     break;
@@ -103,15 +108,15 @@ public class Hotel {
     }
 
 
-    public Vector<Chambre> getChambresDisponibles(Date debutDemande, Date finDemande) {
+    public Vector<Chambre> getChambresDisponibles(LocalDate debutDemande, LocalDate finDemande) {
         Vector<Chambre> chambresDisponibles = new Vector<>();
 
         for (Chambre chambre : listChambre) {
             boolean disponible = true;
 
             for (Reservation res : chambre.getListReservation()) {
-                boolean chevauchement = debutDemande.before(res.dateFin)
-                        && finDemande.after(res.dateDebut);
+                boolean chevauchement = debutDemande.isBefore(res.dateFin)
+                        && finDemande.isAfter(res.dateDebut);
                 if (chevauchement) {
                     disponible = false;
                     break;
@@ -135,10 +140,10 @@ public class Hotel {
     }
 
     public boolean supprimerReservation(Reservation reservation) {
-        Date aj = new Date();
+        LocalDate aj = LocalDate.now();
         if (reservation.sejour != null
-                && aj.after(reservation.dateDebut)
-                && aj.before(reservation.sejour.dateFinReel)) {
+                && aj.isAfter(reservation.dateDebut)
+                && aj.isBefore(reservation.sejour.dateFinReel)) {
             //System.out.println("Impossible : le client est actuellement en séjour.");
             return false;
         }
@@ -225,13 +230,21 @@ public class Hotel {
 
     public void afficherHotel(){
         System.out.println("------------------------------------");
-        System.out.println("numHotel : " + numHotel);
-        System.out.println("Nom de l'hotel : " + nomHotel);
-        System.out.println("Adresse de l'hotel : " + adresse);
+        System.out.println("numHotel : " + getNumHotel());
+        System.out.println("Nom de l'hôtel : " + getNomHotel());
+        System.out.println("Adresse de l'hôtel : " + getAdresse());
         System.out.println("Liste des produits : " + listeProduits.size());
         System.out.println("Liste des activités : " + listeActivites.size());
         System.out.println("Liste des chambres : " + listChambre.size());
         System.out.println("------------------------------------");
+    }
+
+    private String getAdresse() {
+        return adresse;
+    }
+
+    private String getNomHotel() {
+        return nomHotel;
     }
 
 

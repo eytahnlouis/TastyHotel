@@ -44,7 +44,7 @@ public class Client {
     }
 
     public void ajouterAHotel() {
-        hotel.listeClient.add(this);
+        hotel.getListClient().add(this);
     }
 
     // Retourne le numéro du client

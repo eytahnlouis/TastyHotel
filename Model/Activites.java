@@ -34,7 +34,7 @@ public class Activites {
     }
 
     public void ajouterAHotel() {
-        hotel.listeActivites.add(this);
+        hotel.getListeActivites().add(this);
     }
     // Retourne le nom de l'activité
     public String getNomActivite() {
