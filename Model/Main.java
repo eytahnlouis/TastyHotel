@@ -11,6 +11,7 @@ public class Main {
 
         Hotel h1 = new Hotel("Tasty Hotel 4*", "12 rue de la paix");
         Chambre c1 = new Chambre("Crousty", 1, 1, (float) 44.99, h1);
+        Chambre c2 = new Chambre("Double", 2, 1, (float) 64.99, h1);
         Activites a1 = new Activites("Visite de la ville", (float) 19.99, h1);
         Produits p1 = new Produits(1, "Petit-déjeuner", (float) 9.99, 1, h1);
         Client cl1 = new Client("Mohamed", "Omar", h1);
@@ -39,6 +40,8 @@ public class Main {
 
         p1.infosProduits();
         System.out.println("------------") ;
+
+        System.out.println("Chambre dispo" + h1.getChambresDisponibles(LocalDate.of(2026, APRIL, 15), LocalDate.of(2026, APRIL, 18)));
 
     }
 }

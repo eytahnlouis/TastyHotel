@@ -239,11 +239,11 @@ public class Hotel {
         System.out.println("------------------------------------");
     }
 
-    private String getAdresse() {
+    public String getAdresse() {
         return adresse;
     }
 
-    private String getNomHotel() {
+    public String getNomHotel() {
         return nomHotel;
     }
 
