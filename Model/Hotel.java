@@ -77,7 +77,6 @@ public class Hotel {
         return res;
     }
 
-
     public Vector<Produits> getListeProduits() {
         return listeProduits;
     }
@@ -92,6 +91,16 @@ public class Hotel {
 
     public Vector<Client> getListClient() {
         return listeClient;
+    }
+
+    public Vector<Client> getClientOfDay(LocalDate date) {
+        Vector<Client> res = new Vector<>();
+        for (Client c : listeClient) {
+            if (c.isPresentInHotelToday(date)) {
+                res.add(c);
+            }
+        }
+        return res;
     }
 
     public boolean isRoomAvailable(LocalDate debutDemande, LocalDate finDemande, Chambre chambre) {

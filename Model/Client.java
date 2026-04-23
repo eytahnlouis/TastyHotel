@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -45,6 +46,10 @@ public class Client {
 
     public void ajouterAHotel() {
         hotel.getListClient().add(this);
+    }
+
+    public boolean isPresentInHotelToday( LocalDate date) {
+        return getListReservation().stream().anyMatch(r -> r.getSejour().getDateFinReel().isEqual(date));
     }
 
     // Retourne le numéro du client
