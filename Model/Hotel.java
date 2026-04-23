@@ -97,8 +97,8 @@ public class Hotel {
     public boolean isRoomAvailable(LocalDate debutDemande, LocalDate finDemande, Chambre chambre) {
          boolean disponible = true;
             for (Reservation res : chambre.getListReservation()) {
-                boolean chevauchement = debutDemande.isBefore(res.dateFin)
-                        && finDemande.isAfter(res.dateDebut);
+                boolean chevauchement = debutDemande.isBefore(res.getDateFin())
+                        && finDemande.isAfter(res.getDateDebut());
                 if (chevauchement) {
                     disponible = false;
                     break;
@@ -115,8 +115,8 @@ public class Hotel {
             boolean disponible = true;
 
             for (Reservation res : chambre.getListReservation()) {
-                boolean chevauchement = debutDemande.isBefore(res.dateFin)
-                        && finDemande.isAfter(res.dateDebut);
+                boolean chevauchement = debutDemande.isBefore(res.getDateFin())
+                        && finDemande.isAfter(res.getDateDebut());
                 if (chevauchement) {
                     disponible = false;
                     break;
@@ -141,22 +141,22 @@ public class Hotel {
 
     public boolean supprimerReservation(Reservation reservation) {
         LocalDate aj = LocalDate.now();
-        if (reservation.sejour != null
-                && aj.isAfter(reservation.dateDebut)
-                && aj.isBefore(reservation.sejour.dateFinReel)) {
+        if (reservation.getSejour() != null
+                && aj.isAfter(reservation.getDateDebut())
+                && aj.isBefore(reservation.getSejour().getDateFinReel())) {
             //System.out.println("Impossible : le client est actuellement en séjour.");
             return false;
         }
         // Retirer côté client
-        reservation.client.listReservation.remove(reservation);
+        reservation.getClient().listReservation.remove(reservation);
 
         // Retirer côté chambre
-        reservation.chambre.getListReservation().remove(reservation);
+        reservation.getChambre().getListReservation().remove(reservation);
 
         // Dissocier le séjour s'il existe
-        if (reservation.sejour != null) {
-            reservation.sejour.reservation = null;
-            reservation.sejour = null;
+        if (reservation.getSejour() != null) {
+            reservation.getSejour().setReservation(null);
+            reservation.setSejour(null);
         }
 
         return true;

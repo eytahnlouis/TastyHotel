@@ -31,15 +31,15 @@ public class Reservation {
     private static int numReservation;
 
 
-    protected LocalDate dateDebut;
+    private LocalDate dateDebut;
 
-    protected LocalDate dateFin;
+    private LocalDate dateFin;
 
-    protected Client client;
+    private Client client;
 
-    protected Chambre chambre;
+    private Chambre chambre;
 
-    public Sejour sejour;
+    private Sejour sejour;
 
     public void ajouterAHotel() {
         client.listReservation.add(this);
@@ -65,8 +65,37 @@ public class Reservation {
         return chambre.getPrixChambre() * getNbJours();
     }
 
+    public LocalDate getDateDebut() {
+        return dateDebut;
+    }
+    public LocalDate setDateDebut( LocalDate dateDebut) {
+        return this.dateDebut = dateDebut;
+    }
 
+    public LocalDate getDateFin() {
+        return dateFin;
+    }
+    public LocalDate setDateFin( LocalDate dateFin) {
+        return this.dateFin = dateFin;
+    }
 
+    public Client getClient() {
+        return client;
+    }
+    public Client setClient( Client client) {
+        return this.client = client;
+    }
+
+    public Chambre getChambre() {
+        return chambre;
+    }
+
+    public Sejour getSejour() {
+        return sejour;
+    }
+    public Sejour setSejour( Sejour sejour) {
+        return this.sejour = sejour;
+    }
     public void infosChambre() {
         System.out.println("Numéro de chambre : " + chambre.getNumChambre());
         System.out.println("Type de chambre : " + chambre.getTypeChambre());
