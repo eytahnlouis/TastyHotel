@@ -1,8 +1,6 @@
 
-import java.io.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
 
 /**
  * Classe représentant une réservation effectuée par un client.
@@ -30,16 +28,15 @@ public class Reservation {
     // Identifiant unique de la réservation (auto-incrémenté)
     private static int numReservation;
 
+    private LocalDate dateDebut;
 
-    protected LocalDate dateDebut;
+    private LocalDate dateFin;
 
-    protected LocalDate dateFin;
+    private Client client;
 
-    protected Client client;
+    private Chambre chambre;
 
-    protected Chambre chambre;
-
-    public Sejour sejour;
+    private Sejour sejour;
 
     public void ajouterAHotel() {
         client.listReservation.add(this);
@@ -65,8 +62,37 @@ public class Reservation {
         return chambre.getPrixChambre() * getNbJours();
     }
 
+    public LocalDate getDateDebut() {
+        return dateDebut;
+    }
+    public LocalDate setDateDebut( LocalDate dateDebut) {
+        return this.dateDebut = dateDebut;
+    }
 
+    public LocalDate getDateFin() {
+        return dateFin;
+    }
+    public void setDateFin( LocalDate dateFin) {
+        this.dateFin = dateFin;
+    }
 
+    public Client getClient() {
+        return client;
+    }
+    public Client setClient( Client client) {
+        return this.client = client;
+    }
+
+    public Chambre getChambre() {
+        return chambre;
+    }
+
+    public Sejour getSejour() {
+        return sejour;
+    }
+    public void setSejour(Sejour sejour) {
+        this.sejour = sejour;
+    }
     public void infosChambre() {
         System.out.println("Numéro de chambre : " + chambre.getNumChambre());
         System.out.println("Type de chambre : " + chambre.getTypeChambre());

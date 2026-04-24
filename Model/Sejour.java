@@ -10,30 +10,49 @@ import java.util.*;
  */
 public class Sejour {
 
-    public LocalDate dateFinReel;
+    private LocalDate dateFinReel;
 
-    public Vector<Activites> listActivites;
+    private Vector<Activites> listActivites;
 
-    public Vector<Produits> lProduits;
+    private Vector<Produits> lProduits;
 
-    public Reservation reservation;
+    private Reservation reservation;
 
     public Sejour(Reservation r) {
         // Numéro de réservation associé au séjour
         //int numReservation = Reservation.getNumReservation();
         this.reservation = r;
-        this.dateFinReel = reservation.dateFin;
+        this.dateFinReel = reservation.getDateFin();
         this.listActivites = new Vector<Activites>();
         this.lProduits = new Vector<Produits>();
-        r.sejour=this ;
+        r.setSejour(this);
     }
     public Sejour(Reservation r, LocalDate dateFinReel) {
         this(r);
         this.dateFinReel = dateFinReel;
         this.listActivites = new Vector<Activites>();
         this.lProduits = new Vector<Produits>();
-        r.sejour=this;
+        r.setSejour(this);
     }
+
+    public LocalDate getDateFinReel() {
+        return dateFinReel;
+    }
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public Vector <Produits> getListProduits() {
+        return lProduits;
+    }
+    public Vector <Activites> getListActivites() {
+        return listActivites;
+    }
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
+     // Ajoute une activité à la liste des activités pratiquées durant le séjour
 
     public void addActivite(Activites a) {
         listActivites.add(a);
@@ -56,7 +75,7 @@ public class Sejour {
     }
 
     public  int getNbJours() {
-        return (int) (ChronoUnit.DAYS.between(reservation.dateDebut, dateFinReel));
+        return (int) (ChronoUnit.DAYS.between(reservation.getDateDebut(), dateFinReel));
     }
 
      /*Retourne la liste des produits consommés durant le séjour */
@@ -81,7 +100,7 @@ public class Sejour {
     // (prix de la chambre * nombre de jours réels) + total des produits consommés + activites faites
     //placeholder vraie fonction à recalculer
     public float getPrixTotalReel() {
-        return reservation.chambre.getPrixChambre() * getNbJours() + getPrixTotalProduit() + getPrixTotalActivite();
+        return reservation.getChambre().getPrixChambre() * getNbJours() + getPrixTotalProduit() + getPrixTotalActivite();
     }
 
 

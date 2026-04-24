@@ -57,12 +57,12 @@ public class Chambre {
         Sejour lastSejour = null;
 
         for (Reservation res : listReservation) {
-            Sejour current = res.sejour;
-            if (current == null || current.dateFinReel == null) {
+            Sejour current = res.getSejour();
+            if (current == null || current.getDateFinReel() == null) {
                 continue;
             }
 
-            if (lastSejour == null || current.dateFinReel.isAfter(lastSejour.dateFinReel)) {
+            if (lastSejour == null || current.getDateFinReel().isAfter(lastSejour.getDateFinReel())) {
                 lastSejour = current;
             }
         }
@@ -99,7 +99,7 @@ public class Chambre {
         Sejour res = getLastSejour();
         if (res == null) return false;
         LocalDate today = LocalDate.now();
-        return res.dateFinReel.isEqual(today);
+        return res.getDateFinReel().isEqual(today);
     }
 
     public void afficherChambre() {
