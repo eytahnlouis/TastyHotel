@@ -13,8 +13,8 @@ public class VueInformationSejour extends JFrame {
 
     public VueInformationSejour(Sejour s1) {
 
-        setTitle("Informations sur le séjour");
-        setSize(500, 500);
+        setTitle("Informations sur le séjour de " + s1.getReservation().getClient().getNomClient() +" "  +s1.getReservation().getClient().getPrenomClient() );
+        setSize(500, 200);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

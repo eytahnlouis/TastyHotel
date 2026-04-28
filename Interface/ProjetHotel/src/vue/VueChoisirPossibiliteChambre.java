@@ -1,6 +1,8 @@
 package vue;
 import model.*;
 import javax.swing.*;
+import java.awt.*;
+
 public class VueChoisirPossibiliteChambre extends JFrame {
 
     JButton buttonAjouter = new JButton("Ajouter");
@@ -15,11 +17,11 @@ public class VueChoisirPossibiliteChambre extends JFrame {
         frame.setLayout(null);
         setTitle("Choisir une possibilité de chambre");
         setSize(500,500);
-
-        buttonAjouter.setBounds(50, 100, 150, 50);
-        buttonSupprimer.setBounds(200, 100, 150, 50);
-        buttonConsulter.setBounds(350, 100, 150, 50);
-        buttonMenage.setBounds(50, 200, 150, 50);
+        JPanel panelBoutons = new JPanel(new FlowLayout());
+        panelBoutons.add(buttonAjouter);
+        panelBoutons.add(buttonSupprimer);
+        panelBoutons.add(buttonConsulter);
+        panelBoutons.add(buttonMenage);
         setVisible(true);
 
         // Ajouter les boutons au frame

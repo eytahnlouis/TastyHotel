@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import model.*;
 
+import java.awt.*;
+
 class VueChoisirPossibiliteReservation extends JFrame {
     JButton buttonAjouter = new JButton("Ajouter");
     JButton buttonSupprimer = new JButton("Supprimer");
@@ -13,13 +15,10 @@ class VueChoisirPossibiliteReservation extends JFrame {
         setSize(500,500);
         setVisible(true);
 
-        buttonAjouter.setBounds(50, 100, 150, 50);
-        buttonSupprimer.setBounds(200, 100, 150, 50);
-        //buttonConsulter.setBounds(300, 150, 50, 50);
-
-        add(buttonAjouter);
-        add(buttonSupprimer);
-        //add(buttonConsulter);
+        JPanel panelBoutons = new JPanel(new FlowLayout());
+        panelBoutons.add(buttonAjouter);
+        panelBoutons.add(buttonSupprimer);
+        panelBoutons.add(buttonConsulter);
 
         setVisible(true);
     }

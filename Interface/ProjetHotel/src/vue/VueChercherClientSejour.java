@@ -1,7 +1,8 @@
 package vue;
 import model.*;
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
+import java.awt.*;
+
 public class VueChercherClientSejour extends JFrame {
     JTextField textField = new JTextField();
     JButton buttonChercher = new JButton("Chercher");
@@ -14,11 +15,13 @@ public class VueChercherClientSejour extends JFrame {
         setSize(500,500);
         textField.setBounds(50, 100, 200, 50);
         buttonChercher.setBounds(300, 100, 150, 50);
+        JPanel panelBoutons = new JPanel(new FlowLayout());
+        panelBoutons.add(buttonChercher);
+        panelBoutons.add(textField);
         setVisible(true);
 
         // Ajouter les composants au frame
-        frame.add(textField);
-        frame.add(buttonChercher);
+        frame.add(panelBoutons);
         frame.setVisible(true);
     }
 }
