@@ -11,24 +11,20 @@ public class VueChoisirPossibiliteChambre extends JFrame {
     JButton buttonMenage = new JButton("Ménage");
 
     public VueChoisirPossibiliteChambre(Hotel h1) {
-        JFrame frame = new JFrame();
-        frame.setTitle("Choisir une possibilité de chambre");
-        frame.setSize(500,500);
-        frame.setLayout(null);
         setTitle("Choisir une possibilité de chambre");
-        setSize(500,500);
+        setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(buttonAjouter);
         panelBoutons.add(buttonSupprimer);
         panelBoutons.add(buttonConsulter);
         panelBoutons.add(buttonMenage);
-        setVisible(true);
 
-        // Ajouter les boutons au frame
-        frame.add(buttonAjouter);
-        frame.add(buttonSupprimer);
-        frame.add(buttonConsulter);
-        frame.add(buttonMenage);
-        frame.setVisible(true);
+        add(panelBoutons);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        Hotel h = new Hotel("Tasty Hotel 4*", "12 rue de la paix");
+        new VueChoisirPossibiliteChambre(h);
     }
 }

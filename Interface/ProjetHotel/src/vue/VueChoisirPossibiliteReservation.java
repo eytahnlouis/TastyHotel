@@ -12,14 +12,13 @@ class VueChoisirPossibiliteReservation extends JFrame {
     JButton buttonConsulter = new JButton("Consulter");
     public VueChoisirPossibiliteReservation(Hotel h1) {
         setTitle("Choisir une possibilité de réservation");
-        setSize(500,500);
-        setVisible(true);
-
+        setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(buttonAjouter);
         panelBoutons.add(buttonSupprimer);
         panelBoutons.add(buttonConsulter);
 
+        add(panelBoutons);
         setVisible(true);
     }
 
