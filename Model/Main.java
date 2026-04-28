@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.util.*;
-
+package Model;
+import Model.*;
 import static java.util.Calendar.*;
 
 public class Main {

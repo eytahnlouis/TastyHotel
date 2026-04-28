@@ -1,9 +1,10 @@
-
+package Model;
+import Model.*;
 import java.time.LocalDate;
 import java.util.*;
 
 //import static sun.swing.MenuItemLayoutHelper.max;
-
+f
 /**
  * Classe représentant une chambre d'hôtel.
  * Une chambre est définie par son type, son numéro, son étage,
