@@ -1,22 +1,23 @@
 package model;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
- * Classe reprÈsentant un client de l'hÙtel.
- * Un client possËde un numÈro unique, un nom, un prÈnom,
- * et un historique de ses rÈservations (compte de passages).
+ * Classe repr√©sentant un client de l'h√¥tel.
+ * Un client poss√®de un num√©ro unique, un nom, un pr√©nom,
+ * et un historique de ses r√©servations (compte de passages).
  */
 public class Client {
 
-    // Constructeur : crÈe un client avec son nom, prÈnom et hÙtel
-    // Le numÈro de client est auto-incrÈmentÈ
-    // L'historique de passages est initialisÈ vide
+    // Constructeur : cr√©e un client avec son nom, pr√©nom et h√¥tel
+    // Le num√©ro de client est auto-incr√©ment√©
+    // L'historique de passages est initialis√© vide
 
 
-    // Ajoute une nouvelle rÈservation vide ‡ l'historique du client
+    // Ajoute une nouvelle r√©servation vide √† l'historique du client
 
 
-    // NumÈro unique du client (statique : partagÈ entre toutes les instances)
+    // Num√©ro unique du client (statique : partag√© entre toutes les instances)
     private static int numClient;
 
     protected String nomClient;
@@ -44,10 +45,14 @@ public class Client {
     }
 
     public void ajouterAHotel() {
-        hotel.listeClient.add(this);
+        hotel.getListClient().add(this);
     }
 
-    // Retourne le numÈro du client
+    public boolean isPresentInHotelToday( LocalDate date) {
+        return getListReservation().stream().anyMatch(r -> r.getSejour().getDateFinReel().isEqual(date));
+    }
+
+    // Retourne le num√©ro du client
     public int getNumClient() {
         return numClient;
     }
@@ -59,6 +64,14 @@ public class Client {
         return new Vector<>(listReservation);
     }
 
+    public String getNomClient() {
+        return nomClient;
+    }
+
+    public String getPrenomClient() {
+        return prenomClient;
+    }
+
     public float getTotalSpent() {
         float total = 0;
         for (Reservation reservation : listReservation) {
@@ -66,11 +79,11 @@ public class Client {
         }
         return total;
     }
-    // Affiche les informations complËtes du client dans la console
+    // Affiche les informations compl√®tes du client dans la console
     public void infosClient() {
-        System.out.println("NumÈro de client : " + numClient);
+        System.out.println("Num√©ro de client : " + numClient);
         System.out.println("Nom : " + this.nomClient);
-        System.out.println("PrÈnom : " + this.prenomClient);
+        System.out.println("Pr√©nom : " + this.prenomClient);
         System.out.println("Nombre de passages : " + listReservation.size());
     }
 }

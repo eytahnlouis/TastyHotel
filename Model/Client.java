@@ -65,6 +65,14 @@ public class Client {
         return new Vector<>(listReservation);
     }
 
+    public String getNomClient() {
+        return nomClient;
+    }
+
+    public String getPrenomClient() {
+        return prenomClient;
+    }
+
     public float getTotalSpent() {
         float total = 0;
         for (Reservation reservation : listReservation) {

@@ -2,6 +2,7 @@ package Vue;
 import Model.*;
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
 
 public class VueInformationSejour extends JFrame {
 
@@ -20,7 +21,7 @@ public class VueInformationSejour extends JFrame {
 
         // Infos 
         JPanel panelInfos = new JPanel(new GridLayout(5, 1));
-        panelInfos.add(new JLabel("Client : " + s1.getReservation().getClient().nomClient));
+        panelInfos.add(new JLabel("Client : " + s1.getReservation().getClient().getNomClient()));
         panelInfos.add(new JLabel("Chambre : " + s1.getReservation().getChambre().getNumChambre()));
         panelInfos.add(new JLabel("Date début : " + s1.getReservation().getDateDebut()));
         panelInfos.add(new JLabel("Date fin réelle : " + s1.getDateFinReel()));
@@ -37,5 +38,22 @@ public class VueInformationSejour extends JFrame {
         add(panelBoutons, BorderLayout.SOUTH);
 
         setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            Hotel hotel = new Hotel("Tasty Hotel 4*", "12 rue de la paix");
+            Chambre chambre = new Chambre("Crousty", 1, 1, 44.99f, hotel);
+            Client client = new Client("Dupont", "Alice", hotel);
+            Reservation reservation = new Reservation(
+                client,
+                LocalDate.now().minusDays(2),
+                LocalDate.now().plusDays(1),
+                chambre
+            );
+            Sejour sejour = new Sejour(reservation);
+
+            new VueInformationSejour(sejour);
+        });
     }
 }
