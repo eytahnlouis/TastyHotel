@@ -27,7 +27,7 @@ public class VueAjoutClient extends JFrame {
         //contrôleur à ajouter : toi permettre la création d'un client ajouter l'hotel
         //signature client (nom, prenom, hotel)
     }
-    public static void main(String[] args) {
+    static void main(String[] args) {
         Hotel h1 = new Hotel("Tasty Hotel 4*", "12 rue de la paix");
         new VueAjoutClient(h1);
     }
