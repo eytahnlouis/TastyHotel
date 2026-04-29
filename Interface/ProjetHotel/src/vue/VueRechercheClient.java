@@ -8,10 +8,10 @@ public class VueRechercheClient extends VueAjoutClient {
     public VueRechercheClient(Hotel h1) {
         super(h1);
         setTitle("Rechercher un client");
-        setSize(500,150);
+        setSize(500,500);
         JPanel panelBoutons = new JPanel(new FlowLayout());
-        panelBoutons.add(new JLabel("id :"));
         panelBoutons.add(idClient);
+        panelBoutons.add(new JLabel("id :"));
         add(panelBoutons);
         setVisible(true);
     }
