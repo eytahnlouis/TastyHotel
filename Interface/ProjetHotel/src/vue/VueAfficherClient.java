@@ -3,11 +3,7 @@ import javax.swing.*;
 import model.*;
 import java.awt.*;
 public class VueAfficherClient extends JFrame {
-     JLabel idClient=new JLabel("id :");
-     JLabel nomClient=new JLabel("nom :");
-     JLabel prenomClient=new JLabel("prenom :");
-     JLabel isFaithfulClient=new JLabel("client fidèle :");
-     JLabel compteReservation=new JLabel("nombre de réservations :");
+
 
         public VueAfficherClient(Client c){
             setTitle("Afficher les informations d'un client");
