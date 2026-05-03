@@ -1,0 +1,51 @@
+package vue;
+import javax.swing.*;
+import java.awt.*;
+import model.Hotel; 
+import controleur.ContOuvrirHotel;
+
+public class VuePrincipale extends JFrame {
+	
+	
+	JButton btnHotel = new JButton("Hotel");
+	JButton btnSejour = new JButton("Sejours");
+	JButton btnReservation = new JButton("Reservations");
+	JButton btnClient = new JButton("Clients");
+	
+	
+	Hotel hotel;
+	
+	public VuePrincipale(Hotel h) {
+		hotel = h;
+		this.setTitle("Gestion de l'hotel ");
+		this.setPreferredSize(new Dimension(400,300));
+		
+		JPanel panelBtn = new JPanel();
+		panelBtn.setLayout(new GridLayout(4, 1, 10, 10));
+		
+		panelBtn.add(btnHotel);
+		panelBtn.add(btnSejour);
+		panelBtn.add(btnReservation);
+		panelBtn.add(btnClient);
+		
+		
+		this.getContentPane().setLayout(new BorderLayout());
+		this.getContentPane().add(panelBtn, BorderLayout.CENTER);
+		
+		
+		//ouvrir.addActionListener(new ContCreerHotel());
+		 
+        this.pack();
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+     // À ajouter à la fin du constructeur de VuePrincipale
+    	ContOuvrirHotel ctrlHotel = new ContOuvrirHotel();
+    	btnHotel.addActionListener(ctrlHotel); 
+
+	}
+	
+
+
+	
+
+}

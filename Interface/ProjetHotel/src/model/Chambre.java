@@ -1,8 +1,6 @@
 package model;
-import java.time.LocalDate;
 import java.util.*;
 
-//import static sun.swing.MenuItemLayoutHelper.max;
 /**
  * Classe représentant une chambre d'hôtel.
  * Une chambre est définie par son type, son numéro, son étage,
@@ -14,17 +12,17 @@ public class Chambre {
 
     private String typeChambre;
 
-    private final int numEtage;
+    private int numEtage;
 
-    private float prixChambre;
+    public float prixChambre;
 
-    private final Vector<Reservation> listReservation;
+    public Vector<Reservation> listReservation;
 
 
-    private Hotel hotel;
+    public Hotel hotel;
     // Constructeur : initialise une chambre avec ses caractéristiques
     public Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel) {
-        this.listReservation = new Vector<>();
+        this.listReservation = new Vector<Reservation>();
         this.typeChambre = typeChambre;
         this.numChambre = numChambre;
         this.numEtage = numEtage;
@@ -52,26 +50,35 @@ public class Chambre {
         return this.numEtage;
     }
 
-    public Sejour getLastSejour() {
-        Sejour lastSejour = null;
-
-        for (Reservation res : listReservation) {
-            Sejour current = res.getSejour();
-            if (current == null || current.getDateFinReel() == null) {
-                continue;
-            }
-
-            if (lastSejour == null || current.getDateFinReel().isAfter(lastSejour.getDateFinReel())) {
-                lastSejour = current;
-            }
-        }
-
-        return lastSejour;
-    }
-
-
     public Vector<Reservation> getListReservation() {
         return this.listReservation;
+    }
+
+    public Vector<Reservation> getListChambreByEtage(int numEtage) {
+        Vector<Reservation> listChambreEtage = new Vector<Reservation>();
+        for (Reservation reservation : listReservation) {
+            if (reservation.chambre.numEtage == numEtage) {
+                listChambreEtage.add(reservation);
+            }
+        }
+        return listChambreEtage;
+    }
+    public Vector<Reservation> getListChambreByType(String typeChambre) {
+        Vector<Reservation> listChambreType = new Vector<Reservation>();
+        for (Reservation reservation : listReservation) {
+            if (reservation.chambre.typeChambre.equals(typeChambre)) {
+                listChambreType.add(reservation);
+            }
+        }
+        return listChambreType;
+    }
+    public Chambre getChambreByNum(int numChambre) {
+        for (Reservation reservation : listReservation) {
+            if (reservation.chambre.numChambre == numChambre) {
+                return reservation.chambre;
+            }
+        }
+        return null; // Retourne null si aucune chambre avec ce numéro n'est trouvée
     }
 
     // Retourne le prix de la chambre par nuit
@@ -94,13 +101,6 @@ public class Chambre {
         this.prixChambre = prixChambre;
     }
 
-    public boolean isLastDay() {
-        Sejour res = getLastSejour();
-        if (res == null) return false;
-        LocalDate today = LocalDate.now();
-        return res.getDateFinReel().isEqual(today);
-    }
-
     public void afficherChambre() {
         System.out.println("Numéro de chambre : " + numChambre);
         System.out.println("Type de chambre : " + typeChambre);
@@ -108,11 +108,5 @@ public class Chambre {
         System.out.println("Prix de la chambre par nuit : " + prixChambre);
     }
 
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
 }
+

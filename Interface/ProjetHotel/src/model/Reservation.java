@@ -1,104 +1,76 @@
-package model ;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+package model;
+import java.io.*;
+import java.util.*;
 
 /**
- * Classe reprÃ©sentant une rÃ©servation effectuÃ©e par un client.
- * Une rÃ©servation est associÃ©e Ã  un client, une chambre,
- * une date de dÃ©but et une date de fin.
+ * Classe représentant une réservation effectuée par un client.
+ * Une réservation est associée à un client, une chambre,
+ * une date de début et une date de fin.
  */
 public class Reservation {
 
-    // Constructeur : crÃ©e une rÃ©servation pour un client avec une chambre et des dates
-    public Reservation(Client client, LocalDate debutR, LocalDate finR, Chambre chambre) throws IllegalArgumentException {
+    // Constructeur : crée une réservation pour un client avec une chambre et des dates
+    public Reservation(Client client, Date debutR, Date finR, Chambre chambre) throws IllegalArgumentException {
         numReservation++;
         this.dateDebut = debutR;
         this.dateFin = finR;
         this.client = client;
         this.chambre = chambre;
-        if (chambre.getHotel().isRoomAvailable(debutR, finR, chambre)) {
+        if (chambre.hotel.isRoomAvailable(debutR, finR, chambre)) {
             ajouterAHotel();
         } else {
-            //System.out.println("La chambre n'est pas disponible pour les dates sÃ©lectionnÃ©es.");
+            System.out.println("La chambre n'est pas disponible pour les dates sélectionnées.");
             throw new IllegalArgumentException("Chambre non disponible");
         }
 
     }
 
-    // Identifiant unique de la rÃ©servation (auto-incrÃ©mentÃ©)
+    // Identifiant unique de la réservation (auto-incrémenté)
     private static int numReservation;
 
-    private LocalDate dateDebut;
 
-    private LocalDate dateFin;
+    public Date dateDebut;
 
-    private Client client;
+    public Date dateFin;
 
-    private Chambre chambre;
+    public Client client;
 
-    private Sejour sejour;
+    public Chambre chambre;
+
+    public Sejour sejour;
 
     public void ajouterAHotel() {
         client.listReservation.add(this);
         chambre.ajoutRes(this);
     }
-    // Retourne le numÃ©ro de la rÃ©servation
+    // Retourne le numéro de la réservation
     public static int getNumReservation() {
         return numReservation;
     }
 
-    // Retourne le nombre de jours de la rÃ©servation
+    // Retourne le nombre de jours de la réservation
     public int getNbJours() {
-        return (int) ChronoUnit.DAYS.between(dateDebut, dateFin);
+        return (int) ((dateFin.getTime() - dateDebut.getTime()) / (1000 * 60 * 60 * 24));
     }
 
 
-    /** Calcule et retourne le prix total thÃ©orique de la rÃ©servation
+    /** Calcule et retourne le prix total théorique de la réservation
     (prix de la chambre * nombre de jours) **/
     public float getPrixTotalTheorique() {
         if (client.isFaithful()) {
-            return chambre.getPrixChambre() * getNbJours() * 0.9f; // 10% de rÃ©duction pour les clients fidÃ¨les
+            return chambre.getPrixChambre() * getNbJours() * 0.9f; // 10% de réduction pour les clients fidèles
         }
         return chambre.getPrixChambre() * getNbJours();
     }
 
-    public LocalDate getDateDebut() {
-        return dateDebut;
-    }
-    public LocalDate setDateDebut( LocalDate dateDebut) {
-        return this.dateDebut = dateDebut;
-    }
 
-    public LocalDate getDateFin() {
-        return dateFin;
-    }
-    public void setDateFin( LocalDate dateFin) {
-        this.dateFin = dateFin;
-    }
 
-    public Client getClient() {
-        return client;
-    }
-    public Client setClient( Client client) {
-        return this.client = client;
-    }
-
-    public Chambre getChambre() {
-        return chambre;
-    }
-
-    public Sejour getSejour() {
-        return sejour;
-    }
-    public void setSejour(Sejour sejour) {
-        this.sejour = sejour;
-    }
     public void infosChambre() {
-        System.out.println("NumÃ©ro de chambre : " + chambre.getNumChambre());
+        System.out.println("Numéro de chambre : " + chambre.getNumChambre());
         System.out.println("Type de chambre : " + chambre.getTypeChambre());
         System.out.println("Prix de la chambre : " + chambre.getPrixChambre());
         System.out.println("Nombre de jours : " + getNbJours());
-        System.out.println("Prix total thÃ©orique : " + getPrixTotalTheorique());
+        System.out.println("Prix total théorique : " + getPrixTotalTheorique());
         client.infosClient();
     }
 }

@@ -3,8 +3,8 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Classe reprÃ©sentant un produit proposÃ© par l'hÃ´tel.
- * Un produit est dÃ©fini par un numÃ©ro, un nom et un prix.
+ * Classe représentant un produit proposé par l'hôtel.
+ * Un produit est défini par un numéro, un nom et un prix.
  */
 public class Produits {
 
@@ -22,7 +22,7 @@ public class Produits {
 
     private Vector<Hotel> listHotel;
 
-    // Constructeur : initialise un produit avec son numÃ©ro, son nom et son prix
+    // Constructeur : initialise un produit avec son numéro, son nom et son prix
     public Produits(int numProduit, String nomProduit, float prixProduit, int quantite, Hotel hotel) {
         this.numProduit = numProduit;
         this.nomProduit = nomProduit;
@@ -42,12 +42,12 @@ public class Produits {
     {
         for (Hotel h : listHotel)
         {
-            if (!h.getListeProduits().contains(this)) {
-                h.getListeProduits().add(this);
+            if (!h.listeProduits.contains(this)) {
+                h.listeProduits.add(this);
             }
         }
     }
-    // Retourne le numÃ©ro du produit
+    // Retourne le numéro du produit
 
     public int getNumProduit() {
         return this.numProduit;
@@ -84,7 +84,7 @@ public class Produits {
     public void addQuantite(int q)
     {
         if(q<0)
-            throw new IllegalArgumentException("QuantitÃ© ne peut pas Ãªtre nÃ©gative");
+            throw new IllegalArgumentException("Quantité ne peut pas être négative");
         this.quantite+=q;
     }
 
@@ -93,9 +93,9 @@ public class Produits {
     }
 
     public void infosProduits() {
-        System.out.println("NumÃ©ro du produit : " + numProduit);
+        System.out.println("Numéro du produit : " + numProduit);
         System.out.println("Nom du produit : " + nomProduit);
         System.out.println("Prix du produit : " + prixProduit);
-        System.out.println("QuantitÃ© : " + quantite);
+        System.out.println("Quantité : " + quantite);
     }
 }

@@ -1,48 +1,47 @@
 package model;
-import java.time.LocalDate;
 import java.util.*;
 
 import static java.util.Arrays.*;
 
 /**
- * Classe repr√©sentant un h√¥tel.
- * Un h√¥tel poss√®de un nom, une adresse, et g√®re des chambres,
- * des clients, des produits et des activit√©s.
+ * Classe reprÈsentant un hÙtel.
+ * Un hÙtel possËde un nom, une adresse, et gËre des chambres,
+ * des clients, des produits et des activitÈs.
  */
 public class Hotel {
 
-    // Constructeur : initialise un h√¥tel avec son nom, adresse et liste de produits
+    // Constructeur : initialise un hÙtel avec son nom, adresse et liste de produits
     public Hotel(String nomHotel, String adresse) {
         numHotel++;
         this.nomHotel = nomHotel;
         this.adresse = adresse;
-        this.listeActivites = new Vector<>();   // liste vide d'activit√©s
-        this.listChambre = new Vector<>();       // liste vide de chambres
+        this.listeActivites = new Vector<Activites>();   // liste vide d'activitÈs
+        this.listChambre = new Vector<Chambre>();       // liste vide de chambres
         this.listeClient = new Vector<>();         // liste vide de clients
-        this.listeProduits = new Vector<>();      // liste vide de produits
+        this.listeProduits = new Vector<Produits>();      // liste vide de produits
    }
 
-    // Identifiant unique de l'h√¥tel (auto-incr√©ment√©)
+    // Identifiant unique de l'hÙtel (auto-incrÈmentÈ)
     private static int numHotel;
 
-    // Nom de l'h√¥tel
-    private final String nomHotel;
+    // Nom de l'hÙtel
+    public String nomHotel;
 
-    // Adresse de l'h√¥tel
-    private final String adresse;
+    // Adresse de l'hÙtel
+    public String adresse;
 
-    // Liste des chambres de l'h√¥tel
-    private final Vector<Produits> listeProduits;
+    // Liste des chambres de l'hÙtel
+    public Vector<Produits> listeProduits;
 
-    private final Vector<Activites> listeActivites;
-
-
-    private final Vector<Client> listeClient;
+    public Vector<Activites> listeActivites;
 
 
-    private final Vector<Chambre> listChambre;
+    public Vector<Client> listeClient;
 
-    // Retourne le num√©ro de l'h√¥tel
+
+    public Vector<Chambre> listChambre;
+
+    // Retourne le numÈro de l'hÙtel
     public int getNumHotel() {
         return numHotel;
     }
@@ -53,29 +52,11 @@ public class Hotel {
         }
         listChambre.add(chambre);
     }
-    // Retourne la liste compl√®te des chambres
+    // Retourne la liste complËte des chambres
     public Vector <Chambre> getLChambres() {
         return listChambre;
     }
 
-    public Vector<Chambre> getChambreByType(String tChambre) {
-        Vector<Chambre> res = new Vector<>();
-        for (Chambre chambre : listChambre) {
-            if (chambre.getTypeChambre().equals(tChambre)) {
-                res.add(chambre);
-            }
-        }
-        return res;
-    }
-    public Vector<Chambre> getChambreByEtage(int numEtage) {
-        Vector<Chambre> res = new Vector<>();
-        for (Chambre chambre : listChambre) {
-            if (chambre.getNumEtage() == numEtage) {
-                res.add(chambre);
-            }
-        }
-        return res;
-    }
 
     public Vector<Produits> getListeProduits() {
         return listeProduits;
@@ -89,25 +70,11 @@ public class Hotel {
         return listChambre;
     }
 
-    public Vector<Client> getListClient() {
-        return listeClient;
-    }
-
-    public Vector<Client> getClientOfDay(LocalDate date) {
-        Vector<Client> res = new Vector<>();
-        for (Client c : listeClient) {
-            if (c.isPresentInHotelToday(date)) {
-                res.add(c);
-            }
-        }
-        return res;
-    }
-
-    public boolean isRoomAvailable(LocalDate debutDemande, LocalDate finDemande, Chambre chambre) {
+    public boolean isRoomAvailable(Date debutDemande, Date finDemande, Chambre chambre) {
          boolean disponible = true;
             for (Reservation res : chambre.getListReservation()) {
-                boolean chevauchement = debutDemande.isBefore(res.getDateFin())
-                        && finDemande.isAfter(res.getDateDebut());
+                boolean chevauchement = debutDemande.before(res.dateFin)
+                        && finDemande.after(res.dateDebut);
                 if (chevauchement) {
                     disponible = false;
                     break;
@@ -117,15 +84,15 @@ public class Hotel {
     }
 
 
-    public Vector<Chambre> getChambresDisponibles(LocalDate debutDemande, LocalDate finDemande) {
+    public Vector<Chambre> getChambresDisponibles(Date debutDemande, Date finDemande) {
         Vector<Chambre> chambresDisponibles = new Vector<>();
 
         for (Chambre chambre : listChambre) {
             boolean disponible = true;
 
             for (Reservation res : chambre.getListReservation()) {
-                boolean chevauchement = debutDemande.isBefore(res.getDateFin())
-                        && finDemande.isAfter(res.getDateDebut());
+                boolean chevauchement = debutDemande.before(res.dateFin)
+                        && finDemande.after(res.dateDebut);
                 if (chevauchement) {
                     disponible = false;
                     break;
@@ -140,32 +107,34 @@ public class Hotel {
         return chambresDisponibles;
     }
 
-    public Vector<Chambre> ChambreANettoyer() {
+    public Vector<Chambre> ChambreANettoyer(Date debutDemande) {
         Vector<Chambre> chambresNettoyees = new Vector<>();
         for (Chambre chambre : listChambre) {
-            if (chambre.isLastDay()) chambresNettoyees.add(chambre);
+            if (chambre.getListReservation().isEmpty()) {
+                chambresNettoyees.add(chambre);
+            }
         }
         return chambresNettoyees;
     }
 
     public boolean supprimerReservation(Reservation reservation) {
-        LocalDate aj = LocalDate.now();
-        if (reservation.getSejour() != null
-                && aj.isAfter(reservation.getDateDebut())
-                && aj.isBefore(reservation.getSejour().getDateFinReel())) {
-            //System.out.println("Impossible : le client est actuellement en s√©jour.");
+        Date aj = new Date();
+        if (reservation.sejour != null
+                && aj.after(reservation.dateDebut)
+                && aj.before(reservation.sejour.dateFinReel)) {
+            System.out.println("Impossible : le client est actuellement en sÈjour.");
             return false;
         }
-        // Retirer c√¥t√© client
-        reservation.getClient().listReservation.remove(reservation);
+        // Retirer cÙtÈ client
+        reservation.client.listReservation.remove(reservation);
 
-        // Retirer c√¥t√© chambre
-        reservation.getChambre().getListReservation().remove(reservation);
+        // Retirer cÙtÈ chambre
+        reservation.chambre.listReservation.remove(reservation);
 
-        // Dissocier le s√©jour s'il existe
-        if (reservation.getSejour() != null) {
-            reservation.getSejour().setReservation(null);
-            reservation.setSejour(null);
+        // Dissocier le sÈjour s'il existe
+        if (reservation.sejour != null) {
+            reservation.sejour.reservation = null;
+            reservation.sejour = null;
         }
 
         return true;
@@ -216,7 +185,7 @@ public class Hotel {
         for (Client client : listeClient) {
             if (client.getTotalSpent() > 0) {
                 clients[i] = client;
-                i++; //augmente
+                i++;
             }
             sort(clients, Comparator.comparing(Client::getTotalSpent).reversed());
         }
@@ -239,23 +208,16 @@ public class Hotel {
 
     public void afficherHotel(){
         System.out.println("------------------------------------");
-        System.out.println("numHotel : " + getNumHotel());
-        System.out.println("Nom de l'h√¥tel : " + getNomHotel());
-        System.out.println("Adresse de l'h√¥tel : " + getAdresse());
+        System.out.println("numHotel : " + numHotel);
+        System.out.println("Nom de l'hotel : " + nomHotel);
+        System.out.println("Adresse de l'hotel : " + adresse);
         System.out.println("Liste des produits : " + listeProduits.size());
-        System.out.println("Liste des activit√©s : " + listeActivites.size());
+        System.out.println("Liste des activitÈs : " + listeActivites.size());
         System.out.println("Liste des chambres : " + listChambre.size());
         System.out.println("------------------------------------");
     }
 
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public String getNomHotel() {
-        return nomHotel;
-    }
-
 
 }
+
 
