@@ -19,7 +19,7 @@ public class ContValiderAjoutChambre implements ActionListener {
         String numero = numChambre.getText();
         
         // Création de l'objet Chambre
-        Chambre nouvelleChambre = new Chambre(numero);
+        Chambre nouvelleChambre = new Chambre(numero); //ajouter controleur manquant
         
         // Liaison : on ajoute la chambre à l'hôtel [cite: 52]
         this.hotel.ajoutChambre(nouvelleChambre);

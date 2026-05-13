@@ -1,4 +1,5 @@
 package model;
+import model.*;
 import java.io.*;
 import java.util.*;
 
@@ -34,7 +35,7 @@ public class Activites {
     }
 
     public void ajouterAHotel() {
-        hotel.listeActivites.add(this);
+        hotel.getListeActivites().add(this);
     }
     // Retourne le nom de l'activité
     public String getNomActivite() {
@@ -59,7 +60,5 @@ public class Activites {
     public void afficherInfos() {
         System.out.println("Nom de l'activité : " + nomActivite);
         System.out.println("Prix de l'activité : " + prixActivite);
-    
     }
 }
-

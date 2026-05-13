@@ -1,6 +1,7 @@
 package model;
-import java.io.*;
-import java.util.*;
+import model.*;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Classe représentant une réservation effectuée par un client.
@@ -10,16 +11,16 @@ import java.util.*;
 public class Reservation {
 
     // Constructeur : crée une réservation pour un client avec une chambre et des dates
-    public Reservation(Client client, Date debutR, Date finR, Chambre chambre) throws IllegalArgumentException {
+    public Reservation(Client client, LocalDate debutR, LocalDate finR, Chambre chambre) throws IllegalArgumentException {
         numReservation++;
         this.dateDebut = debutR;
         this.dateFin = finR;
         this.client = client;
         this.chambre = chambre;
-        if (chambre.hotel.isRoomAvailable(debutR, finR, chambre)) {
+        if (chambre.getHotel().isRoomAvailable(debutR, finR, chambre)) {
             ajouterAHotel();
         } else {
-            System.out.println("La chambre n'est pas disponible pour les dates sélectionnées.");
+            //System.out.println("La chambre n'est pas disponible pour les dates sélectionnées.");
             throw new IllegalArgumentException("Chambre non disponible");
         }
 
@@ -28,19 +29,18 @@ public class Reservation {
     // Identifiant unique de la réservation (auto-incrémenté)
     private static int numReservation;
 
+    private LocalDate dateDebut;
 
-    public Date dateDebut;
+    private LocalDate dateFin;
 
-    public Date dateFin;
+    private Client client;
 
-    public Client client;
+    private Chambre chambre;
 
-    public Chambre chambre;
-
-    public Sejour sejour;
+    private Sejour sejour;
 
     public void ajouterAHotel() {
-        client.listReservation.add(this);
+        client.getListReservation().add(this);
         chambre.ajoutRes(this);
     }
     // Retourne le numéro de la réservation
@@ -50,12 +50,12 @@ public class Reservation {
 
     // Retourne le nombre de jours de la réservation
     public int getNbJours() {
-        return (int) ((dateFin.getTime() - dateDebut.getTime()) / (1000 * 60 * 60 * 24));
+        return (int) ChronoUnit.DAYS.between(dateDebut, dateFin);
     }
 
 
     /** Calcule et retourne le prix total théorique de la réservation
-    (prix de la chambre * nombre de jours) **/
+     (prix de la chambre * nombre de jours) **/
     public float getPrixTotalTheorique() {
         if (client.isFaithful()) {
             return chambre.getPrixChambre() * getNbJours() * 0.9f; // 10% de réduction pour les clients fidèles
@@ -63,8 +63,37 @@ public class Reservation {
         return chambre.getPrixChambre() * getNbJours();
     }
 
+    public LocalDate getDateDebut() {
+        return dateDebut;
+    }
+    public LocalDate setDateDebut( LocalDate dateDebut) {
+        return this.dateDebut = dateDebut;
+    }
 
+    public LocalDate getDateFin() {
+        return dateFin;
+    }
+    public void setDateFin( LocalDate dateFin) {
+        this.dateFin = dateFin;
+    }
 
+    public Client getClient() {
+        return client;
+    }
+    public Client setClient( Client client) {
+        return this.client = client;
+    }
+
+    public Chambre getChambre() {
+        return chambre;
+    }
+
+    public Sejour getSejour() {
+        return sejour;
+    }
+    public void setSejour(Sejour sejour) {
+        this.sejour = sejour;
+    }
     public void infosChambre() {
         System.out.println("Numéro de chambre : " + chambre.getNumChambre());
         System.out.println("Type de chambre : " + chambre.getTypeChambre());

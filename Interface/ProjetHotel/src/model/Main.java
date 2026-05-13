@@ -1,12 +1,8 @@
-package model;
+package Interface.ProjetHotel.src.model;
 
-import java.time.LocalDate;
-import java.util.*;
 import model.*;
 
-import static java.util.Calendar.*;
-
-public class main{
+public class Main {
 
 
     public static void main(String[] args) {

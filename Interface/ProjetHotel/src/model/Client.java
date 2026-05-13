@@ -1,4 +1,6 @@
 package model;
+import model.*;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -27,7 +29,7 @@ public class Client {
 
     private final Hotel hotel;
 
-    public Vector<Reservation> listReservation;
+    private Vector<Reservation> listReservation;
 
     public Client(String nomClient, String prenomClient, Hotel hotel) {
         numClient++;
@@ -43,8 +45,16 @@ public class Client {
         listReservation.add(reservation);
     }
 
+    public void removeReservation(Reservation reservation) {
+        listReservation.remove(reservation);
+    }
+
     public void ajouterAHotel() {
-        hotel.listeClient.add(this);
+        hotel.getListClient().add(this);
+    }
+
+    public boolean isPresentInHotelToday( LocalDate date) {
+        return getListReservation().stream().anyMatch(r -> r.getSejour().getDateFinReel().isEqual(date));
     }
 
     // Retourne le numéro du client
@@ -57,6 +67,14 @@ public class Client {
     }
     public Vector<Reservation> getListReservation() {
         return new Vector<>(listReservation);
+    }
+
+    public String getNomClient() {
+        return nomClient;
+    }
+
+    public String getPrenomClient() {
+        return prenomClient;
     }
 
     public float getTotalSpent() {
