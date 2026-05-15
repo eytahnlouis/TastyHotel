@@ -23,6 +23,9 @@ public class VueChoisirPossibilitesClient {
         frame.setVisible(true);
 
         buttonAjouter.addActionListener(e -> {
+            new VueAjoutClient(h1);
+        });
+        buttonConsulter.addActionListener(e -> {
             new VueListeClients(h1);
         });
     }

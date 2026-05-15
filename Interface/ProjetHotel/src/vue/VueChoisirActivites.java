@@ -20,6 +20,12 @@ class VueChoisirActivites extends JFrame {
         panelBoutons.add(buttonSupprimer);
         panelBoutons.add(buttonConsulter);
 
+        buttonConsulter.addActionListener(e -> {
+            new VueListeActivitesSejour(s);
+        });
+        buttonAjouter.addActionListener(e -> {
+            new VueAjoutActivitesSejour(s);
+        });
         add(panelBoutons);
         setVisible(true);
     }

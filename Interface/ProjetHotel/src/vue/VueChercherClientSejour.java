@@ -9,7 +9,7 @@ public class VueChercherClientSejour extends JFrame {
 
     public VueChercherClientSejour(Hotel h1) {
         JFrame frame = new JFrame();
-        frame.setTitle("Chercher le réservation d'un client pour un séjour");
+        frame.setTitle("Chercher la réservation d'un client pour un séjour");
         frame.setSize(500,500);
         frame.setLayout(null);
         setSize(500,500);

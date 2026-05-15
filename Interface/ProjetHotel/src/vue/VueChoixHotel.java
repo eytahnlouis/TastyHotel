@@ -19,6 +19,8 @@ public class VueChoixHotel extends JFrame {
         panelBoutons.add(btnProduits);
         panelBoutons.add(btnStats);
 
+        btnStats.addActionListener(e -> new VueHotelStatistiques(h));
+
         add(panelBoutons);
         setVisible(true);
     }

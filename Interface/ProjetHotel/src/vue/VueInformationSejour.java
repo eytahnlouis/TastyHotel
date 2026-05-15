@@ -34,6 +34,19 @@ public class VueInformationSejour extends JFrame {
         panelBoutons.add(buttonFacture);
         panelBoutons.add(buttonDepart);
 
+        buttonActivite.addActionListener(e -> {
+            new VueChoisirActivites(s1);
+        });
+
+        buttonProduits.addActionListener(e -> {
+            new VueChoisirProduit(s1);
+        });
+        buttonFacture.addActionListener(e -> {
+            new VueFactureSejour(s1);
+        });
+        buttonDepart.addActionListener(e -> {
+            new VueModifierDateFin(s1);
+        });
         add(panelInfos, BorderLayout.CENTER);
         add(panelBoutons, BorderLayout.SOUTH);
 

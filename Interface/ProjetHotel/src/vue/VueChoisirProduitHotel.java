@@ -5,31 +5,32 @@ import javax.swing.*;
 import model.*;
 
 import java.awt.*;
+import java.time.LocalDate;
 
-class VueChoisirActivitesHotel extends JFrame {
+class VueChoisirProduitHotel extends JFrame {
     JButton buttonAjouter = new JButton("Ajouter");
     JButton buttonSupprimer = new JButton("Supprimer");
     JButton buttonConsulter = new JButton("Consulter");
-    public VueChoisirActivitesHotel(Hotel h) {
-        setTitle("Choisir Activités Hotel");
+    public VueChoisirProduitHotel(Hotel p) {
+        setTitle("Choisir une possibilité de réservation");
         setSize(500,150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(buttonAjouter);
         panelBoutons.add(buttonSupprimer);
         panelBoutons.add(buttonConsulter);
-        buttonAjouter.addActionListener(e -> {
-            new VueAjoutActivites(h);
-        });
+
         buttonConsulter.addActionListener(e -> {
-            new VueListeActivites(h);
+            new VueListeProduits(p);
+        });
+        buttonAjouter.addActionListener(e -> {
+            new VueAjoutProduit(p);
+
         });
         add(panelBoutons);
         setVisible(true);
+
+
     }
 
-    public static void main(String[] args) {
-        Hotel h1 = new Hotel("Tasty Hotel 4*", "12 rue de la paix");
-        new VueChoisirActivitesHotel(h1);
-    }
 }

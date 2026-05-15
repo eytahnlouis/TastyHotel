@@ -249,6 +249,16 @@ public class Hotel {
         return produitsByPrice;
     }
 
+    public Client getClientById(int id) {
+        Client res = null;
+        for(Client client : listeClient) {
+            if (client.getNumClient() == id) {
+                res = client;
+                break;
+            }
+        }
+        return res;
+    }
     //Statistiques
     public Client[] biggestSpender() {
         int count = 0;

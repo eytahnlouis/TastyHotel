@@ -29,6 +29,9 @@ public class VueChambre extends JFrame {
         setVisible(true);
         //ContValiderAjoutChambre ct = new ContValiderAjoutChambre(valNumChambre, h1);
         //buttonAjouter.addActionListener(ct);
+        buttonConsulter.addActionListener(e -> {
+            new VueListeChambres(h1);
+        });
     }
     
  

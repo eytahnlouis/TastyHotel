@@ -22,6 +22,9 @@ public class VueChoisirPossibiliteChambre extends JFrame {
         buttonConsulter.addActionListener(e -> {
             new VueListeChambres(h1);
         });
+        buttonAjouter.addActionListener(e -> {
+            new VueAjoutChambre(h1);
+        });
         add(panelBoutons);
         setVisible(true);
     }

@@ -18,7 +18,12 @@ class VueChoisirPossibiliteReservation extends JFrame {
         panelBoutons.add(buttonAjouter);
         panelBoutons.add(buttonSupprimer);
         panelBoutons.add(buttonConsulter);
-
+            buttonAjouter.addActionListener(e -> {
+                new VueAjoutReservation(h1);
+            });
+        buttonConsulter.addActionListener(e -> {
+            new VueListeReservations(h1);
+        });
         add(panelBoutons);
         setVisible(true);
     }

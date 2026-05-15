@@ -6,11 +6,15 @@ import javax.swing.*;
 
 public class VueAjoutReservation extends JDialog {
 
-    public VueAjoutReservation(JFrame parent, Hotel hotel, Client client) {
-        super(parent, "Nouvelle réservation", true);
+    public VueAjoutReservation(Hotel hotel) {
+        //super(parent, "Nouvelle réservation", true);
         setSize(400, 250);
-        setLocationRelativeTo(parent);
+        //setLocationRelativeTo(parent);
         setLayout(new GridLayout(5, 2, 10, 10));
+
+        //Selection client
+        JLabel lblClient = new JLabel("Client :");
+        JTextField txtClient = new JTextField();
 
         // Sélection chambre
         JLabel lblChambre = new JLabel("Chambre :");
@@ -29,6 +33,7 @@ public class VueAjoutReservation extends JDialog {
             Chambre chambre = (Chambre) comboChambre.getSelectedItem();
             LocalDate debut = LocalDate.parse(txtDebut.getText());
             LocalDate fin = LocalDate.parse(txtFin.getText());
+            Client client =  hotel.getClientById(Integer.parseInt(txtClient.getText()));
 
             // Vérif dispo avant de créer
             if (hotel.isRoomAvailable(debut, fin, chambre)) {
