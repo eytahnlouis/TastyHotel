@@ -22,6 +22,8 @@ class VueChoisirProduit extends JFrame {
 
         add(panelBoutons);
         setVisible(true);
+
+
     }
 
     public static void main(String[] args) {

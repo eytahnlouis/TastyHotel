@@ -191,6 +191,16 @@ public class Hotel {
         return true;
     }
 
+    public Activites getActivitesById(int id) {
+        Activites res = null;
+        for (Activites activite : listeActivites) {
+            if (activite.getNumActivite() == id) {
+                return res;
+            }
+        }
+        return null;
+    }
+
     public Vector<Activites> getListActivitesByPrice(float prix) {
         Vector<Activites> activitesByPrice = new Vector<>();
         for (Activites activite : listeActivites) {
@@ -208,6 +218,16 @@ public class Hotel {
             }
         }
         return activitesByNom;
+    }
+
+    public Produits getListProduitsById(int id) {
+        Produits res = null;
+        for (Produits produit : listeProduits) {
+            if (produit.getNumProduit() == id) {
+                return res;
+            }
+        }
+        return null;
     }
 
     public Vector<Produits> getProduitsByNom(String nomProduit) {
