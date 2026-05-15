@@ -1,6 +1,4 @@
 package model;
-import model.*;
-import java.io.*;
 import java.util.*;
 
 /**
@@ -33,11 +31,6 @@ public class Produits {
         this.listHotel.add(hotel);
         ajouterAHotel();
     }
-    public void addHotelToProduit(Hotel h)
-    {
-        listHotel.add(h);
-        ajouterAHotel();
-    }
 
     public void ajouterAHotel()
     {
@@ -64,6 +57,11 @@ public class Produits {
         return this.prixProduit;
     }
 
+    // Retourne la quantité disponible du produit
+    public int getQuantite() {
+        return this.quantite;
+    }
+
     // Calcule et retourne le prix total d'un tableau de produits
     public float getPrixProduit(Vector<Produits> p) {
         float total = 0;
@@ -76,10 +74,16 @@ public class Produits {
     public void addProduitToSejour(Sejour s)
     {
         s.addProduits(this);
+        this.quantite--;
+    }
+
+    public void removeProduitToSejour(Sejour s) {
+        s.removeActivite(this);
+        this.quantite++;
     }
 
     public boolean isAvailableInHotel(Hotel h) {
-        return listHotel.contains(h);
+        return h.getListeProduits().contains(this);
     }
 
     public void addQuantite(int q)

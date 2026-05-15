@@ -27,7 +27,7 @@ public class Activites {
     private final Hotel hotel;
 
     // Retourne le numéro de l'activité
-    public static int getNumActivite() {
+    public int getNumActivite() {
         return numActivite;
     }
 

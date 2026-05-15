@@ -54,9 +54,19 @@ public class Hotel {
         }
         listChambre.add(chambre);
     }
-    // Retourne la liste complète des chambres
-    public Vector <Chambre> getLChambres() {
-        return listChambre;
+
+    public void removeChambre(Chambre chambre) {
+        if (!listChambre.contains(chambre)) {
+            return;
+        }
+        listChambre.remove(chambre);
+    }
+
+    public void removeActivite(Activites activite) {
+        if (!listeActivites.contains(activite)) {
+            return;
+        }
+        listeActivites.remove(activite);
     }
 
     public Vector<Chambre> getChambreByType(String tChambre) {
@@ -76,6 +86,15 @@ public class Hotel {
             }
         }
         return res;
+    }
+
+    public Chambre getChambreByNum(int numChambre) {
+        for (Chambre chambre : listChambre) {
+            if (chambre.getNumChambre() == numChambre) {
+                return chambre;
+            }
+        }
+        return null;
     }
 
     public Vector<Produits> getListeProduits() {
@@ -154,7 +173,7 @@ public class Hotel {
         if (reservation.getSejour() != null
                 && aj.isAfter(reservation.getDateDebut())
                 && aj.isBefore(reservation.getSejour().getDateFinReel())) {
-            //System.out.println("Impossible : le client est actuellement en séjour.");
+            //System.out.println("Impossible : le client est actuellement en séjour.") ;
             return false;
         }
         // Retirer côté client
@@ -217,7 +236,7 @@ public class Hotel {
             if (client.getTotalSpent() > 0) count++;
         }
 
-        Client[] clients = new Client[count]; // taille exacte, zéro null
+        Client[] clients = new Client[count];
         int i = 0;
         for (Client client : listeClient) {
             if (client.getTotalSpent() > 0) {

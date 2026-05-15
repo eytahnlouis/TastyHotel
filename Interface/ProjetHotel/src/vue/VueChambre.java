@@ -27,8 +27,8 @@ public class VueChambre extends JFrame {
 
         add(panelBoutons);
         setVisible(true);
-        ContValiderAjoutChambre ct = new ContValiderAjoutChambre(valNumChambre, h1);
-        buttonAjouter.addActionListener(ct);
+        //ContValiderAjoutChambre ct = new ContValiderAjoutChambre(valNumChambre, h1);
+        //buttonAjouter.addActionListener(ct);
     }
     
  
