@@ -1,7 +1,4 @@
 package model;
-import model.*;
-import java.io.*;
-import java.util.*;
 
 /**
  * Classe représentant une activité proposée par l'hôtel.

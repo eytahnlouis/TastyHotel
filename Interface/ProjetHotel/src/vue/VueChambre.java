@@ -12,12 +12,12 @@ public class VueChambre extends JFrame {
     JButton buttonAjouter = new JButton("Ajouter");
     JButton buttonSupprimer = new JButton("Supprimer");
     JButton buttonConsulter = new JButton("Consulter");
-    JButton buttonMenage = new JButton("Ménage");
+    JButton buttonMenage = new JButton("Mï¿½nage");
 
 
     public VueChambre(Hotel h1) {
     	
-        setTitle("Choisir une possibilité de chambre");
+        setTitle("Choisir une possibilitï¿½ de chambre");
         setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(buttonAjouter);

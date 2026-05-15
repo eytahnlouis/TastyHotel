@@ -1,7 +1,7 @@
 package vue;
-import model.*;
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
+import model.*;
 
 public class VueChoisirPossibiliteChambre extends JFrame {
 

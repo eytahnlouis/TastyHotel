@@ -5,9 +5,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
- * Classe représentant un séjour effectif dans l'hôtel.
- * Un séjour étend une réservation et inclut la date de fin réelle,
- * ainsi que les produits consommés et les activités pratiquées.
+ * Classe reprï¿½sentant un sï¿½jour effectif dans l'hï¿½tel.
+ * Un sï¿½jour ï¿½tend une rï¿½servation et inclut la date de fin rï¿½elle,
+ * ainsi que les produits consommï¿½s et les activitï¿½s pratiquï¿½es.
  */
 public class Sejour {
 
@@ -20,7 +20,7 @@ public class Sejour {
     private Reservation reservation;
 
     public Sejour(Reservation r) {
-        // Numéro de réservation associé au séjour
+        // Numï¿½ro de rï¿½servation associï¿½ au sï¿½jour
         //int numReservation = Reservation.getNumReservation();
         this.reservation = r;
         this.dateFinReel = reservation.getDateFin();
@@ -42,6 +42,10 @@ public class Sejour {
     public Reservation getReservation() {
         return reservation;
     }
+    public void getSejour() {
+        
+        reservation.getSejour();
+    }
 
     public Vector <Produits> getListProduits() {
         return lProduits;
@@ -53,12 +57,12 @@ public class Sejour {
         this.reservation = reservation;
     }
 
-    // Ajoute une activité à la liste des activités pratiquées durant le séjour
+    // Ajoute une activitï¿½ ï¿½ la liste des activitï¿½s pratiquï¿½es durant le sï¿½jour
 
     public void addActivite(Activites a) {
         listActivites.add(a);
     }
-    // Retourne la liste des activités d'un séjour donné
+    // Retourne la liste des activitï¿½s d'un sï¿½jour donnï¿½
     private Activites[] getActivites() {
         return listActivites.toArray(new Activites[0]);
     }
@@ -79,13 +83,13 @@ public class Sejour {
         return (int) (ChronoUnit.DAYS.between(reservation.getDateDebut(), dateFinReel));
     }
 
-    /*Retourne la liste des produits consommés durant le séjour */
+    /*Retourne la liste des produits consommï¿½s durant le sï¿½jour */
     private Produits[] getlProduits() {
         return lProduits.toArray(new Produits[0]);
     }
 
 
-    // Ajoute un produit à la liste des produits consommés durant le séjour
+    // Ajoute un produit ï¿½ la liste des produits consommï¿½s durant le sï¿½jour
     public void addProduits(Produits p) {
         lProduits.add(p);
     }
@@ -97,9 +101,9 @@ public class Sejour {
         return total;
     }
 
-    // Calcule et retourne le prix total réel du séjour
-    // (prix de la chambre * nombre de jours réels) + total des produits consommés + activites faites
-    //placeholder vraie fonction à recalculer
+    // Calcule et retourne le prix total rï¿½el du sï¿½jour
+    // (prix de la chambre * nombre de jours rï¿½els) + total des produits consommï¿½s + activites faites
+    //placeholder vraie fonction ï¿½ recalculer
     public float getPrixTotalReel() {
         return reservation.getChambre().getPrixChambre() * getNbJours() + getPrixTotalProduit() + getPrixTotalActivite();
     }
@@ -107,9 +111,9 @@ public class Sejour {
 
     public void infosSejour() {
         reservation.infosChambre();
-        System.out.println("Date de fin réelle : " + dateFinReel);
+        System.out.println("Date de fin rï¿½elle : " + dateFinReel);
         System.out.println("Nombre de jours : " + getNbJours());
-        System.out.println("Activités : ");
+        System.out.println("Activitï¿½s : ");
         for (Activites a : listActivites) {
             System.out.println("- " + a.getNomActivite());
         }
@@ -117,7 +121,7 @@ public class Sejour {
         for (Produits p : lProduits) {
             System.out.println("- " + p.getNomProduit() + " : " + p.getPrixProduit());
         }
-        System.out.println("Prix total réel : " + getPrixTotalReel());
+        System.out.println("Prix total rï¿½el : " + getPrixTotalReel());
     }
 
 

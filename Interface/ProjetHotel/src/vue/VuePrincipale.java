@@ -1,8 +1,8 @@
 package vue;
-import javax.swing.*;
-import java.awt.*;
-import model.Hotel; 
 import controleur.ContOuvrirHotel;
+import java.awt.*;
+import javax.swing.*;
+import model.Hotel;
 
 public class VuePrincipale extends JFrame {
 	
@@ -38,7 +38,7 @@ public class VuePrincipale extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-     // À ajouter à la fin du constructeur de VuePrincipale
+     // ï¿½ ajouter ï¿½ la fin du constructeur de VuePrincipale
     	ContOuvrirHotel ctrlHotel = new ContOuvrirHotel();
     	btnHotel.addActionListener(ctrlHotel); 
 
