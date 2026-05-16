@@ -1,9 +1,11 @@
 package model;
+import model.*;
+import java.io.*;
 import java.util.*;
 
 /**
- * Classe repr√©sentant un produit propos√© par l'h√¥tel.
- * Un produit est d√©fini par un num√©ro, un nom et un prix.
+ * Classe reprÈsentant un produit proposÈ par l'hÙtel.
+ * Un produit est dÈfini par un numÈro, un nom et un prix.
  */
 public class Produits {
 
@@ -11,17 +13,17 @@ public class Produits {
     // Identifiant unique du produit
     private final int numProduit;
 
-    public String nomProduit;
+    private String nomProduit;
 
 
-    public float prixProduit;
+    private float prixProduit;
 
 
     private int quantite;
 
     private Vector<Hotel> listHotel;
 
-    // Constructeur : initialise un produit avec son num√©ro, son nom et son prix
+    // Constructeur : initialise un produit avec son numÈro, son nom et son prix
     public Produits(int numProduit, String nomProduit, float prixProduit, int quantite, Hotel hotel) {
         this.numProduit = numProduit;
         this.nomProduit = nomProduit;
@@ -29,6 +31,11 @@ public class Produits {
         this.quantite = quantite;
         this.listHotel = new Vector<Hotel>();
         this.listHotel.add(hotel);
+        ajouterAHotel();
+    }
+    public void addHotelToProduit(Hotel h)
+    {
+        listHotel.add(h);
         ajouterAHotel();
     }
 
@@ -41,7 +48,7 @@ public class Produits {
             }
         }
     }
-    // Retourne le num√©ro du produit
+    // Retourne le numÈro du produit
 
     public int getNumProduit() {
         return this.numProduit;
@@ -57,11 +64,6 @@ public class Produits {
         return this.prixProduit;
     }
 
-    // Retourne la quantit√© disponible du produit
-    public int getQuantite() {
-        return this.quantite;
-    }
-
     // Calcule et retourne le prix total d'un tableau de produits
     public float getPrixProduit(Vector<Produits> p) {
         float total = 0;
@@ -73,23 +75,18 @@ public class Produits {
 
     public void addProduitToSejour(Sejour s)
     {
+    
         s.addProduits(this);
-        this.quantite--;
-    }
-
-    public void removeProduitToSejour(Sejour s) {
-        s.removeActivite(this);
-        this.quantite++;
     }
 
     public boolean isAvailableInHotel(Hotel h) {
-        return h.getListeProduits().contains(this);
+        return listHotel.contains(h);
     }
 
     public void addQuantite(int q)
     {
         if(q<0)
-            throw new IllegalArgumentException("Quantit√© ne peut pas √™tre n√©gative");
+            throw new IllegalArgumentException("QuantitÈ ne peut pas Ítre nÈgative");
         this.quantite+=q;
     }
 
@@ -98,9 +95,9 @@ public class Produits {
     }
 
     public void infosProduits() {
-        System.out.println("Num√©ro du produit : " + numProduit);
+        System.out.println("NumÈro du produit : " + numProduit);
         System.out.println("Nom du produit : " + nomProduit);
         System.out.println("Prix du produit : " + prixProduit);
-        System.out.println("Quantit√© : " + quantite);
+        System.out.println("QuantitÈ : " + quantite);
     }
 }

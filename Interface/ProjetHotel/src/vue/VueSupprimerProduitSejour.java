@@ -23,8 +23,7 @@ public class VueSupprimerProduitSejour extends JFrame {
         btnQuitter.addActionListener(e -> {
             dispose();
         });
-        //contrÃ´leur Ã  ajouter : toi permettre la suppression d'une activitÃ© de l'hotel
+        //contrôleur à ajouter : toi permettre la suppression d'une activité de l'hotel
 
     }
 }
-

@@ -11,7 +11,7 @@ public class VueModifierDateFin extends JFrame {
     JButton btnAjouter = new JButton("Modifier");
     JButton btnAnnuler = new JButton("Annuler");
 
-    // RÃ©cupÃ©rer la date
+    // Récupérer la date
 
 
     public VueModifierDateFin(Sejour s) {
@@ -23,7 +23,7 @@ public class VueModifierDateFin extends JFrame {
         panelBoutons.add(jour);
         panelBoutons.add(new JLabel("Mois:"));
         panelBoutons.add(mois);
-        panelBoutons.add(new JLabel("AnnÃ©e:"));
+        panelBoutons.add(new JLabel("Année:"));
         panelBoutons.add(annee);
         panelBoutons.add(btnAjouter);
         panelBoutons.add(btnAnnuler);
@@ -43,3 +43,4 @@ public class VueModifierDateFin extends JFrame {
         new VueModifierDateFin(s1);
     }
 }
+

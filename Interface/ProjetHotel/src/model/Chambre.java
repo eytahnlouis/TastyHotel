@@ -5,9 +5,9 @@ import java.util.*;
 
 //import static sun.swing.MenuItemLayoutHelper.max;
 /**
- * Classe reprÃ©sentant une chambre d'hÃ´tel.
- * Une chambre est dÃ©finie par son type, son numÃ©ro, son Ã©tage,
- * son prix par nuit et sa disponibilitÃ©.
+ * Classe représentant une chambre d'hôtel.
+ * Une chambre est définie par son type, son numéro, son étage,
+ * son prix par nuit et sa disponibilité.
  */
 public class Chambre {
     // Type de la chambre (ex : simple, double, suite...)
@@ -23,7 +23,7 @@ public class Chambre {
 
 
     private Hotel hotel;
-    // Constructeur : initialise une chambre avec ses caractÃ©ristiques
+    // Constructeur : initialise une chambre avec ses caractéristiques
     public Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel) {
         this.listReservation = new Vector<>();
         this.typeChambre = typeChambre;
@@ -43,12 +43,12 @@ public class Chambre {
         return this.typeChambre;
     }
 
-    // Retourne le numÃ©ro de la chambre
+    // Retourne le numéro de la chambre
     public int getNumChambre() {
         return this.numChambre;
     }
 
-    // Retourne le numÃ©ro de l'Ã©tage
+    // Retourne le numéro de l'étage
     public int getNumEtage() {
         return this.numEtage;
     }
@@ -85,7 +85,7 @@ public class Chambre {
         this.typeChambre = typeChambre;
     }
 
-    // Modifie le numÃ©ro de la chambre
+    // Modifie le numéro de la chambre
     public void setNumChambre(int numChambre) {
         this.numChambre = numChambre;
     }
@@ -103,9 +103,9 @@ public class Chambre {
     }
 
     public void afficherChambre() {
-        System.out.println("NumÃ©ro de chambre : " + numChambre);
+        System.out.println("Numéro de chambre : " + numChambre);
         System.out.println("Type de chambre : " + typeChambre);
-        System.out.println("NumÃ©ro d'Ã©tage : " + numEtage);
+        System.out.println("Numéro d'étage : " + numEtage);
         System.out.println("Prix de la chambre par nuit : " + prixChambre);
     }
 

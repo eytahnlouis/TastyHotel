@@ -1,6 +1,5 @@
 package vue;
 import model.*;
-import controleur.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -12,12 +11,12 @@ public class VueChambre extends JFrame {
     JButton buttonAjouter = new JButton("Ajouter");
     JButton buttonSupprimer = new JButton("Supprimer");
     JButton buttonConsulter = new JButton("Consulter");
-    JButton buttonMenage = new JButton("M�nage");
+    JButton buttonMenage = new JButton("Menage");
 
 
     public VueChambre(Hotel h1) {
     	
-        setTitle("Choisir une possibilit� de chambre");
+        setTitle("Choisir une possibilite de chambre");
         setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(buttonAjouter);
@@ -27,12 +26,12 @@ public class VueChambre extends JFrame {
 
         add(panelBoutons);
         setVisible(true);
-        //ContValiderAjoutChambre ct = new ContValiderAjoutChambre(valNumChambre, h1);
-        //buttonAjouter.addActionListener(ct);
-        buttonConsulter.addActionListener(e -> {
-            new VueListeChambres(h1);
-        });
+        java.awt.event.ActionListener ct = null;
+        
+        
     }
+    
+    
     
  
     public static void main(String[] args) {

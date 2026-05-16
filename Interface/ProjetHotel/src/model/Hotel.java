@@ -6,33 +6,33 @@ import java.util.*;
 import static java.util.Arrays.*;
 
 /**
- * Classe reprÃ©sentant un hÃ´tel.
- * Un hÃ´tel possÃ¨de un nom, une adresse, et gÃ¨re des chambres,
- * des clients, des produits et des activitÃ©s.
+ * Classe représentant un hôtel.
+ * Un hôtel possède un nom, une adresse, et gère des chambres,
+ * des clients, des produits et des activités.
  */
 public class Hotel {
 
-    // Constructeur : initialise un hÃ´tel avec son nom, adresse et liste de produits
+    // Constructeur : initialise un hôtel avec son nom, adresse et liste de produits
     public Hotel(String nomHotel, String adresse) {
         numHotel++;
         this.nomHotel = nomHotel;
         this.adresse = adresse;
-        this.listeActivites = new Vector<>();   // liste vide d'activitÃ©s
+        this.listeActivites = new Vector<>();   // liste vide d'activités
         this.listChambre = new Vector<>();       // liste vide de chambres
         this.listeClient = new Vector<>();         // liste vide de clients
         this.listeProduits = new Vector<>();      // liste vide de produits
     }
 
-    // Identifiant unique de l'hÃ´tel (auto-incrÃ©mentÃ©)
+    // Identifiant unique de l'hôtel (auto-incrémenté)
     private static int numHotel;
 
-    // Nom de l'hÃ´tel
+    // Nom de l'hôtel
     private final String nomHotel;
 
-    // Adresse de l'hÃ´tel
+    // Adresse de l'hôtel
     private final String adresse;
 
-    // Liste des chambres de l'hÃ´tel
+    // Liste des chambres de l'hôtel
     private final Vector<Produits> listeProduits;
 
     private final Vector<Activites> listeActivites;
@@ -43,7 +43,7 @@ public class Hotel {
 
     private final Vector<Chambre> listChambre;
 
-    // Retourne le numÃ©ro de l'hÃ´tel
+    // Retourne le numéro de l'hôtel
     public int getNumHotel() {
         return numHotel;
     }
@@ -54,19 +54,9 @@ public class Hotel {
         }
         listChambre.add(chambre);
     }
-
-    public void removeChambre(Chambre chambre) {
-        if (!listChambre.contains(chambre)) {
-            return;
-        }
-        listChambre.remove(chambre);
-    }
-
-    public void removeActivite(Activites activite) {
-        if (!listeActivites.contains(activite)) {
-            return;
-        }
-        listeActivites.remove(activite);
+    // Retourne la liste complète des chambres
+    public Vector <Chambre> getLChambres() {
+        return listChambre;
     }
 
     public Vector<Chambre> getChambreByType(String tChambre) {
@@ -86,15 +76,6 @@ public class Hotel {
             }
         }
         return res;
-    }
-
-    public Chambre getChambreByNum(int numChambre) {
-        for (Chambre chambre : listChambre) {
-            if (chambre.getNumChambre() == numChambre) {
-                return chambre;
-            }
-        }
-        return null;
     }
 
     public Vector<Produits> getListeProduits() {
@@ -173,32 +154,22 @@ public class Hotel {
         if (reservation.getSejour() != null
                 && aj.isAfter(reservation.getDateDebut())
                 && aj.isBefore(reservation.getSejour().getDateFinReel())) {
-            //System.out.println("Impossible : le client est actuellement en sÃ©jour.") ;
+            //System.out.println("Impossible : le client est actuellement en séjour.");
             return false;
         }
-        // Retirer cÃ´tÃ© client
+        // Retirer côté client
         reservation.getClient().removeReservation(reservation);
 
-        // Retirer cÃ´tÃ© chambre
+        // Retirer côté chambre
         reservation.getChambre().getListReservation().remove(reservation);
 
-        // Dissocier le sÃ©jour s'il existe
+        // Dissocier le séjour s'il existe
         if (reservation.getSejour() != null) {
             reservation.getSejour().setReservation(null);
             reservation.setSejour(null);
         }
 
         return true;
-    }
-
-    public Activites getActivitesById(int id) {
-        Activites res = null;
-        for (Activites activite : listeActivites) {
-            if (activite.getNumActivite() == id) {
-                return res;
-            }
-        }
-        return null;
     }
 
     public Vector<Activites> getListActivitesByPrice(float prix) {
@@ -220,16 +191,6 @@ public class Hotel {
         return activitesByNom;
     }
 
-    public Produits getListProduitsById(int id) {
-        Produits res = null;
-        for (Produits produit : listeProduits) {
-            if (produit.getNumProduit() == id) {
-                return res;
-            }
-        }
-        return null;
-    }
-
     public Vector<Produits> getProduitsByNom(String nomProduit) {
         Vector<Produits> produitsByNom = new Vector<>();
         for (Produits produit : listeProduits) {
@@ -249,16 +210,6 @@ public class Hotel {
         return produitsByPrice;
     }
 
-    public Client getClientById(int id) {
-        Client res = null;
-        for(Client client : listeClient) {
-            if (client.getNumClient() == id) {
-                res = client;
-                break;
-            }
-        }
-        return res;
-    }
     //Statistiques
     public Client[] biggestSpender() {
         int count = 0;
@@ -266,7 +217,7 @@ public class Hotel {
             if (client.getTotalSpent() > 0) count++;
         }
 
-        Client[] clients = new Client[count];
+        Client[] clients = new Client[count]; // taille exacte, zéro null
         int i = 0;
         for (Client client : listeClient) {
             if (client.getTotalSpent() > 0) {
@@ -296,10 +247,10 @@ public class Hotel {
     public void afficherHotel(){
         System.out.println("------------------------------------");
         System.out.println("numHotel : " + getNumHotel());
-        System.out.println("Nom de l'hÃ´tel : " + getNomHotel());
-        System.out.println("Adresse de l'hÃ´tel : " + getAdresse());
+        System.out.println("Nom de l'hôtel : " + getNomHotel());
+        System.out.println("Adresse de l'hôtel : " + getAdresse());
         System.out.println("Liste des produits : " + listeProduits.size());
-        System.out.println("Liste des activitÃ©s : " + listeActivites.size());
+        System.out.println("Liste des activités : " + listeActivites.size());
         System.out.println("Liste des chambres : " + listChambre.size());
         System.out.println("------------------------------------");
     }
@@ -313,4 +264,5 @@ public class Hotel {
     }
 
 }
+
 

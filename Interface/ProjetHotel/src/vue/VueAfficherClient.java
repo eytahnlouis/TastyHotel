@@ -14,8 +14,8 @@ public class VueAfficherClient extends JFrame {
             panelBoutons.add(new JLabel("id :" + c.getNomClient()));
             panelBoutons.add(new  JLabel("nom :" + c.getPrenomClient()));
             panelBoutons.add(new JLabel("prenom : " + c.getPrenomClient()));
-            panelBoutons.add(new JLabel("client fidÃ¨le : " + (c.isFaithful() ? "Oui" : "Non")));
-            panelBoutons.add(new JLabel("nombre de rÃ©servations : " + c.comptePassage));
+            panelBoutons.add(new JLabel("client fidèle : " + c.isFaithful()));
+            panelBoutons.add(new JLabel("nombre de réservations : " + c.comptePassage));
             add(panelBoutons);
             setVisible(true);
         }

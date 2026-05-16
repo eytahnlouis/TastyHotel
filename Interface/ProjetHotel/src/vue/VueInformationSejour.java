@@ -6,14 +6,14 @@ import java.time.LocalDate;
 
 public class VueInformationSejour extends JFrame {
 
-    JButton buttonActivite = new JButton("ActivitÃ©s");
+    JButton buttonActivite = new JButton("Activités");
     JButton buttonProduits = new JButton("Produits");
     JButton buttonFacture  = new JButton("Facture");
-    JButton buttonDepart   = new JButton("DÃ©part");
+    JButton buttonDepart   = new JButton("Départ");
 
     public VueInformationSejour(Sejour s1) {
 
-        setTitle("Informations sur le sÃ©jour de " + s1.getReservation().getClient().getNomClient() +" "  +s1.getReservation().getClient().getPrenomClient() );
+        setTitle("Informations sur le séjour de " + s1.getReservation().getClient().getNomClient() +" "  +s1.getReservation().getClient().getPrenomClient() );
         setSize(500, 200);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,9 +23,9 @@ public class VueInformationSejour extends JFrame {
         JPanel panelInfos = new JPanel(new GridLayout(5, 1));
         panelInfos.add(new JLabel("Client : " + s1.getReservation().getClient().getNomClient()));
         panelInfos.add(new JLabel("Chambre : " + s1.getReservation().getChambre().getNumChambre()));
-        panelInfos.add(new JLabel("Date dÃ©but : " + s1.getReservation().getDateDebut()));
-        panelInfos.add(new JLabel("Date fin rÃ©elle : " + s1.getDateFinReel()));
-        panelInfos.add(new JLabel("Prix total rÃ©el : " + s1.getPrixTotalReel() + " â‚¬"));
+        panelInfos.add(new JLabel("Date début : " + s1.getReservation().getDateDebut()));
+        panelInfos.add(new JLabel("Date fin réelle : " + s1.getDateFinReel()));
+        panelInfos.add(new JLabel("Prix total réel : " + s1.getPrixTotalReel() + " €"));
 
         // Boutons
         JPanel panelBoutons = new JPanel(new FlowLayout());
@@ -34,19 +34,6 @@ public class VueInformationSejour extends JFrame {
         panelBoutons.add(buttonFacture);
         panelBoutons.add(buttonDepart);
 
-        buttonActivite.addActionListener(e -> {
-            new VueChoisirActivites(s1);
-        });
-
-        buttonProduits.addActionListener(e -> {
-            new VueChoisirProduit(s1);
-        });
-        buttonFacture.addActionListener(e -> {
-            new VueFactureSejour(s1);
-        });
-        buttonDepart.addActionListener(e -> {
-            new VueModifierDateFin(s1);
-        });
         add(panelInfos, BorderLayout.CENTER);
         add(panelBoutons, BorderLayout.SOUTH);
 
@@ -70,3 +57,4 @@ public class VueInformationSejour extends JFrame {
         });
     }
 }
+

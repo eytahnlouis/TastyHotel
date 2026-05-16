@@ -6,20 +6,18 @@ import java.awt.*;
 
 public class VueChoixHotel extends JFrame {
     JButton btnChambre = new JButton("Chambre");
-    JButton buttonActivites = new JButton("ActivitÃ©s");
+    JButton buttonActivites = new JButton("Activités");
     JButton btnProduits = new JButton("Produits");
     JButton btnStats = new JButton("Statistiques");
 
     public VueChoixHotel(Hotel h) {
-        setTitle("Choisir une possibilitÃ© de rÃ©servation");
+        setTitle("Choisir une possibilité de réservation");
         setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(btnChambre);
         panelBoutons.add(buttonActivites);
         panelBoutons.add(btnProduits);
         panelBoutons.add(btnStats);
-
-        btnStats.addActionListener(e -> new VueHotelStatistiques(h));
 
         add(panelBoutons);
         setVisible(true);
@@ -30,3 +28,4 @@ public class VueChoixHotel extends JFrame {
         new VueChoixHotel(h1);
     }
 }
+

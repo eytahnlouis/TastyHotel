@@ -1,31 +1,39 @@
 package vue;
 import javax.swing.*;
 import model.*;
-
+import controleur.*;
 import java.awt.*;
 
 public class VueHotel extends JFrame {
-    JButton btnChambre = new JButton("Chambre");
-    JButton buttonActivites = new JButton("Activités");
-    JButton btnProduits = new JButton("Produits");
-    JButton btnStats = new JButton("Statistiques");
+    JButton buttonChambre = new JButton("Chambre");
+    JButton buttonActivites = new JButton("Activites");
+    JButton buttonProduits = new JButton("Produits");
+    JButton buttonStats = new JButton("Statistiques");
 
     public VueHotel(Hotel h) {
-        setTitle("Choisir une possibilité de réservation");
+        setTitle("Choisir une possibilite de reservation");
         setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
-        panelBoutons.add(btnChambre);
+        panelBoutons.add(buttonChambre);
         panelBoutons.add(buttonActivites);
-        panelBoutons.add(btnProduits);
-        panelBoutons.add(btnStats);
+        panelBoutons.add(buttonProduits); 
+        panelBoutons.add(buttonStats);
 
         add(panelBoutons);
         setVisible(true);
+        Hotel hotel = null ;
+        buttonChambre.addActionListener(new ContOuvrirAjoutChambre(hotel));
+        buttonProduits.addActionListener(new ContOuvrirProduits(hotel));
+        buttonActivites.addActionListener(new ContOuvrirActivites(hotel));
+         
     }
+
 
     public static void main(String[] args) {
         Hotel h1 = new Hotel("Tasty Hotel 4*", "12 rue de la paix");
         new VueHotel(h1);
     }
 }
+
+
 
