@@ -5,25 +5,19 @@ import java.awt.*;
 import controleur.*;
 
 public class VueChercherClientSejour extends JFrame {
-    public JTextField textField = new JTextField();
+    public JTextField textField = new JTextField(10);
     JButton buttonChercher = new JButton("Chercher");
 
     public VueChercherClientSejour(Hotel h1) {
-        JFrame frame = new JFrame();
-        frame.setTitle("Chercher le numéro de réservation d'un client pour un séjour");
-        frame.setSize(500,500);
-        frame.setLayout(null);
-        setSize(500,500);
-        textField.setBounds(50, 100, 200, 50);
-        buttonChercher.setBounds(300, 100, 150, 50);
+        setTitle("Chercher la réservation d'un client pour un séjour");
+        setSize(500, 150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
-        panelBoutons.add(buttonChercher);
+        panelBoutons.add(new JLabel("ID client :"));
         panelBoutons.add(textField);
+        panelBoutons.add(buttonChercher);
+        add(panelBoutons);
         setVisible(true);
 
-        // Ajouter les composants au frame
-        frame.add(panelBoutons);
-        frame.setVisible(true);
         buttonChercher.addActionListener (new ContOuvrirSejours(this, h1));
     }
 }

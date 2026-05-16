@@ -11,7 +11,7 @@ public class VueListeProduits extends JFrame {
         setSize(500, 400);
 
         String[] colonnes = {"id", "nom", "prix", "stock"};
-        Vector<Produits> produits = h.getListeProduits();
+        Vector<Produits> produits = h.getListeProduits(); //
         Object[][] data = new Object[produits.size()][colonnes.length];
 
         for (int i = 0; i < produits.size(); i++) {

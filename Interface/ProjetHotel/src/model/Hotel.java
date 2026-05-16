@@ -211,10 +211,14 @@ public class Hotel {
     }
 
     public void ajouterProduit(Produits p) {
-        listeProduits.add(p);
+        if (!listeProduits.contains(p)) {
+            listeProduits.add(p);
+        }
     }
     public void ajouterActivite(Activites a) {
-        listeActivites.add(a);
+        if (!listeActivites.contains(a)) {
+            listeActivites.add(a);
+        }
     }
     public void ajouterClient(Client c) {
         listeClient.add(c);
@@ -311,6 +315,15 @@ public class Hotel {
 
     public void supprimerActivite(Activites a) {
         listeActivites.remove(a);
+
+    }
+
+     public void supprimerChambre(Chambre c) {
+        listChambre.remove(c);
+    }
+
+     public void supprimerClient(Client c) {
+        listeClient.remove(c);
     }
 }
 
