@@ -1,12 +1,12 @@
 package model;
 
 /**
- * Classe reprÃ©sentant une activitÃ© proposÃ©e par l'hÃ´tel.
- * Une activitÃ© a un nom, un prix et une disponibilitÃ©.
+ * Classe représentant une activité proposée par l'hôtel.
+ * Une activité a un nom, un prix et une disponibilité.
  */
 public class Activites {
 
-    // Constructeur : initialise une activitÃ© avec son nom et son prix
+    // Constructeur : initialise une activité avec son nom et son prix
     public Activites(String nomActivite, float prixActivite, Hotel hotel) {
         numActivite++;
         this.nomActivite = nomActivite;
@@ -15,7 +15,7 @@ public class Activites {
         ajouterAHotel();
     }
 
-    // Identifiant unique de l'activitÃ©
+    // Identifiant unique de l'activité
     private static int numActivite = 0;
 
     private String nomActivite;
@@ -26,36 +26,36 @@ public class Activites {
 
     private final Hotel hotel;
 
-    // Retourne le numÃ©ro de l'activitÃ©
-    public int getNumActivite() {
+    // Retourne le numéro de l'activité
+    public static int getNumActivite() {
         return numActivite;
     }
 
     public void ajouterAHotel() {
         hotel.getListeActivites().add(this);
     }
-    // Retourne le nom de l'activitÃ©
+    // Retourne le nom de l'activité
     public String getNomActivite() {
         return this.nomActivite;
     }
 
-    // Modifie le nom de l'activitÃ©
+    // Modifie le nom de l'activité
     public void setNomActivite(String nomActivite) {
         this.nomActivite = nomActivite;
     }
 
-    // Retourne le prix de l'activitÃ©
+    // Retourne le prix de l'activité
     public float getPrixActivite() {
         return this.prixActivite;
     }
 
-    // Modifie le prix de l'activitÃ©
+    // Modifie le prix de l'activité
     public void setPrixActivite(float prixActivite) {
         this.prixActivite = prixActivite;
     }
 
     public void afficherInfos() {
-        System.out.println("Nom de l'activitÃ© : " + nomActivite);
-        System.out.println("Prix de l'activitÃ© : " + prixActivite);
+        System.out.println("Nom de l'activité : " + nomActivite);
+        System.out.println("Prix de l'activité : " + prixActivite);
     }
 }

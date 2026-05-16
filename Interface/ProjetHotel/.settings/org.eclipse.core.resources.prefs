@@ -1,2 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/controleur/ContAjouterReservation.java=UTF-8
+encoding//src/model/Client.java=UTF-8
+encoding//src/model/Reservation.java=UTF-8
+encoding//src/model/Sejour.java=UTF-8
+encoding//src/vue/VueChambre.java=UTF-8
+encoding//src/vue/VueConsulterReservation.java=UTF-8
+encoding//src/vue/VueHotel.java=UTF-8
+encoding//src/vue/VuePrincipale.java=UTF-8
 encoding/<project>=windows-1252

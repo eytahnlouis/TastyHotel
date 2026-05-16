@@ -1,5 +1,5 @@
 package vue;
-import controleur.ContOuvrirHotel;
+import controleur.*;
 import java.awt.*;
 import javax.swing.*;
 import model.Hotel;
@@ -39,8 +39,11 @@ public class VuePrincipale extends JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
      // � ajouter � la fin du constructeur de VuePrincipale
-    	ContOuvrirHotel ctrlHotel = new ContOuvrirHotel();
-    	btnHotel.addActionListener(ctrlHotel); 
+        btnHotel.addActionListener(new ContOuvrirHotel(h));
+        btnClient.addActionListener(new ContOuvrirClients(h));
+        btnReservation.addActionListener(new ContOuvrirReservations(h));
+        btnSejour.addActionListener(new ContOuvrirSejours(h));
+    }
 
 	}
 	
@@ -48,4 +51,4 @@ public class VuePrincipale extends JFrame {
 
 	
 
-}
+

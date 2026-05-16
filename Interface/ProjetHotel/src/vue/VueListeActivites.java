@@ -8,7 +8,7 @@ import java.util.Vector;
 public class VueListeActivites extends JFrame {
 
     public VueListeActivites(Hotel h) {
-        setTitle("ActivitÃ©s de " + h.getNomHotel());
+        setTitle("Activités de " + h.getNomHotel());
         setSize(500, 400);
 
         String[] colonnes = {"id", "nom", "prix"};
@@ -19,7 +19,7 @@ public class VueListeActivites extends JFrame {
             Activites c = activites.get(i);
             data[i][0] = c.getNumActivite();
             data[i][1] = c.getNomActivite();
-            data[i][2] = c.getPrixActivite() + " â‚¬";
+            data[i][2] = c.getPrixActivite() + " €";
         }
 
         JTable table = new JTable(data, colonnes);

@@ -2,9 +2,10 @@ package vue;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
+import controleur.* ;
 public class VueAjoutClient extends JFrame {
-    JTextField nomClient = new JTextField(10);
-    JTextField prenomClient = new JTextField(10);
+    public JTextField nomClient = new JTextField(10);
+    public JTextField prenomClient = new JTextField(10);
     JButton btnValider = new JButton("Valider");
     JButton btnQuiter = new JButton("Quitter");
 
@@ -14,7 +15,7 @@ public class VueAjoutClient extends JFrame {
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(new JLabel("Nom :"));
         panelBoutons.add(nomClient);
-        panelBoutons.add(new JLabel("PrÃ©nom :"));
+        panelBoutons.add(new JLabel("Prénom :"));
         panelBoutons.add(prenomClient);
         panelBoutons.add(btnValider);
         panelBoutons.add(btnQuiter);
@@ -24,7 +25,8 @@ public class VueAjoutClient extends JFrame {
         btnQuiter.addActionListener(e -> {
             dispose();
         });
-        //contrÃ´leur Ã  ajouter : toi permettre la crÃ©ation d'un client ajouter l'hotel
+        btnValider.addActionListener(new ContValiderAjoutClient(h1, this));
+        //contrôleur à ajouter : toi permettre la création d'un client ajouter l'hotel
         //signature client (nom, prenom, hotel)
     }
     static void main(String[] args) {

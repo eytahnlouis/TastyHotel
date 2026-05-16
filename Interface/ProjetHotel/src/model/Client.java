@@ -4,21 +4,21 @@ import java.time.LocalDate;
 import java.util.*;
 
 /**
- * Classe représentant un client de l'hôtel.
- * Un client possède un numéro unique, un nom, un prénom,
- * et un historique de ses réservations (compte de passages).
+ * Classe reprï¿½sentant un client de l'hï¿½tel.
+ * Un client possï¿½de un numï¿½ro unique, un nom, un prï¿½nom,
+ * et un historique de ses rï¿½servations (compte de passages).
  */
 public class Client {
 
-    // Constructeur : crée un client avec son nom, prénom et hôtel
-    // Le numéro de client est auto-incrémenté
-    // L'historique de passages est initialisé vide
+    // Constructeur : crï¿½e un client avec son nom, prï¿½nom et hï¿½tel
+    // Le numï¿½ro de client est auto-incrï¿½mentï¿½
+    // L'historique de passages est initialisï¿½ vide
 
 
-    // Ajoute une nouvelle réservation vide à l'historique du client
+    // Ajoute une nouvelle rï¿½servation vide ï¿½ l'historique du client
 
 
-    // Numéro unique du client (statique : partagé entre toutes les instances)
+    // Numï¿½ro unique du client (statique : partagï¿½ entre toutes les instances)
     private static int numClient;
 
     protected String nomClient;
@@ -57,7 +57,7 @@ public class Client {
         return getListReservation().stream().anyMatch(r -> r.getSejour().getDateFinReel().isEqual(date));
     }
 
-    // Retourne le numéro du client
+    // Retourne le numï¿½ro du client
     public int getNumClient() {
         return numClient;
     }
@@ -84,11 +84,11 @@ public class Client {
         }
         return total;
     }
-    // Affiche les informations complètes du client dans la console
+    // Affiche les informations complï¿½tes du client dans la console
     public void infosClient() {
-        System.out.println("Numéro de client : " + numClient);
+        System.out.println("Numï¿½ro de client : " + numClient);
         System.out.println("Nom : " + this.nomClient);
-        System.out.println("Prénom : " + this.prenomClient);
+        System.out.println("Prï¿½nom : " + this.prenomClient);
         System.out.println("Nombre de passages : " + listReservation.size());
     }
 }

@@ -63,7 +63,7 @@ public class Sejour {
         listActivites.add(a);
     }
     // Retourne la liste des activit�s d'un s�jour donn�
-    public Activites[] getActivites() {
+    private Activites[] getActivites() {
         return listActivites.toArray(new Activites[0]);
     }
 

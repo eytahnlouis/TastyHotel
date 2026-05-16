@@ -1,18 +1,20 @@
 package controleur;
-import  java.awt.event.*;
+ 
 import vue.VueHotel;
-
-public class ContOuvrirHotel implements ActionListener{
-	public ContOuvrirHotel() {
-		
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		VueHotel vh = new VueHotel(null);
-		vh.setVisible(true);
-		vh.pack();	
-		
-	}
-	
-
+import model.Hotel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+ 
+public class ContOuvrirHotel implements ActionListener {
+ 
+    private Hotel hotel;
+ 
+    public ContOuvrirHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+ 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        new VueHotel(hotel);
+    }
 }

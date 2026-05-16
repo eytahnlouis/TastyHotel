@@ -17,7 +17,7 @@ public class VueSupprimerClient extends JFrame {
         panelBoutons.add(idClient);
         panelBoutons.add(new JLabel("Nom :"));
         panelBoutons.add(nomClient);
-        panelBoutons.add(new JLabel("PrÃ©nom :"));
+        panelBoutons.add(new JLabel("Prénom :"));
         panelBoutons.add(prenomClient);
         panelBoutons.add(btnValider);
         panelBoutons.add(btnQuiter);
@@ -27,7 +27,7 @@ public class VueSupprimerClient extends JFrame {
         btnQuiter.addActionListener(e -> {
             dispose();
         });
-        //contrÃ´leur Ã  ajouter : toi permettre la crÃ©ation d'un client ajouter l'hotel
+        //contrôleur à ajouter : toi permettre la création d'un client ajouter l'hotel
         //signature client (nom, prenom, hotel)
     }
     static void main(String[] args) {
@@ -35,4 +35,5 @@ public class VueSupprimerClient extends JFrame {
         new VueSupprimerClient(h1);
     }
 }
+
 
