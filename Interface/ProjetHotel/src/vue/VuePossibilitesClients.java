@@ -24,6 +24,10 @@ class VuePossibilitesClients extends JFrame {
         buttonConsulter.addActionListener(e -> {
             new VueListeClients(h);
         });
+
+        buttonSupprimer.addActionListener(e -> {
+            new VueSupprimerClient(h);
+        });
         add(panelBoutons);
         setVisible(true);
     }

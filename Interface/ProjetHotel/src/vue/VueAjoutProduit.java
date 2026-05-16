@@ -1,12 +1,13 @@
 package vue;
+import controleur.ContAjoutProduit;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
 public class VueAjoutProduit extends JFrame {
-    JTextField idProduit = new JTextField(10);
-    JTextField nomProduit = new JTextField(10);
-    JTextField prixProduit = new JTextField(10);
-    JTextField quantiteProduit = new JTextField(10);
+    public JTextField idProduit = new JTextField(10);
+    public JTextField nomProduit = new JTextField(10);
+    public JTextField prixProduit = new JTextField(10);
+    public JTextField quantiteProduit = new JTextField(10);
     JButton btnValider = new JButton("Valider");
     JButton btnQuiter = new JButton("Quitter");
 
@@ -30,6 +31,8 @@ public class VueAjoutProduit extends JFrame {
         btnQuiter.addActionListener(e -> {
             dispose();
         });
+
+        btnValider.addActionListener(new ContAjoutProduit(this,h1) );
             //contrôleur à ajouter : toi permettre la création d'un produit ajouter l'hotel
             //signature Produits(int numProduit, String nomProduit, float prixProduit, int quantite, Hotel hotel)
     }

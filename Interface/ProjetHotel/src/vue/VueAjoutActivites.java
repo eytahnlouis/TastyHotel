@@ -4,8 +4,8 @@ import controleur.*;
 import javax.swing.*;
 import java.awt.*;
 public class VueAjoutActivites extends JFrame {
-    JTextField nomProduit = new JTextField(10);
-    JTextField prixProduit = new JTextField(10);
+    public JTextField nomProduit = new JTextField(10);
+    public JTextField prixProduit = new JTextField(10);
     JButton btnValider = new JButton("Valider");
     JButton btnQuitter = new JButton("Quitter");
 
@@ -26,8 +26,7 @@ public class VueAjoutActivites extends JFrame {
         btnQuitter.addActionListener(e -> {
             dispose();
         });
-        //btnValider.addActionListener(new ContAjoutActivite(h1));
-        //btnQuitter.addActionListener(e -> dispose());
+        btnValider.addActionListener(new ContAjoutActivites(this,h1));
     }
     static void main(String[] args) {
         Hotel h1 = new Hotel("Tasty Hotel 4*", "12 rue de la paix");

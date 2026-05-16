@@ -1,22 +1,20 @@
 package vue;
 import model.*;
+import controleur.*;
 import javax.swing.*;
 import java.awt.*;
+
 public class VueAjoutChambre extends JFrame {
-    //Chambre(String typeChambre, int numChambre, int numEtage, float prixChambre, Hotel hotel)
     JTextField numChambre = new JTextField(10);
     JTextField numEtage = new JTextField(10);
     JTextField prixChambre = new JTextField(10);
+    JComboBox<String> comboType = new JComboBox<>(new String[]{"Simple", "Double", "Suite"});
     JButton btnValider = new JButton("Valider");
     JButton btnQuiter = new JButton("Quitter");
 
-public VueAjoutChambre(Hotel h1) {
+    public VueAjoutChambre(Hotel h1) {
         setTitle("Ajouter une chambre");
-        setSize(500,150);
-        String[] types = {"Simple", "Double", "Suite"};
-        JComboBox<String> comboType = new JComboBox<>(types);
-        // Récupérer
-        String typeChoisi = (String) comboType.getSelectedItem();
+        setSize(500, 150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(new JLabel("Type :"));
         panelBoutons.add(comboType);
@@ -30,13 +28,13 @@ public VueAjoutChambre(Hotel h1) {
         panelBoutons.add(btnQuiter);
         add(panelBoutons);
         setVisible(true);
-        btnQuiter.addActionListener(e -> {
-            dispose();
-        });
-    }
-    static void main(String[] args) {
-        Hotel h1 = new Hotel("Tasty Hotel 4*", "12 rue de la paix");
-        new VueAjoutChambre(h1);
-    }
-}
 
+        btnValider.addActionListener(new ContAjoutChambre(this, h1));
+        btnQuiter.addActionListener(e -> dispose());
+    }
+
+    public JComboBox<String> getComboType() { return comboType; }
+    public JTextField getNumChambre() { return numChambre; }
+    public JTextField getNumEtage() { return numEtage; }
+    public JTextField getPrixChambre() { return prixChambre; }
+}

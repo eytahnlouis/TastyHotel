@@ -16,14 +16,25 @@ public class VueChambre extends JFrame {
 
     public VueChambre(Hotel h1) {
     	
-        setTitle("Choisir une possibilite de chambre");
+        setTitle("Choisir une possibilité de chambre");
         setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(buttonAjouter);
         panelBoutons.add(buttonSupprimer);
         panelBoutons.add(buttonConsulter);
         panelBoutons.add(buttonMenage);
-
+        buttonAjouter.addActionListener(e -> {;
+            new VueAjoutChambre(h1);
+        });
+        buttonConsulter.addActionListener(e -> {
+            new VueListeChambres(h1);
+        });
+        buttonMenage.addActionListener(e -> {
+            new VueListeMenageJour(h1);
+        });
+        buttonSupprimer.addActionListener(e -> {
+            new VueSupprimerChambre(h1);
+        });
         add(panelBoutons);
         setVisible(true);
         java.awt.event.ActionListener ct = null;

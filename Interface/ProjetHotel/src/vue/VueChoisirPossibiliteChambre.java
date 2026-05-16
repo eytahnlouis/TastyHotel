@@ -24,8 +24,8 @@ public class VueChoisirPossibiliteChambre extends JFrame {
         setVisible(true);
         buttonAjouter.addActionListener(new ContAjouterChambre(h1, this));
         buttonSupprimer.addActionListener(new ContSupprimerChambre(h1, this));
-        //buttonConsulter.addActionListener(new ContConsulterChambre(h1, this));
         buttonMenage.addActionListener(new ContMenageChambre(h1, this));
+        buttonConsulter.addActionListener( e -> new VueListeChambres(h1));
     
     }
 

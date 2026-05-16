@@ -33,19 +33,18 @@ public class VuePrincipale extends JFrame {
 		this.getContentPane().add(panelBtn, BorderLayout.CENTER);
 		
 		
-		//ouvrir.addActionListener(new ContCreerHotel());
-		 
+
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
      // � ajouter � la fin du constructeur de VuePrincipale
-        btnHotel.addActionListener(new ContOuvrirHotel(h));
-        btnClient.addActionListener(new ContOuvrirClients(h));
-        btnReservation.addActionListener(new ContOuvrirReservations(h));
-        btnSejour.addActionListener(new ContOuvrirSejours(h));
+        btnHotel.addActionListener(e -> new VueHotel(h));
+        btnClient.addActionListener(e -> new VueChoisirPossibilitesClient(h));
+        btnReservation.addActionListener(e -> new VueChoisirPossibiliteReservation(h));
+        btnSejour.addActionListener(e -> new VueChercherClientSejour(h));
     }
 
-	}
+}
 	
 
 

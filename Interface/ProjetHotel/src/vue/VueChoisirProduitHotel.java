@@ -7,7 +7,7 @@ import model.*;
 import java.awt.*;
 import java.time.LocalDate;
 
-class VueChoisirProduitHotel extends JFrame {
+public class VueChoisirProduitHotel extends JFrame {
     JButton buttonAjouter = new JButton("Ajouter");
     JButton buttonSupprimer = new JButton("Supprimer");
     JButton buttonConsulter = new JButton("Consulter");
@@ -25,7 +25,10 @@ class VueChoisirProduitHotel extends JFrame {
         });
         buttonAjouter.addActionListener(e -> {
             new VueAjoutProduit(p);
+        });
 
+        buttonSupprimer.addActionListener(e -> {
+            new VueSupprimerProduit(p);
         });
         add(panelBoutons);
         setVisible(true);

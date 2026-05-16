@@ -28,6 +28,9 @@ public class VueChoisirPossibilitesClient {
         buttonConsulter.addActionListener(e -> {
             new VueListeClients(h1);
         });
+        buttonSupprimer.addActionListener(e -> {
+            new VueSupprimerClient(h1);
+        });
     }
 
     static void main(String[] args) {

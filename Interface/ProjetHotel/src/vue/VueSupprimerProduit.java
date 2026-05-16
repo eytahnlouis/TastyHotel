@@ -1,11 +1,12 @@
 package vue;
+import controleur.ContSupprimerProduit;
 import model.Hotel;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class VueSupprimerProduit extends JFrame {
-    JTextField idProduit = new JTextField();
+    public JTextField idProduit = new JTextField();
     JButton btnValider = new JButton("Valider");
     JButton btnQuitter = new JButton("Quitter");
 
@@ -23,7 +24,8 @@ public class VueSupprimerProduit extends JFrame {
         btnQuitter.addActionListener(e -> {
             dispose();
         });
-        //contrôleur à ajouter : toi permettre la suppression d'une activité de l'hotel
+        btnValider.addActionListener(new ContSupprimerProduit(this, h1));
+        //contrï¿½leur ï¿½ ajouter : toi permettre la suppression d'une activitï¿½ de l'hotel
 
     }
     static void main(String[] args) {

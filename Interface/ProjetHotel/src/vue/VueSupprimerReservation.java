@@ -1,14 +1,15 @@
 package vue;
+import controleur.ContSupprimerReservation;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
 public class VueSupprimerReservation extends JFrame {
-    JTextField idClient = new JTextField();
+    public JTextField idClient = new JTextField();
     JButton btnValider = new JButton("Valider");
     JButton btnQuiter = new JButton("Quitter");
 
     public VueSupprimerReservation(Hotel h1) {
-        setTitle("Supprimer un client");
+        setTitle("Supprimer une reservation");
         setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(new JLabel("id :"));
@@ -18,11 +19,11 @@ public class VueSupprimerReservation extends JFrame {
 
         add(panelBoutons);
         setVisible(true);
+        btnValider.addActionListener(new ContSupprimerReservation(this, h1));
         btnQuiter.addActionListener(e -> {
             dispose();
         });
         //contrôleur à ajouter : toi permettre la suppression d'une resa de l'hotel
-        //signature client (nom, prenom, hotel)
     }
     static void main(String[] args) {
         Hotel h1 = new Hotel("Tasty Hotel 4*", "12 rue de la paix");

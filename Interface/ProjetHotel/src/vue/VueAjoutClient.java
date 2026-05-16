@@ -15,7 +15,7 @@ public class VueAjoutClient extends JFrame {
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(new JLabel("Nom :"));
         panelBoutons.add(nomClient);
-        panelBoutons.add(new JLabel("Prénom :"));
+        panelBoutons.add(new JLabel("Prï¿½nom :"));
         panelBoutons.add(prenomClient);
         panelBoutons.add(btnValider);
         panelBoutons.add(btnQuiter);
@@ -26,7 +26,7 @@ public class VueAjoutClient extends JFrame {
             dispose();
         });
         btnValider.addActionListener(new ContValiderAjoutClient(h1, this));
-        //contrôleur à ajouter : toi permettre la création d'un client ajouter l'hotel
+        //contrï¿½leur ï¿½ ajouter : toi permettre la crï¿½ation d'un client ajouter l'hotel
         //signature client (nom, prenom, hotel)
     }
     static void main(String[] args) {

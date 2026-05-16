@@ -100,7 +100,7 @@ public class VueAjoutReservation extends JFrame {
         setVisible(true);
 
         // Contrôleur
-        btnValider.addActionListener(new ContAjouterReservation(hotel));
+        btnValider.addActionListener(new ContAjouterReservation(hotel, this));
         btnAnnuler.addActionListener(e -> dispose());
     }
 

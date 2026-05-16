@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class VueSupprimerProduitSejour extends JFrame {
-    JTextField idProduit = new JTextField();
+    public JTextField idProduit = new JTextField();
     JButton btnValider = new JButton("Valider");
     JButton btnQuitter = new JButton("Quitter");
 
@@ -20,6 +20,7 @@ public class VueSupprimerProduitSejour extends JFrame {
 
         add(panelBoutons);
         setVisible(true);
+        btnValider.addActionListener(new ContSupprimerProduitSejour(this, h1));
         btnQuitter.addActionListener(e -> {
             dispose();
         });

@@ -1,27 +1,25 @@
 package controleur;
-
 import model.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import vue.*;
+import java.awt.event.*;
 import javax.swing.*;
-
+import java.awt.*;
 public class ContSupprimerProduit implements ActionListener {
-
     private Hotel hotel;
-
-    public ContSupprimerProduit(Hotel hotel) {
+    private VueSupprimerProduit vue;
+    public ContSupprimerProduit(VueSupprimerProduit vue, Hotel hotel) {
         this.hotel = hotel;
+        this.vue = new VueSupprimerProduit(hotel);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        StringBuilder sb = new StringBuilder("Produits :\n");
-        int i = 0;
-        for (Produits p : hotel.getListeProduits())
-            sb.append(i++).append(" - ").append(p.getNomProduit()).append(" (").append(p.getPrixProduit()).append(" Ä)\n");
-
-        String indexStr = JOptionPane.showInputDialog(sb + "\nNumÈro ‡ supprimer :");
-        hotel.getListeProduits().remove(Integer.parseInt(indexStr.trim()));
-        JOptionPane.showMessageDialog(null, "Produit supprimÈ !");
+        int codeBarre = Integer.parseInt(vue.idProduit.getText());
+        Produits produitToRemove = hotel.getProduitsById(codeBarre);
+        if (produitToRemove != null) {
+            hotel.removeProduits(produitToRemove);
+            JOptionPane.showMessageDialog(vue, "Produit supprim√© avec succ√®s.");
+        } else {
+            JOptionPane.showMessageDialog(vue, "Produit non trouv√©.");
+        }
     }
 }

@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class VueHotelStatistiques extends JFrame {
-    JTextField mostBookedRoom = new JTextField();
-    JTextField biggestSpender = new JTextField();
     JButton btnQuit = new JButton("Quitter");
 
     public VueHotelStatistiques(Hotel h1){

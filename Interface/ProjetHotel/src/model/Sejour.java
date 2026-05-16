@@ -63,8 +63,12 @@ public class Sejour {
         listActivites.add(a);
     }
     // Retourne la liste des activit�s d'un s�jour donn�
-    private Activites[] getActivites() {
+    public Activites[] getActivites() {
         return listActivites.toArray(new Activites[0]);
+    }
+
+    public void removeProduit(Produits a) {
+        lProduits.remove(a);
     }
 
     public float getPrixTotalActivite() {
@@ -125,4 +129,20 @@ public class Sejour {
     }
 
 
+    public Hotel getHotel() {
+        return reservation.getChambre().getHotel();
+    }
+
+    public void ajouterActivite(Activites a) {
+        listActivites.add(a);
+    }
+
+    public void supprimerActivite(Activites a) {
+        listActivites.remove(a);
+    }
+
+    public void supprimerProduit(Produits a) {
+        lProduits.remove(a);
+        a.addQuantite(1);
+    }
 }

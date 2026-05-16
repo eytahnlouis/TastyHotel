@@ -1,24 +1,24 @@
 package controleur;
 import model.*;
 import vue.*;
+
 import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.*;
-
-public class ContAjoutClient implements ActionListener{
-    private VueAjoutClient vue;
+public class ContAjoutActivites implements ActionListener {
+    private VueAjoutActivites vue;
     private Hotel hotel;
-    public ContAjoutClient(VueAjoutClient vue, Hotel hotel) {
+
+    public ContAjoutActivites(VueAjoutActivites vue, Hotel hotel) {
         this.vue = vue;
         this.hotel = hotel;
     }
 
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
-        String nom = vue.nomClient.getText();
-        String prenom = vue.prenomClient.getText();
-        new Client(nom, prenom, hotel);
+        String nom = vue.nomProduit.getText();
+        float prix = Float.parseFloat(vue.prixProduit.getText());
+        new Activites(nom, prix, hotel);
         vue.dispose();
     }
-
 }

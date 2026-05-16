@@ -11,7 +11,7 @@ public class VueHotel extends JFrame {
     JButton buttonStats = new JButton("Statistiques");
 
     public VueHotel(Hotel h) {
-        setTitle("Choisir une possibilite de reservation");
+        setTitle("Choisir une possibilité pour l'hotel");
         setSize(500,150);
         JPanel panelBoutons = new JPanel(new FlowLayout());
         panelBoutons.add(buttonChambre);
@@ -21,10 +21,10 @@ public class VueHotel extends JFrame {
 
         add(panelBoutons);
         setVisible(true);
-        Hotel hotel = null ;
-        buttonChambre.addActionListener(new ContOuvrirAjoutChambre(hotel));
-        buttonProduits.addActionListener(new ContOuvrirProduits(hotel));
-        buttonActivites.addActionListener(new ContOuvrirActivites(hotel));
+        buttonChambre.addActionListener(e -> new VueChoisirPossibiliteChambre(h));
+        buttonProduits.addActionListener(e -> new VueChoisirProduitHotel(h));
+        buttonActivites.addActionListener(e -> new VueChoisirActivitesHotel(h));
+        buttonStats.addActionListener(e -> new VueHotelStatistiques(h));
          
     }
 

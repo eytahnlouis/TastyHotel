@@ -1,13 +1,14 @@
 package vue;
+import controleur.ContModifierDateFinSejour;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 
 public class VueModifierDateFin extends JFrame {
-    JTextField jour  = new JTextField(2);
-    JTextField mois  = new JTextField(2);
-    JTextField annee = new JTextField(4);
+    public JTextField jour  = new JTextField(2);
+    public JTextField mois  = new JTextField(2);
+    public JTextField annee = new JTextField(4);
     JButton btnAjouter = new JButton("Modifier");
     JButton btnAnnuler = new JButton("Annuler");
 
@@ -31,6 +32,7 @@ public class VueModifierDateFin extends JFrame {
         setVisible(true);
 
         btnAnnuler.addActionListener(e -> dispose());
+        btnAjouter.addActionListener( new ContModifierDateFinSejour(this, s) );
     }
 
     static void main(String[] args) {
