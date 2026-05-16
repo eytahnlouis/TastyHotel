@@ -145,4 +145,8 @@ public class Sejour {
         lProduits.remove(a);
         a.addQuantite(1);
     }
+
+    public LocalDate getDateDebut() {
+        return reservation.getDateDebut();
+    }
 }

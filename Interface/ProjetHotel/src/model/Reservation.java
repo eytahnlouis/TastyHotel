@@ -40,7 +40,7 @@ public class Reservation {
     private Sejour sejour;
 
     public void ajouterAHotel() {
-        client.getListReservation().add(this);
+        client.ajouterReservation(this);
         chambre.ajoutRes(this);
     }
     // Retourne le num�ro de la r�servation

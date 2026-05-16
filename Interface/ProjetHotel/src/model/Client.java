@@ -53,9 +53,14 @@ public class Client {
         hotel.getListClient().add(this);
     }
 
-    public boolean isPresentInHotelToday( LocalDate date) {
-        return getListReservation().stream().anyMatch(r -> r.getSejour().getDateFinReel().isEqual(date));
+    public boolean isPresentInHotelToday(LocalDate date) {
+        return listReservation.stream().anyMatch(r -> {
+            LocalDate dateDebut = r.getSejour().getDateDebut();
+            LocalDate dateFin = r.getSejour().getDateFinReel();
+            return !date.isBefore(dateDebut) && !date.isAfter(dateFin);
+        });
     }
+
 
     // Retourne le num�ro du client
     public int getNumClient() {
@@ -90,6 +95,11 @@ public class Client {
         System.out.println("Nom : " + this.nomClient);
         System.out.println("Pr�nom : " + this.prenomClient);
         System.out.println("Nombre de passages : " + listReservation.size());
+    }
+    public void ajouterReservation(Reservation r) {
+        if (!listReservation.contains(r)) {
+            listReservation.add(r);
+        }
     }
 }
 

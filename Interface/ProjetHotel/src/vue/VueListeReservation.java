@@ -9,7 +9,7 @@ import model.*;
 
 public class VueListeReservation extends JFrame {
     public VueListeReservation(Hotel hotel) {
-        setTitle("Liste des réservations en cours ce jour" + LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        setTitle("Liste des réservations en cours ce jour" + " "+LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         setSize(500, 400);
 
         String[] colonnes = { "idClient", "debut", "fin", "nuChambre" };
@@ -26,7 +26,6 @@ public class VueListeReservation extends JFrame {
         }
         JTable table = new JTable(data, colonnes);
         add(new JScrollPane(table));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 }
